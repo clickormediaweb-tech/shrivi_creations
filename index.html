@@ -72,19 +72,12 @@
         .logo-container { display: flex; justify-content: center; align-items: center; flex: 0 0 auto; cursor: pointer; }
         .navbar-logo { max-height: 85px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
         
-        /* DESKTOP ICONS (Visible on laptop, hidden on phone) */
         .nav-icons { position: absolute; right: 60px; display: flex; gap: 18px; align-items: center; }
-        .desktop-icons-group { display: flex; gap: 18px; align-items: center; }
-        .mobile-menu-icon { display: none; } /* Hidden on laptop */
-
-        .nav-icons svg { width: 20px; height: 20px; stroke: var(--text-dark); fill: none; stroke-width: 1.5; cursor: pointer; transition: all 0.3s ease; }
         
-        /* Premium Hover on Icons */
-        .nav-icons .icon-wrapper { position: relative; display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; transition: all 0.3s ease; }
+        .nav-icons .icon-wrapper { position: relative; display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; transition: all 0.3s ease; cursor: pointer;}
         .nav-icons .icon-wrapper:hover { background-color: white; box-shadow: 0px 4px 10px rgba(74,16,17,0.15); transform: translateY(-3px); }
+        .nav-icons .icon-wrapper svg { width: 20px; height: 20px; stroke: var(--text-dark); fill: none; stroke-width: 1.5; transition: stroke 0.3s; }
         .nav-icons .icon-wrapper:hover svg { stroke: var(--maroon); }
-        
-        .cart-badge { position: absolute; top: 0; right: 0; background-color: var(--maroon); color: white; font-size: 9px; width: 14px; height: 14px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; }
 
         /* HERO SECTION */
         .hero { position: relative; width: 100%; height: calc(100vh - 145px); min-height: 750px; background-color: var(--bg-hero); overflow: hidden; display: block; }
@@ -105,20 +98,43 @@
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0px 8px 0px #2a0809, 0px 12px 20px rgba(74, 16, 17, 0.4); background-color: #5a1516; }
         .btn-primary:active { transform: translateY(4px); box-shadow: 0px 2px 0px #2a0809, 0px 4px 8px rgba(74, 16, 17, 0.3); }
 
-        /* 3D DRAWER (For Mobile Only Now) */
-        .side-drawer { position: fixed; top: 0; right: -300px; width: 250px; height: 100vh; background-color: var(--bg-hero); border-left: 2px solid var(--maroon); padding: 30px 20px; display: flex; flex-direction: column; gap: 30px; align-items: center; box-shadow: -15px 0px 25px rgba(0,0,0,0.3); transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999; }
+        /* FLOATING ICONS RIGHT SIDE (Laptop Only) */
+        .hero-floating-icons {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 10;
+        }
+        .float-btn {
+            position: relative; width: 45px; height: 45px; border-radius: 50%;
+            background-color: var(--bg-hero); border: 1px solid var(--maroon);
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+        .float-btn svg { width: 22px; height: 22px; stroke: var(--maroon); fill: none; transition: all 0.3s; }
+        .float-btn:hover { background-color: var(--maroon); transform: translateY(-5px); box-shadow: 0px 8px 15px rgba(74,16,17,0.3); }
+        .float-btn:hover svg { stroke: white; }
+        .cart-badge { position: absolute; top: -5px; right: -5px; background-color: var(--maroon); color: white; font-size: 10px; width: 18px; height: 18px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; border: 2px solid var(--bg-hero); transition: all 0.3s; }
+        .float-btn:hover .cart-badge { background-color: white; color: var(--maroon); border-color: var(--maroon); }
+
+        /* 3D DRAWER */
+        .side-drawer { position: fixed; top: 0; right: -300px; width: 200px; height: 100vh; background-color: var(--bg-hero); border-left: 2px solid var(--maroon); padding: 30px 20px; display: flex; flex-direction: column; gap: 40px; align-items: center; box-shadow: -15px 0px 25px rgba(0,0,0,0.3); transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999; }
         .side-drawer.open { right: 0; }
         .drawer-close { font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 300; color: var(--maroon); cursor: pointer; align-self: flex-end; margin-top: -10px; transition: transform 0.3s; }
         .drawer-close:hover { transform: rotate(90deg); }
-        .mobile-nav-links { display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center; border-bottom: 1px solid rgba(74,16,17,0.2); padding-bottom: 30px; }
-        .mobile-nav-links a { text-decoration: none; color: var(--maroon); font-family: 'Cinzel', serif; font-size: 18px; font-weight: 600; letter-spacing: 2px; }
         
-        .drawer-icons-wrapper { display: flex; gap: 30px; }
-        .drawer-icon-box { position: relative; cursor: pointer; }
-        .drawer-icon-box svg { width: 26px; height: 26px; stroke: var(--maroon); fill: none; stroke-width: 1.5; }
+        .drawer-icons-wrapper { display: flex; flex-direction: column; gap: 30px; align-items: center; justify-content: center; margin-top: 40px;}
+        .drawer-icon-box { position: relative; cursor: pointer; padding: 10px; border-radius: 50%; background: transparent; transition: all 0.3s; border: 1px solid transparent; }
+        .drawer-icon-box svg { width: 30px; height: 30px; stroke: var(--maroon); fill: none; stroke-width: 1.5; transition: stroke 0.3s;}
+        .drawer-icon-box:hover { border-color: var(--maroon); background: white; transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
 
         /* SECTIONS */
-        section { scroll-margin-top: 80px; } /* Ensures navbar doesn't cover content when scrolled */
+        section { scroll-margin-top: 80px; } 
         
         .category-section { display: grid; grid-template-columns: repeat(3, 1fr); background-color: #3b0e0f; color: white; padding: 40px 60px; }
         .cat-item { display: flex; align-items: center; gap: 20px; padding: 0 30px; }
@@ -128,6 +144,46 @@
         .cat-text p { font-size: 13px; line-height: 1.5; margin-bottom: 15px; opacity: 0.9; }
         .cat-text a { color: white; text-decoration: none; font-size: 18px; }
 
+        /* SHOP / FULL PAGE STYLE */
+        .shop-sec { padding: 80px 60px; background-color: var(--bg-hero); text-align: center; min-height: 100vh;}
+        .shop-sec .section-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 50px; gap: 10px;}
+        .shop-sec .section-header h2 { font-family: 'Cinzel', serif; font-size: 42px; letter-spacing: 4px; color: var(--maroon); }
+        .shop-sec .section-header p { font-family: 'Imperial Script', cursive; font-size: 32px; color: #555; }
+        
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: left; }
+        .product-card { color: var(--maroon); cursor: pointer; display: block; }
+        .product-card.hidden { display: none; }
+        .product-img-box { position: relative; margin-bottom: 15px; overflow: hidden; border-radius: 4px; }
+        .product-img-box img { width: 100%; height: 380px; object-fit: cover; transition: transform 0.4s ease; }
+        .product-card:hover .product-img-box img { transform: scale(1.05); }
+        .wishlist-btn { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.1); border-radius: 50%; padding: 8px; border: none; cursor: pointer; z-index: 10; transition: background 0.3s; }
+        .wishlist-btn:hover { background: var(--maroon); }
+        .wishlist-btn svg { width: 18px; height: 18px; stroke: white; fill: none; transition: fill 0.3s; }
+        .product-card h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 5px; }
+        .product-card p { font-size: 14px; font-weight: 600; }
+
+        .view-more-btn { background: transparent; color: var(--maroon); border: 1px solid var(--maroon); padding: 15px 40px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin-top: 50px; transition: all 0.3s; }
+        .view-more-btn:hover { background: var(--maroon); color: white; }
+
+        /* AESTHETIC NEW ARRIVALS */
+        .new-arrivals-sec { padding: 80px 60px; background-color: #fcfaf8; }
+        .na-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; border-bottom: 1px solid rgba(74, 16, 17, 0.2); padding-bottom: 15px;}
+        .na-header h2 { font-family: 'Cinzel', serif; font-size: 32px; letter-spacing: 3px; color: var(--maroon); }
+        .na-header a { font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--maroon); text-decoration: none; font-weight: 600;}
+        
+        .elegant-arrivals-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
+        .featured-arrival { position: relative; height: 100%; min-height: 500px; border-radius: 4px; overflow: hidden; }
+        .featured-arrival img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .featured-arrival:hover img { transform: scale(1.03); }
+        .featured-arrival::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(74, 16, 17, 0.7), transparent); z-index: 1;}
+        .overlay-text { position: absolute; bottom: 30px; left: 30px; color: white; z-index: 2;}
+        .overlay-text h3 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; margin-bottom: 10px; font-style: italic;}
+        .overlay-text p { font-size: 13px; letter-spacing: 1px; opacity: 0.9;}
+        
+        .arrivals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .arrivals-grid .product-img-box img { height: 280px; }
+
+        /* Promo Split Section */
         .promo-split { display: flex; height: 500px; }
         .promo-video { flex: 1; background: url('1.jpg') center/cover no-repeat; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 50px; color: white; }
         .promo-video::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
@@ -141,54 +197,27 @@
         .promo-gift span { font-size: 11px; letter-spacing: 3px; color: var(--maroon); margin-bottom: 15px; font-weight: 500; }
         .promo-gift h2 { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--maroon); line-height: 1.2; margin-bottom: 20px; }
         .promo-gift p { font-size: 14px; color: #555; margin-bottom: 30px; max-width: 350px; }
-        .promo-gift .btn-gift { align-self: flex-start; background-color: var(--maroon); color: white; border: none; padding: 15px 30px; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 2px; cursor: pointer; }
         .gift-img { position: absolute; right: -20px; top: 50%; transform: translateY(-45%) rotate(-5deg); width: 380px; z-index: 3; }
 
-        .features-bar { display: flex; justify-content: space-evenly; background-color: #f8f4ed; padding: 40px 20px; border-bottom: 1px solid rgba(74, 16, 17, 0.1); }
+        /* CONTACT SECTION */
+        .contact-sec { padding: 80px 60px; background-color: #f8f4ed; display: flex; gap: 60px; align-items: center; }
+        .contact-text { flex: 1; }
+        .contact-text h2 { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--maroon); margin-bottom: 10px; line-height: 1.2;}
+        .contact-text p { font-family: 'Imperial Script', cursive; font-size: 38px; color: #555; margin-bottom: 30px; }
+        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 20px; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
+        .contact-form input, .contact-form textarea { width: 100%; padding: 15px; border: 1px solid rgba(74, 16, 17, 0.2); background: transparent; font-family: 'Montserrat', sans-serif; font-size: 13px; color: var(--maroon); outline: none; transition: border 0.3s;}
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--maroon); }
+        .contact-form textarea { resize: none; height: 120px; }
+
+        /* Features Bar */
+        .features-bar { display: flex; justify-content: space-evenly; background-color: #fcfaf8; padding: 40px 20px; border-bottom: 1px solid rgba(74, 16, 17, 0.1); border-top: 1px solid rgba(74, 16, 17, 0.1); }
         .feature-item { text-align: center; padding: 0 40px; color: var(--maroon); }
         .feature-item:not(:last-child) { border-right: 1px solid rgba(74, 16, 17, 0.2); }
         .feature-item h4 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; }
         .feature-item p { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* ALL PRODUCTS / SHOP GRID SECTION */
-        .shop-sec { padding: 80px 60px; background-color: var(--bg-hero); text-align: center;}
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; color: var(--maroon); }
-        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 32px; letter-spacing: 2px; }
-        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: left; }
-        
-        .product-card { color: var(--maroon); cursor: pointer; display: block; }
-        /* Hidden class for "View More" logic */
-        .product-card.hidden { display: none; }
-        
-        .product-img-box { position: relative; margin-bottom: 15px; overflow: hidden; border-radius: 4px; }
-        .product-img-box img { width: 100%; height: 380px; object-fit: cover; transition: transform 0.4s ease; }
-        .product-card:hover .product-img-box img { transform: scale(1.05); }
-        .wishlist-btn { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.1); border-radius: 50%; padding: 8px; border: none; cursor: pointer; z-index: 10; transition: background 0.3s; }
-        .wishlist-btn:hover { background: var(--maroon); }
-        .wishlist-btn svg { width: 18px; height: 18px; stroke: white; fill: none; }
-        .product-card h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 5px; }
-        .product-card p { font-size: 14px; font-weight: 600; }
-
-        .view-more-btn {
-            background: transparent; color: var(--maroon); border: 1px solid var(--maroon);
-            padding: 15px 40px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
-            letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin-top: 50px;
-            transition: all 0.3s;
-        }
-        .view-more-btn:hover { background: var(--maroon); color: white; }
-
-        /* CONTACT SECTION */
-        .contact-sec { padding: 80px 60px; background-color: #f8f4ed; display: flex; gap: 60px; }
-        .contact-text { flex: 1; }
-        .contact-text h2 { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--maroon); margin-bottom: 20px; }
-        .contact-text p { font-family: 'Imperial Script', cursive; font-size: 30px; color: #333; margin-bottom: 30px; }
-        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 20px; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 15px; border: 1px solid rgba(74, 16, 17, 0.3); background: transparent; font-family: 'Montserrat', sans-serif; font-size: 13px; color: var(--maroon); outline: none;}
-        .contact-form textarea { resize: none; height: 120px; }
-        .contact-form button { align-self: flex-start; }
-
-        /* FOOTER (Restored Desktop Spacing) */
-        .site-footer { background-color: var(--bg-hero); padding: 60px 80px 20px; color: var(--maroon); border-top: 1px solid rgba(74, 16, 17, 0.1); }
+        /* FOOTER */
+        .site-footer { background-color: var(--bg-hero); padding: 60px 80px 20px; color: var(--maroon); }
         .footer-main { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(74, 16, 17, 0.2); }
         .footer-logo h3 { font-family: 'Cinzel', serif; font-size: 32px; }
         .footer-logo p { font-family: 'Playfair Display', serif; font-size: 15px; margin-top: 15px; line-height: 1.6;}
@@ -209,7 +238,7 @@
         .footer-links a { color: var(--maroon); text-decoration: none; margin-left: 15px; }
 
         /* ========================================= */
-        /* PERFECT MOBILE RESPONSIVE CSS */
+        /* MOBILE RESPONSIVE CSS */
         /* ========================================= */
         @media (max-width: 1024px) {
             .navbar { padding: 15px 30px; }
@@ -217,7 +246,10 @@
             .nav-links.right { padding-left: 25px; }
             .nav-icons { right: 30px; }
             .hero-model { height: 85%; }
+            .hero-floating-icons { right: 20px; }
             .product-grid { grid-template-columns: repeat(3, 1fr); }
+            .elegant-arrivals-layout { grid-template-columns: 1fr; }
+            .featured-arrival { min-height: 400px; }
             .footer-main { grid-template-columns: repeat(3, 1fr); }
             .footer-join { grid-column: span 3; border-left: none; border-top: 1px solid rgba(74,16,17,0.2); padding-left: 0; padding-top: 30px; }
             .contact-sec { flex-direction: column; gap: 30px; }
@@ -225,19 +257,14 @@
 
         @media (max-width: 768px) {
             .top-bar { padding: 8px 0; font-size: 9px; }
-            
-            /* Navbar Mobile */
             .navbar { padding: 15px 20px; justify-content: space-between; }
             .logo-container { flex: unset; }
             .navbar-logo { max-height: 50px; }
             .nav-links { display: none; } 
             
-            /* Toggle Icons for Mobile */
-            .desktop-icons-group { display: none; } /* Hide Cart & Wishlist from nav on mobile */
-            .mobile-menu-icon { display: block; } /* Show Hamburger */
             .nav-icons { position: relative; right: 0; gap: 15px; }
+            .hero-floating-icons { display: none; } /* Hide floating icons on mobile */
             
-            /* Hero Mobile Fixes */
             .hero { height: auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding: 30px 20px 50px; }
             .giant-text { font-size: 22vw; top: 40%; opacity: 1; color: var(--maroon); }
             .hero-model { position: relative; height: 48vh; max-width: 100%; object-fit: contain; bottom: auto; left: auto; transform: none; margin: 0 auto; z-index: 2; }
@@ -251,7 +278,6 @@
             .description { font-size: 30px; margin-bottom: 25px; }
             .btn-primary { width: 100%; text-align: center; margin-bottom: 0; }
             
-            /* Sections Mobile Fixes */
             .category-section { grid-template-columns: 1fr; padding: 30px 20px; gap: 0; }
             .cat-item { flex-direction: row; text-align: left; padding: 20px 0; gap: 15px; justify-content: flex-start; }
             .cat-item:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -259,19 +285,16 @@
             .promo-split { flex-direction: column; height: auto; }
             .promo-video { padding: 60px 20px; min-height: 250px; align-items: center; text-align: center; }
             .promo-gift { padding: 40px 20px; text-align: center; align-items: center; }
-            .promo-gift h2 { font-size: 32px; }
             .gift-img { position: relative; width: 90%; max-width: 280px; transform: none; margin: 30px auto 0; right: auto; top: auto; }
+            
+            .shop-sec, .new-arrivals-sec, .contact-sec { padding: 40px 20px; }
+            .shop-sec .section-header h2 { font-size: 28px; }
+            .shop-sec .section-header p { font-size: 24px; }
+            .product-grid, .arrivals-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .product-img-box img { height: 200px; }
             
             .features-bar { flex-direction: column; gap: 20px; padding: 30px 20px; }
             .feature-item:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(74, 16, 17, 0.1); padding-bottom: 20px; }
-            
-            .shop-sec { padding: 40px 20px; }
-            .section-header h2 { font-size: 24px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .product-img-box img { height: 200px; }
-            
-            .contact-sec { padding: 40px 20px; }
-            .contact-text h2 { font-size: 32px; }
             
             .site-footer { padding: 40px 20px; text-align: left; }
             .footer-main { grid-template-columns: 1fr 1fr; gap: 30px; padding-bottom: 20px; }
@@ -314,42 +337,16 @@
         </div>
 
         <div class="nav-icons">
-            <div class="icon-wrapper">
-                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </div>
-            <div class="icon-wrapper">
-                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-            
-            <!-- DESKTOP ICONS (Visible on Laptop, hidden on Phone) -->
-            <div class="desktop-icons-group">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                </div>
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                    <div class="cart-badge">0</div>
-                </div>
-            </div>
-
-            <!-- MOBILE MENU ICON (Only visible on Phone) -->
-            <div class="icon-wrapper mobile-menu-icon" id="drawerBtn">
-                <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </div>
+            <div class="icon-wrapper"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            <div class="icon-wrapper"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+            <div class="icon-wrapper" id="drawerBtn"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div>
         </div>
     </nav>
 
-    <!-- MOBILE DRAWER -->
+    <!-- DRAWER (Only Cart and Wishlist) -->
     <div id="sideDrawer" class="side-drawer">
         <div class="drawer-close" id="closeDrawerBtn">&times;</div>
         
-        <div class="mobile-nav-links">
-            <a href="#shop" onclick="closeDrawer()">Shop</a>
-            <a href="#collections" onclick="closeDrawer()">Collections</a>
-            <a href="#new-arrivals" onclick="closeDrawer()">New Arrivals</a>
-            <a href="#contact" onclick="closeDrawer()">Contact</a>
-        </div>
-
         <div class="drawer-icons-wrapper">
             <div class="drawer-icon-box">
                 <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
@@ -365,6 +362,12 @@
     <header class="hero">
         <div class="giant-text">SHRIVI</div>
         
+        <!-- Laptop Right Side Floating Icons -->
+        <div class="hero-floating-icons">
+            <div class="float-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+            <div class="float-btn"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg><span class="cart-badge">0</span></div>
+        </div>
+
         <div class="content-left-top">
             <div class="elegant-title">
                 <span class="serif">Fashion</span>
@@ -412,34 +415,74 @@
         </div>
     </section>
 
-    <!-- SHOP / ALL PRODUCTS SECTION (NEW) -->
+    <!-- AESTHETIC NEW ARRIVALS -->
+    <section id="new-arrivals" class="new-arrivals-sec">
+        <div class="na-header">
+            <h2>The New Drop</h2>
+            <a href="#shop">Discover All Collections &rarr;</a>
+        </div>
+        <div class="elegant-arrivals-layout">
+            <div class="featured-arrival">
+                <img src="1.jpg" alt="Featured Arrival" onerror="this.src='https://via.placeholder.com/600x800/4a1011/fff?text=Featured'">
+                <div class="overlay-text">
+                    <h3>The Summer Edit</h3>
+                    <p>Discover our latest hand-crafted masterpieces for the new season.</p>
+                </div>
+            </div>
+            <div class="arrivals-grid">
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                        <img src="2.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
+                    </div>
+                    <h4>Floral Crochet Cardigan</h4><p>₹ 6,999</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                        <img src="3.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=3.jpg'">
+                    </div>
+                    <h4>Crochet Tote Bag</h4><p>₹ 4,499</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                        <img src="1.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
+                    </div>
+                    <h4>Knit Halter Top</h4><p>₹ 3,999</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                        <img src="2.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
+                    </div>
+                    <h4>Crochet Scarf</h4><p>₹ 2,499</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP / ALL PRODUCTS SECTION -->
     <section id="shop" class="shop-sec">
-        <div class="section-header" id="new-arrivals">
+        <div class="section-header">
             <h2>SHOP OUR COLLECTION</h2>
-            <p style="font-family: 'Playfair Display', serif; font-style: italic;">Made with love, just for you.</p>
+            <p>Made with love, just for you.</p>
         </div>
         <div class="product-grid" id="productGrid">
             <!-- First Row (Visible) -->
             <div class="product-card">
                 <div class="product-img-box">
                     <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                    <img src="1.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
+                    <img src="3.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=3.jpg'">
                 </div>
-                <h4>Floral Crochet Cardigan</h4><p>₹ 6,999</p>
+                <h4>Summer Crochet Crop</h4><p>₹ 2,999</p>
             </div>
             <div class="product-card">
                 <div class="product-img-box">
                     <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                     <img src="2.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
                 </div>
-                <h4>Crochet Tote Bag</h4><p>₹ 4,499</p>
-            </div>
-            <div class="product-card">
-                <div class="product-img-box">
-                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                    <img src="3.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=3.jpg'">
-                </div>
-                <h4>Knit Halter Top</h4><p>₹ 3,999</p>
+                <h4>Vintage Scarf</h4><p>₹ 2,499</p>
             </div>
             <div class="product-card">
                 <div class="product-img-box">
@@ -448,22 +491,15 @@
                 </div>
                 <h4>Crochet Shirt</h4><p>₹ 5,999</p>
             </div>
-            
-            <!-- Second Row (Hidden by default, shown by JS) -->
-            <div class="product-card hidden">
-                <div class="product-img-box">
-                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                    <img src="2.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
-                </div>
-                <h4>Vintage Scarf</h4><p>₹ 2,499</p>
-            </div>
-            <div class="product-card hidden">
+            <div class="product-card">
                 <div class="product-img-box">
                     <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                     <img src="3.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=3.jpg'">
                 </div>
                 <h4>Pearl Handle Bag</h4><p>₹ 5,299</p>
             </div>
+            
+            <!-- Second Row (Hidden by default, shown by JS) -->
             <div class="product-card hidden">
                 <div class="product-img-box">
                     <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
@@ -476,7 +512,21 @@
                     <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                     <img src="2.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
                 </div>
-                <h4>Summer Crochet Crop</h4><p>₹ 2,999</p>
+                <h4>Floral Crochet Cardigan</h4><p>₹ 6,999</p>
+            </div>
+            <div class="product-card hidden">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="3.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=3.jpg'">
+                </div>
+                <h4>Knit Halter Top</h4><p>₹ 3,999</p>
+            </div>
+            <div class="product-card hidden">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="1.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
+                </div>
+                <h4>Crochet Tote Bag</h4><p>₹ 4,499</p>
             </div>
         </div>
         <button class="view-more-btn" id="viewMoreBtn" onclick="showMoreProducts()">View More Designs</button>
@@ -498,11 +548,11 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION (NEW) -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="contact-sec">
         <div class="contact-text">
             <h2>Let's Create<br>Something Beautiful.</h2>
-            <p>We'd love to hear from you</p>
+            <p>We'd love to hear from you.</p>
         </div>
         <div class="contact-form">
             <input type="text" placeholder="Your Name">
@@ -604,11 +654,6 @@
         closeDrawerBtn.addEventListener('click', () => {
             sideDrawer.classList.remove('open');
         });
-
-        // Function to close drawer when link is clicked
-        function closeDrawer() {
-            sideDrawer.classList.remove('open');
-        }
 
         // 2. VIEW MORE SCRIPT (Un-hides extra products)
         function showMoreProducts() {
