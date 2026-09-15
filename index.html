@@ -143,8 +143,7 @@
             min-height: 750px; 
             background-color: var(--bg-hero);
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            display: block; /* Changed for better absolute positioning */
         }
         .giant-text {
             position: absolute;
@@ -163,23 +162,21 @@
         .hero-model {
             position: absolute;
             bottom: 0;
-            left: 63%;
+            left: 60%;
             transform: translateX(-50%);
             height: 95%; 
             max-height: 900px;
             z-index: 2; 
         }
+        
         .content-left-top { position: absolute; top: 6%; left: 5%; z-index: 3; }
         .content-left-bottom { position: absolute; bottom: 8%; left: 5%; z-index: 3; max-width: 450px; }
-        .content-right { position: absolute; top: 7%; right: 2%; z-index: 3; border-left: 1px solid rgba(74, 16, 17, 0.2); padding-left: 25px; }
 
         /* Typography */
         .elegant-title { display: flex; flex-direction: column; gap: 2px; }
         .elegant-title .serif { font-family: 'Playfair Display', serif; font-size: 38px; font-style: italic; color: var(--maroon); line-height: 1.1; }
         .elegant-title .sans { font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: 10px; font-weight: 500; text-transform: uppercase; color: var(--maroon); margin-left: 30px; margin-top: 5px; margin-bottom: 5px; }
-        .elegant-right-text { display: flex; flex-direction: column; gap: 5px; margin-bottom: 25px; }
-        .elegant-right-text .sans { font-family: 'Playfair Display', serif; font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--maroon); }
-        .elegant-right-text .serif { font-family: 'Playfair Display', serif; font-size: 26px; font-style: italic; color: var(--maroon); line-height: 1.2; }
+        
         .creations-text { display: block; font-family: 'Montserrat', sans-serif; font-size: 24px; letter-spacing: 16px; font-weight: 500; margin: 0 0 15px 0; color: var(--maroon); text-transform: uppercase; }
         .description { display: block; font-family: 'Imperial Script', cursive; font-size: 35px; color: #333; line-height: 1.2; margin: 0 0 25px 0; max-width: 380px; }
 
@@ -194,6 +191,10 @@
         }
         .side-drawer.open { right: 0; }
         .drawer-close { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: bold; color: var(--maroon); cursor: pointer; padding: 5px; }
+        
+        .mobile-nav-links { display: none; } /* Hidden on desktop */
+        .drawer-icons-wrapper { display: flex; flex-direction: column; gap: 25px; align-items: center; }
+        
         .drawer-icon-box { position: relative; cursor: pointer; }
         .drawer-icon-box svg { width: 24px; height: 24px; stroke: var(--maroon); fill: none; stroke-width: 1.5; }
         .drawer-badge { position: absolute; top: -6px; right: -8px; background-color: var(--maroon); color: white; font-family: 'Montserrat', sans-serif; font-size: 10px; width: 16px; height: 16px; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
@@ -260,23 +261,68 @@
         /* ========================================= */
         /* PERFECT MOBILE RESPONSIVE CSS */
         /* ========================================= */
+        @media (max-width: 1024px) {
+            .navbar { padding: 15px 30px; }
+            .nav-links { gap: 10px; padding-right: 25px; }
+            .nav-links.right { padding-left: 25px; }
+            .nav-links a { font-size: 11px; padding: 8px 12px; letter-spacing: 1px; }
+            .nav-icons { right: 30px; }
+            .hero-model { height: 85%; }
+            .category-section { padding: 30px 20px; }
+            .cat-item { padding: 0 15px; }
+            .cat-item img { width: 100px; height: 120px; }
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-main { grid-template-columns: repeat(3, 1fr); }
+            .footer-join { grid-column: span 3; border-left: none; border-top: 1px solid rgba(74,16,17,0.2); padding-left: 0; padding-top: 20px; }
+        }
+
         @media (max-width: 768px) {
             .top-bar { padding: 8px 0; font-size: 9px; }
-            .nav-links { display: none; } 
-            .navbar { padding: 15px 20px; }
-            .nav-icons { right: 20px; gap: 12px; }
             
-            /* Hero Mobile Fixes */
-            .hero { height: auto; min-height: auto; padding: 40px 20px 60px; text-align: center; }
-            .giant-text { font-size: 26vw; top: 15%; opacity: 0.08; }
-            .hero-model { position: relative; max-width: 95%; height: auto; object-fit: contain; margin: 0 auto 30px; left: 0; transform: none; }
+            /* Logo Left, Nav Icons Right */
+            .navbar { padding: 15px 20px; justify-content: space-between; }
+            .logo-container { flex: unset; }
+            .navbar-logo { max-height: 55px; }
+            .nav-links { display: none; } /* Hide desktop links */
+            .nav-icons { position: relative; right: 0; gap: 15px; }
             
-            .content-left-top, .content-left-bottom, .content-right {
-                position: relative; top: auto; left: auto; right: auto; bottom: auto;
-                transform: none; border: none; padding: 0; margin-bottom: 20px;
-                display: flex; flex-direction: column; align-items: center;
+            /* Drawer Mobile Menu Links */
+            .mobile-nav-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                width: 100%;
+                border-bottom: 1px solid rgba(74, 16, 17, 0.2);
+                padding-bottom: 25px;
+                margin-bottom: 15px;
             }
+            .mobile-nav-links a {
+                text-decoration: none;
+                color: var(--maroon);
+                font-family: 'Cinzel', serif;
+                font-size: 18px;
+                font-weight: 600;
+                letter-spacing: 2px;
+            }
+            .drawer-icons-wrapper { flex-direction: row; gap: 30px; }
+
+            /* Hero Section Fixes */
+            .hero { height: 80vh; min-height: 650px; display: block; }
+            
+            /* SHRIVI Dark Text */
+            .giant-text { font-size: 28vw; top: 38%; opacity: 1; z-index: 1; }
+            
+            /* Model in front */
+            .hero-model { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 85%; max-width: none; z-index: 2; margin: 0; }
+            
+            /* Top Left Fix (Keep it where it was) */
+            .content-left-top { position: absolute; top: 5%; left: 5%; z-index: 3; text-align: left; }
+            .elegant-title { align-items: flex-start; }
             .elegant-title .sans { margin-left: 0; }
+            
+            /* Bottom Left Fix */
+            .content-left-bottom { position: absolute; bottom: 5%; left: 5%; z-index: 3; text-align: left; }
             .creations-text { font-size: 20px; letter-spacing: 10px; }
             .description { font-size: 28px; }
             
@@ -307,12 +353,17 @@
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .product-img-box img { height: 220px; }
             
-            /* Footer Mobile Fixes */
-            .site-footer { padding: 30px 20px; text-align: center; }
-            .footer-main { grid-template-columns: 1fr; gap: 20px; }
-            .footer-join { border-left: none; border-top: 1px solid rgba(74, 16, 17, 0.2); padding: 20px 0 0; }
-            .social-icons { justify-content: center; }
-            .footer-bottom { flex-direction: column; gap: 15px; }
+            /* Footer Neat Fixes */
+            .site-footer { padding: 40px 20px; text-align: left; }
+            .footer-main { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .footer-logo { grid-column: span 2; }
+            .footer-join { grid-column: span 2; border-left: none; border-top: none; padding: 0; }
+            .email-form { flex-direction: row; gap: 0; }
+            .email-form input { width: 100%; }
+            .social-icons { justify-content: flex-start; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .footer-links { display: flex; flex-wrap: wrap; gap: 10px; }
+            .footer-links a { margin: 0; }
         }
     </style>
 </head>
@@ -327,6 +378,7 @@
         </div>
     </div>
 
+    <!-- NAVBAR (Logo left on mobile, Icons right) -->
     <nav class="navbar">
         <div class="nav-links">
             <a href="#">Shop</a>
@@ -345,19 +397,31 @@
         <div class="nav-icons">
             <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <!-- Menu Touch Icon -->
             <svg id="drawerBtn" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </div>
     </nav>
 
-    <!-- DRAWER -->
+    <!-- DRAWER (With Mobile Links) -->
     <div id="sideDrawer" class="side-drawer">
         <div class="drawer-close" id="closeDrawerBtn">&times;</div>
-        <div class="drawer-icon-box">
-            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        
+        <!-- Only shows on Mobile -->
+        <div class="mobile-nav-links">
+            <a href="#">Shop</a>
+            <a href="#">Collections</a>
+            <a href="#">New Arrivals</a>
+            <a href="#">Contact</a>
         </div>
-        <div class="drawer-icon-box">
-            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-            <div class="drawer-badge">0</div>
+
+        <div class="drawer-icons-wrapper">
+            <div class="drawer-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <div class="drawer-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <div class="drawer-badge">0</div>
+            </div>
         </div>
     </div>
 
@@ -380,24 +444,6 @@
                 Crocheted with care,<br>worn with love.
             </div>
             <button class="btn-primary">EXPLORE OUR COLLECTION &rarr;</button>
-        </div>
-
-        <div class="content-right">
-            <div class="elegant-right-text">
-                <span class="sans">Same Threads.</span>
-                <span class="serif">Brighter Days.</span>
-            </div>
-            <svg class="flower-icon" viewBox="0 0 64 64" fill="none" stroke="var(--maroon)" stroke-width="1.2">
-                <path d="M32 60 V32" />
-                <path d="M32 46 Q24 45 22 38 Q28 42 32 46" />
-                <path d="M32 46 Q40 45 42 38 Q36 42 32 46" />
-                <path d="M32 32 C26 22 28 12 32 8 C36 12 38 22 32 32" />
-                <path d="M32 32 C22 28 14 20 18 12 C24 18 28 26 32 32" />
-                <path d="M32 32 C42 28 50 20 46 12 C40 18 36 26 32 32" />
-                <circle cx="16" cy="10" r="0.8" fill="var(--maroon)" />
-                <circle cx="48" cy="10" r="0.8" fill="var(--maroon)" />
-                <circle cx="32" cy="4" r="0.8" fill="var(--maroon)" />
-            </svg>
         </div>
     </header>
 
