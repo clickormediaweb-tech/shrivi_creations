@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shrivi Creations</title>
+    <title>Shrivi Creations | Official Store</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,11 +11,7 @@
     
     <style>
         /* Base Resets */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         :root {
             --maroon: #4a1011;
@@ -45,7 +41,6 @@
             display: flex;
             align-items: center;
         }
-
         .top-bar-content {
             display: flex;
             gap: 100px;
@@ -53,304 +48,79 @@
             min-width: 100%;
             justify-content: space-around;
         }
-
-        .top-bar-content span {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
+        .top-bar-content span { display: flex; align-items: center; gap: 10px; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
         /* NAVBAR */
         .navbar {
-            display: flex;
-            justify-content: center; 
-            align-items: center;
-            padding: 12px 60px;
-            background-color: var(--bg-nav);
+            display: flex; justify-content: center; align-items: center;
+            padding: 12px 60px; background-color: var(--bg-nav);
             border-bottom: 1px solid rgba(74, 16, 17, 0.1);
-            position: relative; 
+            position: sticky; top: 0; z-index: 1000; 
         }
-
-        .nav-links {
-            display: flex;
-            gap: 15px; 
-            flex: 1;
-            justify-content: flex-end; 
-            padding-right: 45px;
-        }
-
-        .nav-links.right {
-            justify-content: flex-start; 
-            padding-left: 45px;
-            padding-right: 0;
-            margin-right: 0;
-        }
-
+        .nav-links { display: flex; gap: 15px; flex: 1; justify-content: flex-end; padding-right: 45px; }
+        .nav-links.right { justify-content: flex-start; padding-left: 45px; padding-right: 0; }
         .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 12px; 
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 8px 18px; 
-            border-radius: 8px; 
-            background: transparent;
+            text-decoration: none; color: var(--text-dark); font-size: 12px; font-weight: 500;
+            letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 8px; 
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
         }
-
         .nav-links a:hover {
-            color: var(--maroon);
-            background-color: #ffffff; 
-            transform: translateY(-3px); 
-            box-shadow: 0px 6px 15px rgba(74, 16, 17, 0.12), 0px 2px 5px rgba(74, 16, 17, 0.05); 
+            color: var(--maroon); background-color: #ffffff; 
+            transform: translateY(-3px); box-shadow: 0px 6px 15px rgba(74, 16, 17, 0.12); 
         }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex: 0 0 auto; 
-        }
-
-        .navbar-logo {
-            max-height: 85px; 
-            width: auto;
-            object-fit: contain;
-            mix-blend-mode: multiply;
-        }
-
-        .nav-icons {
-            position: absolute; 
-            right: 60px;
-            display: flex;
-            gap: 18px;
-            align-items: center;
-        }
-
-        .nav-icons svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--text-dark);
-            fill: none;
-            stroke-width: 1.5;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        /* 3D DRAWER CSS (FIXED: Permanently hidden until clicked/hovered) */
-        .side-drawer {
-            position: fixed;
-            top: 45%; 
-            right: -300px; /* Fully hidden off-screen */
-            width: 220px;
-            transform: translateY(-50%);
-            background-color: var(--bg-hero);
-            border: 2px solid var(--maroon);
-            border-right: none; 
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            align-items: center;
-            box-shadow: -8px 8px 0px rgba(74, 16, 17, 0.9), -15px 15px 25px rgba(0,0,0,0.2);
-            border-top-left-radius: 12px;
-            border-bottom-left-radius: 12px;
-            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            z-index: 9999; /* Super high so it stays on top */
-        }
+        .logo-container { display: flex; justify-content: center; align-items: center; flex: 0 0 auto; cursor: pointer; }
+        .navbar-logo { max-height: 85px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
         
-        .side-drawer.open {
-            right: 0; 
-        }
+        /* DESKTOP ICONS (Visible on laptop, hidden on phone) */
+        .nav-icons { position: absolute; right: 60px; display: flex; gap: 18px; align-items: center; }
+        .desktop-icons-group { display: flex; gap: 18px; align-items: center; }
+        .mobile-menu-icon { display: none; } /* Hidden on laptop */
 
-        .drawer-close {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--maroon);
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            align-self: flex-end;
-            margin-top: -15px;
-        }
-        .drawer-close:hover {
-            transform: scale(1.2) rotate(90deg);
-        }
-
-        .drawer-icon-box {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .drawer-icon-box svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--maroon);
-            fill: none;
-            stroke-width: 1.5;
-            transition: transform 0.2s ease;
-        }
-
-        .drawer-icon-box:hover svg {
-            transform: scale(1.1);
-        }
-
-        .drawer-badge {
-            position: absolute;
-            top: -6px;
-            right: -8px;
-            background-color: var(--maroon);
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 10px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Hero Section (Laptop) */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: calc(100vh - 145px);
-            min-height: 750px; 
-            background-color: var(--bg-hero);
-            overflow: hidden;
-            display: block; 
-        }
-
-        .giant-text {
-            position: absolute;
-            font-family: 'Cinzel', serif;
-            font-size: clamp(100px, 22vw, 350px);
-            color: var(--maroon);
-            font-weight: 500;
-            z-index: 1;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            white-space: nowrap;
-            letter-spacing: 2px;
-            line-height: 1;
-            opacity: 1;
-        }
-
-        .hero-model {
-            position: absolute;
-            bottom: 0;
-            left: 63%;
-            transform: translateX(-50%);
-            height: 95%; 
-            max-height: 900px;
-            z-index: 2; 
-        }
-
-        .content-left-top {
-            position: absolute;
-            top: 6%;
-            left: 5%;
-            z-index: 3;
-            pointer-events: auto;
-        }
-
-        .content-left-bottom {
-            position: absolute;
-            bottom: 8%;
-            left: 5%;
-            z-index: 3;
-            max-width: 450px;
-            pointer-events: auto;
-        }
-
-        .elegant-title {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .elegant-title .serif {
-            font-family: 'Playfair Display', serif;
-            font-size: 38px;
-            font-style: italic;
-            font-weight: 400;
-            color: var(--maroon);
-            line-height: 1.1;
-        }
-
-        .elegant-title .sans {
-            font-family: 'Playfair Display', serif;
-            font-size: 11px;
-            letter-spacing: 10px;
-            font-weight: 500;
-            text-transform: uppercase;
-            color: var(--maroon);
-            margin-left: 30px; 
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-
-        .creations-text {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 24px; 
-            letter-spacing: 16px; 
-            font-weight: 500;
-            margin: 0 0 15px 0; 
-            line-height: 1.2;
-            color: var(--maroon);
-            text-transform: uppercase;
-        }
-
-        .description {
-            display: block;
-            font-family: 'Imperial Script', cursive; 
-            font-size: 35px; 
-            color: #333;
-            line-height: 1.2;
-            margin: 0 0 25px 0; 
-            max-width: 380px;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--maroon);
-            color: white;
-            border: none;
-            padding: 16px 32px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0px 6px 0px #2a0809, 0px 10px 15px rgba(74, 16, 17, 0.3);
-            transition: all 0.2s ease;
-            margin-bottom: 40px;
-            outline: none;
-        }
+        .nav-icons svg { width: 20px; height: 20px; stroke: var(--text-dark); fill: none; stroke-width: 1.5; cursor: pointer; transition: all 0.3s ease; }
         
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0px 8px 0px #2a0809, 0px 12px 20px rgba(74, 16, 17, 0.4);
-            background-color: #5a1516; 
-        }
+        /* Premium Hover on Icons */
+        .nav-icons .icon-wrapper { position: relative; display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; transition: all 0.3s ease; }
+        .nav-icons .icon-wrapper:hover { background-color: white; box-shadow: 0px 4px 10px rgba(74,16,17,0.15); transform: translateY(-3px); }
+        .nav-icons .icon-wrapper:hover svg { stroke: var(--maroon); }
+        
+        .cart-badge { position: absolute; top: 0; right: 0; background-color: var(--maroon); color: white; font-size: 9px; width: 14px; height: 14px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; }
 
-        .btn-primary:active {
-            transform: translateY(4px);
-            box-shadow: 0px 2px 0px #2a0809, 0px 4px 8px rgba(74, 16, 17, 0.3);
-        }
+        /* HERO SECTION */
+        .hero { position: relative; width: 100%; height: calc(100vh - 145px); min-height: 750px; background-color: var(--bg-hero); overflow: hidden; display: block; }
+        .giant-text { position: absolute; font-family: 'Cinzel', serif; font-size: clamp(100px, 22vw, 350px); color: var(--maroon); font-weight: 500; z-index: 1; top: 40%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; letter-spacing: 2px; }
+        .hero-model { position: absolute; bottom: 0; left: 63%; transform: translateX(-50%); height: 95%; max-height: 900px; z-index: 2; }
+        
+        .content-left-top { position: absolute; top: 6%; left: 5%; z-index: 3; }
+        .content-left-bottom { position: absolute; bottom: 8%; left: 5%; z-index: 3; max-width: 450px; }
 
-        /* NEW SECTIONS */
-        .category-section { display: grid; grid-template-columns: repeat(3, 1fr); background-color: #3b0e0f; color: white; padding: 40px 60px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .elegant-title { display: flex; flex-direction: column; gap: 2px; }
+        .elegant-title .serif { font-family: 'Playfair Display', serif; font-size: 38px; font-style: italic; color: var(--maroon); line-height: 1.1; }
+        .elegant-title .sans { font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: 10px; font-weight: 500; text-transform: uppercase; color: var(--maroon); margin-left: 30px; margin-top: 5px; margin-bottom: 5px; }
+        
+        .creations-text { display: block; font-family: 'Montserrat', sans-serif; font-size: 24px; letter-spacing: 16px; font-weight: 500; margin: 0 0 15px 0; color: var(--maroon); text-transform: uppercase; }
+        .description { display: block; font-family: 'Imperial Script', cursive; font-size: 35px; color: #333; line-height: 1.2; margin: 0 0 25px 0; max-width: 380px; }
+
+        .btn-primary { display: inline-block; background-color: var(--maroon); color: white; border: none; padding: 16px 32px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; box-shadow: 0px 6px 0px #2a0809, 0px 10px 15px rgba(74, 16, 17, 0.3); transition: all 0.2s ease; margin-bottom: 40px; outline: none; text-decoration: none;}
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0px 8px 0px #2a0809, 0px 12px 20px rgba(74, 16, 17, 0.4); background-color: #5a1516; }
+        .btn-primary:active { transform: translateY(4px); box-shadow: 0px 2px 0px #2a0809, 0px 4px 8px rgba(74, 16, 17, 0.3); }
+
+        /* 3D DRAWER (For Mobile Only Now) */
+        .side-drawer { position: fixed; top: 0; right: -300px; width: 250px; height: 100vh; background-color: var(--bg-hero); border-left: 2px solid var(--maroon); padding: 30px 20px; display: flex; flex-direction: column; gap: 30px; align-items: center; box-shadow: -15px 0px 25px rgba(0,0,0,0.3); transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999; }
+        .side-drawer.open { right: 0; }
+        .drawer-close { font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 300; color: var(--maroon); cursor: pointer; align-self: flex-end; margin-top: -10px; transition: transform 0.3s; }
+        .drawer-close:hover { transform: rotate(90deg); }
+        .mobile-nav-links { display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center; border-bottom: 1px solid rgba(74,16,17,0.2); padding-bottom: 30px; }
+        .mobile-nav-links a { text-decoration: none; color: var(--maroon); font-family: 'Cinzel', serif; font-size: 18px; font-weight: 600; letter-spacing: 2px; }
+        
+        .drawer-icons-wrapper { display: flex; gap: 30px; }
+        .drawer-icon-box { position: relative; cursor: pointer; }
+        .drawer-icon-box svg { width: 26px; height: 26px; stroke: var(--maroon); fill: none; stroke-width: 1.5; }
+
+        /* SECTIONS */
+        section { scroll-margin-top: 80px; } /* Ensures navbar doesn't cover content when scrolled */
+        
+        .category-section { display: grid; grid-template-columns: repeat(3, 1fr); background-color: #3b0e0f; color: white; padding: 40px 60px; }
         .cat-item { display: flex; align-items: center; gap: 20px; padding: 0 30px; }
         .cat-item:not(:last-child) { border-right: 1px solid rgba(255, 255, 255, 0.2); }
         .cat-item img { width: 150px; height: 180px; object-fit: cover; border-radius: 2px; }
@@ -380,33 +150,63 @@
         .feature-item h4 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; }
         .feature-item p { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
 
-        .new-arrivals-sec { padding: 60px; background-color: var(--bg-hero); }
+        /* ALL PRODUCTS / SHOP GRID SECTION */
+        .shop-sec { padding: 80px 60px; background-color: var(--bg-hero); text-align: center;}
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; color: var(--maroon); }
         .section-header h2 { font-family: 'Playfair Display', serif; font-size: 32px; letter-spacing: 2px; }
-        .section-header a { color: var(--maroon); font-size: 11px; letter-spacing: 2px; font-weight: 600; text-decoration: none;}
-        .product-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .product-card { color: var(--maroon); cursor: pointer; }
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: left; }
+        
+        .product-card { color: var(--maroon); cursor: pointer; display: block; }
+        /* Hidden class for "View More" logic */
+        .product-card.hidden { display: none; }
+        
         .product-img-box { position: relative; margin-bottom: 15px; overflow: hidden; border-radius: 4px; }
-        .product-img-box img { width: 100%; height: 300px; object-fit: cover; transition: transform 0.4s ease; }
-        .wishlist-btn { position: absolute; top: 15px; right: 15px; background: transparent; border: none; cursor: pointer; z-index: 10; }
-        .wishlist-btn svg { width: 22px; height: 22px; stroke: white; fill: none; }
+        .product-img-box img { width: 100%; height: 380px; object-fit: cover; transition: transform 0.4s ease; }
+        .product-card:hover .product-img-box img { transform: scale(1.05); }
+        .wishlist-btn { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.1); border-radius: 50%; padding: 8px; border: none; cursor: pointer; z-index: 10; transition: background 0.3s; }
+        .wishlist-btn:hover { background: var(--maroon); }
+        .wishlist-btn svg { width: 18px; height: 18px; stroke: white; fill: none; }
         .product-card h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 5px; }
+        .product-card p { font-size: 14px; font-weight: 600; }
 
-        .site-footer { background-color: var(--bg-hero); padding: 40px 60px 20px; color: var(--maroon); }
-        .footer-main { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr; gap: 30px; padding-bottom: 40px; border-bottom: 1px solid rgba(74, 16, 17, 0.2); }
-        .footer-logo h3 { font-family: 'Cinzel', serif; font-size: 28px; }
-        .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 20px; }
+        .view-more-btn {
+            background: transparent; color: var(--maroon); border: 1px solid var(--maroon);
+            padding: 15px 40px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;
+            letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin-top: 50px;
+            transition: all 0.3s;
+        }
+        .view-more-btn:hover { background: var(--maroon); color: white; }
+
+        /* CONTACT SECTION */
+        .contact-sec { padding: 80px 60px; background-color: #f8f4ed; display: flex; gap: 60px; }
+        .contact-text { flex: 1; }
+        .contact-text h2 { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--maroon); margin-bottom: 20px; }
+        .contact-text p { font-family: 'Imperial Script', cursive; font-size: 30px; color: #333; margin-bottom: 30px; }
+        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 15px; border: 1px solid rgba(74, 16, 17, 0.3); background: transparent; font-family: 'Montserrat', sans-serif; font-size: 13px; color: var(--maroon); outline: none;}
+        .contact-form textarea { resize: none; height: 120px; }
+        .contact-form button { align-self: flex-start; }
+
+        /* FOOTER (Restored Desktop Spacing) */
+        .site-footer { background-color: var(--bg-hero); padding: 60px 80px 20px; color: var(--maroon); border-top: 1px solid rgba(74, 16, 17, 0.1); }
+        .footer-main { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(74, 16, 17, 0.2); }
+        .footer-logo h3 { font-family: 'Cinzel', serif; font-size: 32px; }
+        .footer-logo p { font-family: 'Playfair Display', serif; font-size: 15px; margin-top: 15px; line-height: 1.6;}
+        .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 25px; }
         .footer-col ul { list-style: none; }
-        .footer-col a { color: var(--maroon); text-decoration: none; font-size: 13px; opacity: 0.9; }
-        .footer-join { border-left: 1px solid rgba(74, 16, 17, 0.2); padding-left: 30px; }
-        .email-form { display: flex; margin-bottom: 20px; }
-        .email-form input { flex: 1; padding: 12px; border: 1px solid rgba(74, 16, 17, 0.2); background: transparent; }
+        .footer-col li { margin-bottom: 15px; }
+        .footer-col a { color: var(--maroon); text-decoration: none; font-size: 13px; transition: opacity 0.2s;}
+        .footer-col a:hover { opacity: 0.6; }
+        .footer-join { border-left: 1px solid rgba(74, 16, 17, 0.2); padding-left: 40px; }
+        .footer-join p { font-size: 13px; margin-bottom: 20px; line-height: 1.5;}
+        .email-form { display: flex; margin-bottom: 25px; }
+        .email-form input { flex: 1; padding: 12px; border: 1px solid rgba(74, 16, 17, 0.3); background: transparent; }
         .email-form button { background-color: var(--maroon); color: white; border: none; padding: 0 20px; cursor: pointer; }
-        .social-icons { display: flex; gap: 15px; }
-        .social-icons svg { width: 20px; height: 20px; stroke: var(--maroon); fill: none; }
-        .footer-bottom { display: flex; justify-content: space-between; padding-top: 20px; font-size: 11px; opacity: 0.8; }
-        .footer-links a { color: var(--maroon); text-decoration: none; margin-left: 10px; }
-
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons svg { width: 22px; height: 22px; stroke: var(--maroon); fill: none; cursor: pointer; transition: transform 0.3s; }
+        .social-icons svg:hover { transform: translateY(-3px); }
+        .footer-bottom { display: flex; justify-content: space-between; padding-top: 25px; font-size: 12px; opacity: 0.8; }
+        .footer-links a { color: var(--maroon); text-decoration: none; margin-left: 15px; }
 
         /* ========================================= */
         /* PERFECT MOBILE RESPONSIVE CSS */
@@ -415,115 +215,68 @@
             .navbar { padding: 15px 30px; }
             .nav-links { gap: 10px; padding-right: 25px; }
             .nav-links.right { padding-left: 25px; }
-            .nav-links a { font-size: 11px; padding: 8px 12px; letter-spacing: 1px; }
             .nav-icons { right: 30px; }
             .hero-model { height: 85%; }
-            .category-section { padding: 30px 20px; }
-            .cat-item { padding: 0 15px; }
-            .cat-item img { width: 100px; height: 120px; }
             .product-grid { grid-template-columns: repeat(3, 1fr); }
             .footer-main { grid-template-columns: repeat(3, 1fr); }
-            .footer-join { grid-column: span 3; border-left: none; border-top: 1px solid rgba(74,16,17,0.2); padding-left: 0; padding-top: 20px; }
+            .footer-join { grid-column: span 3; border-left: none; border-top: 1px solid rgba(74,16,17,0.2); padding-left: 0; padding-top: 30px; }
+            .contact-sec { flex-direction: column; gap: 30px; }
         }
 
         @media (max-width: 768px) {
             .top-bar { padding: 8px 0; font-size: 9px; }
             
-            /* Logo Left, Nav Icons Right */
+            /* Navbar Mobile */
             .navbar { padding: 15px 20px; justify-content: space-between; }
             .logo-container { flex: unset; }
             .navbar-logo { max-height: 50px; }
-            .nav-links { display: none; } /* Hide desktop links */
+            .nav-links { display: none; } 
+            
+            /* Toggle Icons for Mobile */
+            .desktop-icons-group { display: none; } /* Hide Cart & Wishlist from nav on mobile */
+            .mobile-menu-icon { display: block; } /* Show Hamburger */
             .nav-icons { position: relative; right: 0; gap: 15px; }
             
-            /* Mobile Nav inside Drawer */
-            .mobile-nav-links { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; border-bottom: 1px solid rgba(74, 16, 17, 0.2); padding-bottom: 25px; margin-bottom: 15px; }
-            .mobile-nav-links a { text-decoration: none; color: var(--maroon); font-family: 'Cinzel', serif; font-size: 16px; font-weight: 600; letter-spacing: 2px; }
-            .drawer-icons-wrapper { display: flex; flex-direction: row; gap: 30px; align-items: center; justify-content: center;}
-
-            /* HERO MOBILE FIX (NO OVERLAP) */
-            .hero { 
-                height: auto; 
-                min-height: 100vh; 
-                display: flex; 
-                flex-direction: column; 
-                justify-content: flex-start; 
-                padding: 30px 20px 50px; 
-            }
+            /* Hero Mobile Fixes */
+            .hero { height: auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding: 30px 20px 50px; }
+            .giant-text { font-size: 22vw; top: 40%; opacity: 1; color: var(--maroon); }
+            .hero-model { position: relative; height: 48vh; max-width: 100%; object-fit: contain; bottom: auto; left: auto; transform: none; margin: 0 auto; z-index: 2; }
             
-            /* Dark and smaller SHRIVI */
-            .giant-text { 
-                font-size: 22vw; 
-                top: 40%; 
-                opacity: 1 !important; 
-                color: var(--maroon); 
-            }
-            
-            /* Model Size Fixed */
-            .hero-model { 
-                position: relative; 
-                height: 48vh; 
-                max-width: 100%; 
-                object-fit: contain; 
-                bottom: auto; left: auto; 
-                transform: none; 
-                margin: 0 auto; 
-                z-index: 2; 
-            }
-            
-            /* Top Left Box */
-            .content-left-top { 
-                position: relative; 
-                top: 0; left: 0; 
-                margin-bottom: 30px; 
-                text-align: left; 
-                align-self: flex-start;
-            }
+            .content-left-top { position: relative; top: 0; left: 0; margin-bottom: 30px; text-align: left; align-self: flex-start; }
             .elegant-title { align-items: flex-start; }
             .elegant-title .sans { margin-left: 0; }
             
-            /* Bottom Left Box */
-            .content-left-bottom { 
-                position: relative; 
-                bottom: auto; left: auto; 
-                text-align: left; 
-                max-width: 100%; 
-                margin-top: 20px; 
-            }
+            .content-left-bottom { position: relative; bottom: auto; left: auto; text-align: left; max-width: 100%; margin-top: 20px; }
             .creations-text { font-size: 16px; letter-spacing: 8px; margin-bottom: 10px; }
             .description { font-size: 30px; margin-bottom: 25px; }
-            
-            /* Full width button on phone */
             .btn-primary { width: 100%; text-align: center; margin-bottom: 0; }
             
-            /* Rest of Mobile Fixes */
+            /* Sections Mobile Fixes */
             .category-section { grid-template-columns: 1fr; padding: 30px 20px; gap: 0; }
             .cat-item { flex-direction: row; text-align: left; padding: 20px 0; gap: 15px; justify-content: flex-start; }
             .cat-item:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .cat-item img { width: 100px; height: 120px; }
-            .cat-text h3 { font-size: 20px; }
             
             .promo-split { flex-direction: column; height: auto; }
             .promo-video { padding: 60px 20px; min-height: 250px; align-items: center; text-align: center; }
             .promo-gift { padding: 40px 20px; text-align: center; align-items: center; }
             .promo-gift h2 { font-size: 32px; }
-            .promo-gift p { max-width: 100%; margin: 0 auto 20px; }
-            .btn-gift { align-self: center; }
             .gift-img { position: relative; width: 90%; max-width: 280px; transform: none; margin: 30px auto 0; right: auto; top: auto; }
             
             .features-bar { flex-direction: column; gap: 20px; padding: 30px 20px; }
-            .feature-item { padding: 0; }
             .feature-item:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(74, 16, 17, 0.1); padding-bottom: 20px; }
             
-            .new-arrivals-sec { padding: 40px 20px; }
+            .shop-sec { padding: 40px 20px; }
             .section-header h2 { font-size: 24px; }
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .product-img-box img { height: 200px; }
             
+            .contact-sec { padding: 40px 20px; }
+            .contact-text h2 { font-size: 32px; }
+            
             .site-footer { padding: 40px 20px; text-align: left; }
-            .footer-main { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .footer-main { grid-template-columns: 1fr 1fr; gap: 30px; padding-bottom: 20px; }
             .footer-logo { grid-column: span 2; }
-            .footer-join { grid-column: span 2; border-left: none; border-top: none; padding: 0; }
+            .footer-join { grid-column: span 2; border-left: none; padding: 0; }
             .email-form { flex-direction: row; gap: 0; }
             .email-form input { width: 100%; }
             .social-icons { justify-content: flex-start; }
@@ -544,40 +297,57 @@
         </div>
     </div>
 
-    <!-- NAVBAR (Logo left on mobile, Icons right) -->
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-links">
-            <a href="#">Shop</a>
-            <a href="#">Collections</a>
+            <a href="#shop">Shop</a>
+            <a href="#collections">Collections</a>
         </div>
         
-        <div class="logo-container">
+        <div class="logo-container" onclick="window.scrollTo(0,0)">
             <img src="burgundy logo.png" alt="Shrivi Creations Logo" class="navbar-logo" onerror="this.src='https://via.placeholder.com/150x85?text=Logo'">
         </div>
 
         <div class="nav-links right">
-            <a href="#">New Arrivals</a>
-            <a href="#">Contact</a>
+            <a href="#new-arrivals">New Arrivals</a>
+            <a href="#contact">Contact</a>
         </div>
 
         <div class="nav-icons">
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            <!-- Menu Touch Icon -->
-            <svg id="drawerBtn" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            
+            <!-- DESKTOP ICONS (Visible on Laptop, hidden on Phone) -->
+            <div class="desktop-icons-group">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </div>
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <div class="cart-badge">0</div>
+                </div>
+            </div>
+
+            <!-- MOBILE MENU ICON (Only visible on Phone) -->
+            <div class="icon-wrapper mobile-menu-icon" id="drawerBtn">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
         </div>
     </nav>
 
-    <!-- DRAWER (With Mobile Links) -->
+    <!-- MOBILE DRAWER -->
     <div id="sideDrawer" class="side-drawer">
         <div class="drawer-close" id="closeDrawerBtn">&times;</div>
         
-        <!-- Only shows on Mobile -->
         <div class="mobile-nav-links">
-            <a href="#">Shop</a>
-            <a href="#">Collections</a>
-            <a href="#">New Arrivals</a>
-            <a href="#">Contact</a>
+            <a href="#shop" onclick="closeDrawer()">Shop</a>
+            <a href="#collections" onclick="closeDrawer()">Collections</a>
+            <a href="#new-arrivals" onclick="closeDrawer()">New Arrivals</a>
+            <a href="#contact" onclick="closeDrawer()">Contact</a>
         </div>
 
         <div class="drawer-icons-wrapper">
@@ -593,10 +363,8 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <!-- Text is now dark on both laptop and mobile -->
         <div class="giant-text">SHRIVI</div>
         
-        <!-- Top Left -->
         <div class="content-left-top">
             <div class="elegant-title">
                 <span class="serif">Fashion</span>
@@ -605,27 +373,25 @@
             </div>
         </div>
 
-        <!-- Model -->
         <img src="model.png" alt="Fashion Model" class="hero-model" onerror="this.src='1.jpg'">
             
-        <!-- Bottom Left -->
         <div class="content-left-bottom">
             <div class="creations-text">CREATIONS</div>
             <div class="description">
                 Crocheted with care,<br>worn with love.
             </div>
-            <button class="btn-primary">EXPLORE OUR COLLECTION &rarr;</button>
+            <a href="#shop" class="btn-primary">EXPLORE OUR COLLECTION &rarr;</a>
         </div>
     </header>
 
     <!-- Category Section -->
-    <section class="category-section">
+    <section id="collections" class="category-section">
         <div class="cat-item">
             <img src="1.jpg" alt="Bag" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=1.jpg'">
             <div class="cat-text">
                 <h3>BAGS</h3>
                 <p>Handcrafted<br>for everyday.</p>
-                <a href="#">&rarr;</a>
+                <a href="#shop">&rarr;</a>
             </div>
         </div>
         <div class="cat-item">
@@ -633,7 +399,7 @@
             <div class="cat-text">
                 <h3>CARDIGANS</h3>
                 <p>Layers for<br>every mood.</p>
-                <a href="#">&rarr;</a>
+                <a href="#shop">&rarr;</a>
             </div>
         </div>
         <div class="cat-item">
@@ -641,9 +407,79 @@
             <div class="cat-text">
                 <h3>TOP</h3>
                 <p>Effortless styles<br>for every you.</p>
-                <a href="#">&rarr;</a>
+                <a href="#shop">&rarr;</a>
             </div>
         </div>
+    </section>
+
+    <!-- SHOP / ALL PRODUCTS SECTION (NEW) -->
+    <section id="shop" class="shop-sec">
+        <div class="section-header" id="new-arrivals">
+            <h2>SHOP OUR COLLECTION</h2>
+            <p style="font-family: 'Playfair Display', serif; font-style: italic;">Made with love, just for you.</p>
+        </div>
+        <div class="product-grid" id="productGrid">
+            <!-- First Row (Visible) -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="1.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
+                </div>
+                <h4>Floral Crochet Cardigan</h4><p>₹ 6,999</p>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="2.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
+                </div>
+                <h4>Crochet Tote Bag</h4><p>₹ 4,499</p>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="3.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=3.jpg'">
+                </div>
+                <h4>Knit Halter Top</h4><p>₹ 3,999</p>
+            </div>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="1.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
+                </div>
+                <h4>Crochet Shirt</h4><p>₹ 5,999</p>
+            </div>
+            
+            <!-- Second Row (Hidden by default, shown by JS) -->
+            <div class="product-card hidden">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="2.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
+                </div>
+                <h4>Vintage Scarf</h4><p>₹ 2,499</p>
+            </div>
+            <div class="product-card hidden">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="3.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=3.jpg'">
+                </div>
+                <h4>Pearl Handle Bag</h4><p>₹ 5,299</p>
+            </div>
+            <div class="product-card hidden">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="1.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
+                </div>
+                <h4>Cozy Winter Cardigan</h4><p>₹ 7,499</p>
+            </div>
+            <div class="product-card hidden">
+                <div class="product-img-box">
+                    <button class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                    <img src="2.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
+                </div>
+                <h4>Summer Crochet Crop</h4><p>₹ 2,999</p>
+            </div>
+        </div>
+        <button class="view-more-btn" id="viewMoreBtn" onclick="showMoreProducts()">View More Designs</button>
     </section>
 
     <!-- Promo Split Section -->
@@ -657,8 +493,22 @@
             <span>SPREAD A LITTLE LOVE</span>
             <h2>Buy a Gift Card<br>for Your Loved Ones.</h2>
             <p>Because the most meaningful gifts<br>are the ones made with heart.</p>
-            <button class="btn-gift">GIFT A LITTLE JOY &rarr;</button>
+            <button class="btn-primary" style="margin-bottom:0;">GIFT A LITTLE JOY &rarr;</button>
             <img src="22.png" alt="Gift Card" class="gift-img" onerror="this.src='https://via.placeholder.com/380x250/e6dac3/4a1011?text=Gift+Card'">
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION (NEW) -->
+    <section id="contact" class="contact-sec">
+        <div class="contact-text">
+            <h2>Let's Create<br>Something Beautiful.</h2>
+            <p>We'd love to hear from you</p>
+        </div>
+        <div class="contact-form">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Message..."></textarea>
+            <button class="btn-primary" style="margin-bottom: 0;">SEND MESSAGE</button>
         </div>
     </section>
 
@@ -682,66 +532,6 @@
         </div>
     </section>
 
-    <!-- New Arrivals Section -->
-    <section class="new-arrivals-sec">
-        <div class="section-header">
-            <h2>NEW ARRIVALS</h2>
-            <a href="#">VIEW ALL &rarr;</a>
-        </div>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-img-box">
-                    <button class="wishlist-btn">
-                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    </button>
-                    <img src="1.jpg" alt="Floral Crochet Cardigan" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
-                </div>
-                <h4>Floral Crochet Cardigan</h4>
-                <p>₹ 6,999</p>
-            </div>
-            <div class="product-card">
-                <div class="product-img-box">
-                    <button class="wishlist-btn">
-                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    </button>
-                    <img src="2.jpg" alt="Crochet Tote Bag" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
-                </div>
-                <h4>Crochet Tote Bag</h4>
-                <p>₹ 4,499</p>
-            </div>
-            <div class="product-card">
-                <div class="product-img-box">
-                    <button class="wishlist-btn">
-                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    </button>
-                    <img src="3.jpg" alt="Knit Halter Top" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=3.jpg'">
-                </div>
-                <h4>Knit Halter Top</h4>
-                <p>₹ 3,999</p>
-            </div>
-            <div class="product-card">
-                <div class="product-img-box">
-                    <button class="wishlist-btn">
-                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    </button>
-                    <img src="1.jpg" alt="Crochet Shirt" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
-                </div>
-                <h4>Crochet Shirt</h4>
-                <p>₹ 5,999</p>
-            </div>
-            <div class="product-card">
-                <div class="product-img-box">
-                    <button class="wishlist-btn">
-                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                    </button>
-                    <img src="2.jpg" alt="Crochet Scarf" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
-                </div>
-                <h4>Crochet Scarf</h4>
-                <p>₹ 2,499</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-main">
@@ -752,16 +542,16 @@
             <div class="footer-col">
                 <h4>Shop</h4>
                 <ul>
-                    <li><a href="#">Bags</a></li>
-                    <li><a href="#">Top</a></li>
-                    <li><a href="#">Cardigans</a></li>
+                    <li><a href="#shop">Bags</a></li>
+                    <li><a href="#shop">Top</a></li>
+                    <li><a href="#shop">Cardigans</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>About</h4>
                 <ul>
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <li><a href="#">Blog</a></li>
                 </ul>
             </div>
@@ -799,32 +589,36 @@
         </div>
     </footer>
 
-    <!-- DRAWER SCRIPT FIX FOR MOBILE TOUCH -->
+    <!-- SCRIPTS -->
     <script>
+        // 1. MOBILE DRAWER SCRIPT (Only Opens on Click/Touch for phone)
         const drawerBtn = document.getElementById('drawerBtn');
         const sideDrawer = document.getElementById('sideDrawer');
         const closeDrawerBtn = document.getElementById('closeDrawerBtn');
 
-        // Desktop: Open on hover
-        drawerBtn.addEventListener('mouseenter', () => {
-            if(window.innerWidth > 768) sideDrawer.classList.add('open');
-        });
-
-        // Desktop: Close on mouse leave
-        sideDrawer.addEventListener('mouseleave', () => {
-            if(window.innerWidth > 768) sideDrawer.classList.remove('open');
-        });
-
-        // Mobile: Open on Tap (Touch)
         drawerBtn.addEventListener('click', (e) => {
             e.preventDefault();
             sideDrawer.classList.add('open');
         });
 
-        // Close button (Tap X to close)
         closeDrawerBtn.addEventListener('click', () => {
             sideDrawer.classList.remove('open');
         });
+
+        // Function to close drawer when link is clicked
+        function closeDrawer() {
+            sideDrawer.classList.remove('open');
+        }
+
+        // 2. VIEW MORE SCRIPT (Un-hides extra products)
+        function showMoreProducts() {
+            const hiddenProducts = document.querySelectorAll('.product-card.hidden');
+            hiddenProducts.forEach(product => {
+                product.classList.remove('hidden');
+            });
+            // Hide the button after clicking
+            document.getElementById('viewMoreBtn').style.display = 'none';
+        }
     </script>
 </body>
 </html>
