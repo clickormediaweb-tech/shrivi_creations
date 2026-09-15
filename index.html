@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrivi Creations</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Imperial+Script&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --maroon: #4a1011;
+            --bg-nav: #f3efe9;
+            --bg-hero: #f7f3ec;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-hero);
+            color: var(--maroon);
+            overflow-x: hidden;
+        }
+
+        /* ========================================= */
+        /* RUNNING TOP BAR (Marquee Effect) */
+        /* ========================================= */
+        .top-bar {
+            background-color: var(--maroon);
+            color: #ffffff;
+            padding: 10px 0;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar-content {
+            display: flex;
+            gap: 100px;
+            animation: marquee 20s linear infinite;
+            min-width: 100%;
+            justify-content: space-around;
+        }
+
+        .top-bar-content span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ========================================= */
+        /* NAVBAR */
+        /* ========================================= */
+        .navbar {
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            padding: 12px 60px;
+            background-color: var(--bg-nav);
+            border-bottom: 1px solid rgba(74, 16, 17, 0.1);
+            position: relative; 
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px; 
+            flex: 1;
+            justify-content: flex-end; 
+            padding-right: 45px;
+        }
+
+        .nav-links.right {
+            justify-content: flex-start; 
+            padding-left: 45px;
+            padding-right: 0;
+            margin-right: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 12px; 
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 18px; 
+            border-radius: 8px; 
+            background: transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        .nav-links a:hover {
+            color: var(--maroon);
+            background-color: #ffffff; 
+            transform: translateY(-3px); 
+            box-shadow: 0px 6px 15px rgba(74, 16, 17, 0.12), 0px 2px 5px rgba(74, 16, 17, 0.05); 
+        }
+
+        .nav-links a:active {
+            transform: translateY(1px); 
+            box-shadow: 0px 2px 4px rgba(74, 16, 17, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 0 0 auto; 
+        }
+
+        .navbar-logo {
+            max-height: 85px; 
+            width: auto;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .nav-icons {
+            position: absolute; 
+            right: 60px;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .nav-icons svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-dark);
+            fill: none;
+            stroke-width: 1.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icons svg:hover {
+            stroke: var(--maroon);
+            transform: scale(1.1); 
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 145px);
+            min-height: 750px; 
+            background-color: var(--bg-hero);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .giant-text {
+            position: absolute;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(120px, 22vw, 350px);
+            color: var(--maroon);
+            font-weight: 500;
+            z-index: 1;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .hero-model {
+            position: absolute;
+            bottom: 0;
+            left: 63%;
+            transform: translateX(-50%);
+            height: 95%; 
+            max-height: 900px;
+            z-index: 2; 
+        }
+
+        .content-left-top {
+            position: absolute;
+            top: 6%;
+            left: 5%;
+            z-index: 3;
+            pointer-events: auto;
+        }
+
+        .content-left-bottom {
+            position: absolute;
+            bottom: 8%;
+            left: 5%;
+            z-index: 3;
+            max-width: 450px;
+            pointer-events: auto;
+        }
+
+        .content-right {
+            position: absolute;
+            top: 7%;
+            right: 2%;
+            z-index: 3;
+            border-left: 1px solid rgba(74, 16, 17, 0.2);
+            padding-left: 25px; 
+            pointer-events: auto;
+        }
+
+        .elegant-title {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .elegant-title .serif {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--maroon);
+            line-height: 1.1;
+        }
+
+        .elegant-title .sans {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            letter-spacing: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--maroon);
+            margin-left: 30px; 
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .elegant-right-text {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 25px;
+        }
+
+        .elegant-right-text .sans {
+            font-family: 'Playfair Display', serif;
+            font-size: 10px;
+            letter-spacing: 5px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--maroon);
+        }
+
+        .elegant-right-text .serif {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--maroon);
+            line-height: 1.2;
+        }
+
+        /* ========================================= */
+        /* UPDATED CREATIONS TEXT (Uppercase + Spaced) */
+        /* ========================================= */
+        .creations-text {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px; 
+            letter-spacing: 16px; /* Spacing badha di gayi hai */
+            font-weight: 500;
+            margin: 0 0 15px 0; 
+            line-height: 1.2;
+            color: var(--maroon);
+            text-transform: uppercase;
+        }
+
+        .description {
+            display: block;
+            font-family: 'Imperial Script', cursive; 
+            font-size: 35px; 
+            color: #333;
+            line-height: 1.2;
+            margin: 0 0 25px 0; 
+            max-width: 380px;
+        }
+        /* ========================================= */
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--maroon);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0px 6px 0px #2a0809, 0px 10px 15px rgba(74, 16, 17, 0.3);
+            transition: all 0.2s ease;
+            margin-bottom: 40px;
+            outline: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 0px #2a0809, 0px 12px 20px rgba(74, 16, 17, 0.4);
+            background-color: #5a1516; 
+        }
+
+        .btn-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0px 2px 0px #2a0809, 0px 4px 8px rgba(74, 16, 17, 0.3);
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .pagination-line {
+            width: 50px;
+            height: 1px;
+            background-color: var(--maroon);
+        }
+
+        /* 3D DRAWER CSS */
+        .side-drawer {
+            position: fixed;
+            top: 45%; 
+            right: -120px; 
+            transform: translateY(-50%);
+            background-color: var(--bg-hero);
+            border: 2px solid var(--maroon);
+            border-right: none; 
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+            box-shadow: -8px 8px 0px rgba(74, 16, 17, 0.9), -15px 15px 25px rgba(0,0,0,0.2);
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            z-index: 100;
+        }
+        
+        .side-drawer.open {
+            right: 0; 
+        }
+
+        .drawer-close {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--maroon);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .drawer-close:hover {
+            transform: scale(1.2) rotate(90deg);
+        }
+
+        .drawer-icon-box {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .drawer-icon-box svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--maroon);
+            fill: none;
+            stroke-width: 1.5;
+            transition: transform 0.2s ease;
+        }
+
+        .drawer-icon-box:hover svg {
+            transform: scale(1.1);
+        }
+
+        .drawer-badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background-color: var(--maroon);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ========================================= */
+        /* NEW SECTIONS STYLING (ADDED FROM IMAGES) */
+        /* ========================================= */
+        
+        /* 1. Category Section */
+        .category-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background-color: #3b0e0f; 
+            color: white;
+            padding: 40px 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .cat-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 0 30px;
+        }
+        .cat-item:not(:last-child) {
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cat-item img {
+            width: 150px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+        .cat-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .cat-text p {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        .cat-text a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: margin-left 0.3s ease;
+        }
+        .cat-text a:hover {
+            margin-left: 5px;
+        }
+
+        /* 2. Promo Split Section */
+        .promo-split {
+            display: flex;
+            height: 500px;
+        }
+        .promo-video {
+            flex: 1;
+            background: url('1.jpg') center/cover no-repeat; /* Updated to 1.jpg */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 50px;
+            color: white;
+        }
+        .promo-video::before {
+            content: '';
+            position: absolute;
+            top:0; left:0; right:0; bottom:0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        }
+        .play-btn {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            border: 1px solid white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .play-btn::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 12px;
+            border-color: transparent transparent transparent white;
+            margin-left: 4px;
+        }
+        .promo-video p {
+            position: relative;
+            font-size: 12px;
+            letter-spacing: 4px;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        /* Promo Gift Card Adjustments */
+        .promo-gift {
+            flex: 1;
+            background-color: var(--bg-hero);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden; /* Restricts the background flower image */
+        }
+        
+        /* Flower Background behind gift card */
+        .promo-gift-bg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 60%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.8;
+            mask-image: linear-gradient(to right, transparent, black 40%);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 40%);
+        }
+
+        .promo-gift > * {
+            z-index: 2; /* Keeps text above background */
+        }
+
+        .promo-gift span {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--maroon);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .promo-gift h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--maroon);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .promo-gift p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 350px;
+        }
+        .promo-gift .btn-gift {
+            align-self: flex-start;
+            background-color: var(--maroon);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        /* 22.png Image specific placement */
+        .gift-img {
+            position: absolute;
+            right: -20px; /* Adjust according to reference image */
+            top: 50%;
+            transform: translateY(-45%) rotate(-5deg); /* Tilted slightly */
+            width: 380px; 
+            z-index: 3;
+        }
+
+        /* 3. Features Bar */
+        .features-bar {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #f8f4ed;
+            padding: 40px 20px;
+            border-bottom: 1px solid rgba(74, 16, 17, 0.1);
+        }
+        .feature-item {
+            text-align: center;
+            padding: 0 40px;
+            color: var(--maroon);
+        }
+        .feature-item:not(:last-child) {
+            border-right: 1px solid rgba(74, 16, 17, 0.2);
+        }
+        .feature-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+        .feature-item p {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* 4. New Arrivals */
+        .new-arrivals-sec {
+            padding: 60px;
+            background-color: var(--bg-hero);
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            color: var(--maroon);
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+        .section-header a {
+            color: var(--maroon);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        .product-card {
+            color: var(--maroon);
+            cursor: pointer;
+        }
+        .product-img-box {
+            position: relative;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .product-img-box img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .product-card:hover .product-img-box img {
+            transform: scale(1.05);
+        }
+        .wishlist-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .wishlist-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.5;
+            transition: fill 0.3s ease;
+        }
+        .wishlist-btn:hover svg {
+            fill: white;
+        }
+        .product-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+        .product-card p {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* 5. Footer */
+        .site-footer {
+            background-color: var(--bg-hero);
+            padding: 40px 60px 20px;
+            border-top: 1px solid rgba(74, 16, 17, 0.2);
+            color: var(--maroon);
+            position: relative;
+        }
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr;
+            gap: 30px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(74, 16, 17, 0.2);
+        }
+        .footer-logo h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        .footer-logo p {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+        .footer-col h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        .footer-col ul li a {
+            color: var(--maroon);
+            text-decoration: none;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        .footer-join {
+            border-left: 1px solid rgba(74, 16, 17, 0.2);
+            padding-left: 30px;
+        }
+        .footer-join p {
+            font-size: 12px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        .email-form {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .email-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid rgba(74, 16, 17, 0.2);
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            color: var(--maroon);
+            outline: none;
+        }
+        .email-form button {
+            background-color: var(--maroon);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--maroon);
+            fill: none;
+            stroke-width: 1.5;
+            cursor: pointer;
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        .footer-links a {
+            color: var(--maroon);
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .footer-flower {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        /* Adjustments for Responsive */
+        @media (max-width: 1024px) {
+            .navbar { padding: 15px 30px; }
+            .nav-links { gap: 10px; padding-right: 25px; }
+            .nav-links.right { padding-left: 25px; }
+            .nav-links a { font-size: 11px; padding: 8px 12px; letter-spacing: 1px; }
+            .nav-icons { right: 30px; }
+            .giant-text { font-size: 25vw; }
+            .hero-model { height: 85%; }
+            .category-section { padding: 30px 20px; }
+            .cat-item { padding: 0 15px; }
+            .cat-item img { width: 100px; height: 120px; }
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-main { grid-template-columns: repeat(3, 1fr); }
+            .footer-join { grid-column: span 3; border-left: none; border-top: 1px solid rgba(74,16,17,0.2); padding-left: 0; padding-top: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar { padding: 10px; font-size: 9px; }
+            .top-bar-content { animation: marquee 10s linear infinite; }
+            .nav-links { display: none; } 
+            .navbar { padding: 12px 20px; }
+            .nav-icons { right: 20px; } 
+            .hero { height: auto; min-height: auto; padding: 40px 20px; overflow: hidden; }
+            .giant-text { top: 250px; font-size: 35vw; opacity: 0.1; }
+            .content-left-top, .hero-model, .content-left-bottom, .content-right { position: relative; top: auto; left: auto; right: auto; bottom: auto; width: 100%; text-align: center; transform: none; }
+            .content-left-top { order: 1; margin-bottom: 20px; }
+            .elegant-title { align-items: center; }
+            .elegant-title .sans { margin-left: 0; }
+            .elegant-right-text { align-items: center; }
+            .hero-model { order: 2; max-width: 100%; height: 450px; object-fit: contain; margin: 20px auto; }
+            .content-left-bottom { order: 3; margin: 0 auto; }
+            .description { margin: 0 auto 30px auto; }
+            .pagination { justify-content: center; margin-bottom: 30px; }
+            .content-right { order: 4; border-left: none; border-top: 1px solid rgba(74, 16, 17, 0.2); padding-left: 0; padding-top: 30px; display: flex; flex-direction: column; align-items: center; }
+            
+            /* Responsive for New Sections */
+            .category-section { grid-template-columns: 1fr; gap: 20px; }
+            .cat-item:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 20px; }
+            .promo-split { flex-direction: column; height: auto; }
+            .promo-video { padding: 80px 20px; }
+            .promo-gift { padding: 40px 20px; align-items: center; text-align: center; }
+            .promo-gift-bg { width: 100%; mask-image: linear-gradient(to top, black, transparent); -webkit-mask-image: linear-gradient(to top, black, transparent); }
+            .gift-img { position: relative; right: auto; top: auto; transform: none; margin-top: 30px; width: 100%; max-width: 280px; }
+            .features-bar { flex-direction: column; gap: 30px; }
+            .feature-item:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(74, 16, 17, 0.2); padding-bottom: 20px; }
+            .product-grid { grid-template-columns: 1fr 1fr; }
+            .footer-main { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 10px; align-items: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Announcement Bar (Running Marquee) -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span>&#10022; FREE SHIPPING ON ORDERS ABOVE ₹1,499 &#10022;</span>
+            <span>&#10022; Handmade Today, A Kinder Tomorrow &#10022;</span>
+            <span>&#10022; FREE SHIPPING ON ORDERS ABOVE ₹1,499 &#10022;</span>
+            <span>&#10022; Handmade Today, A Kinder Tomorrow &#10022;</span>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#">Shop</a>
+            <a href="#">Collections</a>
+        </div>
+        
+        <div class="logo-container">
+            <img src="burgundy logo.png" alt="Shrivi Creations Logo" class="navbar-logo" onerror="alert('Error: burgundy logo.png nahi mili.');">
+        </div>
+
+        <div class="nav-links right">
+            <a href="#">New Arrivals</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="nav-icons">
+            <!-- Search Icon -->
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <!-- User Icon -->
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <!-- DRAWER ICON -->
+            <svg id="drawerBtn" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </div>
+    </nav>
+
+    <!-- 3D DRAWER (Contains Wishlist and Cart) -->
+    <div id="sideDrawer" class="side-drawer">
+        <div class="drawer-close" id="closeDrawerBtn">&times;</div>
+        
+        <!-- Wishlist Icon -->
+        <div class="drawer-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </div>
+
+        <!-- Cart Icon -->
+        <div class="drawer-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <div class="drawer-badge">0</div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="giant-text">SHRIVI</div>
+        <img src="model.png" alt="Fashion Model" class="hero-model" onerror="this.src='1.jpg'">
+
+        <div class="content-left-top">
+            <div class="elegant-title">
+                <span class="serif">Fashion</span>
+                <span class="sans">That Feels</span>
+                <span class="serif">Like You.</span>
+            </div>
+        </div>
+            
+        <div class="content-left-bottom">
+            <!-- UPDATED CREATIONS TEXT (Uppercase + Spaced out) -->
+            <div class="creations-text">CREATIONS</div>
+            <div class="description">
+                Crocheted with care,<br>worn with love.
+            </div>
+            <button class="btn-primary">EXPLORE OUR COLLECTION &rarr;</button>
+        </div>
+
+        </div>
+    </header>
+
+    <!-- Category Section -->
+    <section class="category-section">
+        <div class="cat-item">
+            <!-- Placeholder replaced with 1.jpg -->
+            <img src="1.jpg" alt="Bag" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=1.jpg'">
+            <div class="cat-text">
+                <h3>BAGS</h3>
+                <p>Handcrafted<br>for everyday.</p>
+                <a href="#">&rarr;</a>
+            </div>
+        </div>
+        <div class="cat-item">
+            <!-- Placeholder replaced with 2.jpg -->
+            <img src="2.jpg" alt="Cardigan" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=2.jpg'">
+            <div class="cat-text">
+                <h3>CARDIGANS</h3>
+                <p>Layers for<br>every mood.</p>
+                <a href="#">&rarr;</a>
+            </div>
+        </div>
+        <div class="cat-item">
+            <!-- Placeholder replaced with 3.jpg -->
+            <img src="3.jpg" alt="Top" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=3.jpg'">
+            <div class="cat-text">
+                <h3>TOP</h3>
+                <p>Effortless styles<br>for every you.</p>
+                <a href="#">&rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Split Section (Video & Gift Card) -->
+    <section class="promo-split">
+        <div class="promo-video">
+            <div class="play-btn"></div>
+            <p>A CLOSER LOOK<br>AT WHAT WE DO</p>
+        </div>
+        <div class="promo-gift">
+            <!-- Decorative Flower Background added to match reference image -->
+            <img src="3.jpg" alt="Decorative Flowers" class="promo-gift-bg" onerror="this.style.display='none'">
+            
+            <span>SPREAD A LITTLE LOVE</span>
+            <h2>Buy a Gift Card<br>for Your Loved Ones.</h2>
+            <p>Because the most meaningful gifts<br>are the ones made with heart.</p>
+            <button class="btn-gift">GIFT A LITTLE JOY &rarr;</button>
+            
+            <!-- Gift Card Image updated to 22.png -->
+            <img src="22.png" alt="Gift Card" class="gift-img" onerror="alert('Error: 22.png not found!');">
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <section class="features-bar">
+        <div class="feature-item">
+            <h4>Get Flat 15% Off</h4>
+            <p>ON YOUR FIRST PURCHASE.</p>
+        </div>
+        <div class="feature-item">
+            <h4>Free Shipping</h4>
+            <p>ON ORDERS ABOVE ₹1,499.</p>
+        </div>
+        <div class="feature-item">
+            <h4>Premium Gifting</h4>
+            <p>BECAUSE EVERY GIFT MATTERS.</p>
+        </div>
+        <div class="feature-item">
+            <h4>Made With Love</h4>
+            <p>FOR A KINDER TOMORROW.</p>
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section class="new-arrivals-sec">
+        <div class="section-header">
+            <h2>NEW ARRIVALS</h2>
+            <a href="#">VIEW ALL &rarr;</a>
+        </div>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="wishlist-btn">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                    <!-- Placeholder replaced -->
+                    <img src="1.jpg" alt="Floral Crochet Cardigan" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
+                </div>
+                <h4>Floral Crochet Cardigan</h4>
+                <p>₹ 6,999</p>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="wishlist-btn">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                    <!-- Placeholder replaced -->
+                    <img src="2.jpg" alt="Crochet Tote Bag" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
+                </div>
+                <h4>Crochet Tote Bag</h4>
+                <p>₹ 4,499</p>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="wishlist-btn">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                    <!-- Placeholder replaced -->
+                    <img src="3.jpg" alt="Knit Halter Top" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=3.jpg'">
+                </div>
+                <h4>Knit Halter Top</h4>
+                <p>₹ 3,999</p>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="wishlist-btn">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                    <!-- Placeholder replaced -->
+                    <img src="1.jpg" alt="Crochet Shirt" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=1.jpg'">
+                </div>
+                <h4>Crochet Shirt</h4>
+                <p>₹ 5,999</p>
+            </div>
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <button class="wishlist-btn">
+                        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                    <!-- Placeholder replaced -->
+                    <img src="2.jpg" alt="Crochet Scarf" onerror="this.src='https://via.placeholder.com/300x400/e6dac3/4a1011?text=2.jpg'">
+                </div>
+                <h4>Crochet Scarf</h4>
+                <p>₹ 2,499</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-logo">
+                <h3>SHRIVI<br><span style="font-size: 10px; font-family: 'Montserrat', sans-serif; letter-spacing: 5px;">CREATIONS</span></h3>
+                <p>Crocheted with Care.<br>Worn with Love.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Bags</a></li>
+                    <li><a href="#">Top</a></li>
+                    <li><a href="#">Cardigans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-join">
+                <h4>Join Our World</h4>
+                <p>Get new collections, stories and special offers.</p>
+                <form class="email-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">&rarr;</button>
+                </form>
+                <div class="social-icons">
+                    <!-- Instagram -->
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    <!-- Pinterest -->
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.25 2.66 7.9 6.44 9.34-.1-.78-.18-1.98.04-2.85.2-.82 1.3-5.5 1.3-5.5s-.33-.66-.33-1.64c0-1.54.9-2.69 2.02-2.69.95 0 1.4.71 1.4 1.57 0 .96-.61 2.39-.93 3.72-.27 1.11.56 2.01 1.65 2.01 1.98 0 3.51-2.09 3.51-5.11 0-2.68-1.93-4.56-4.68-4.56-3.18 0-5.05 2.39-5.05 4.86 0 .96.37 1.98.83 2.54.09.11.1.21.08.31-.08.32-.25 1.01-.28 1.15-.04.14-.15.17-.3.1-1.12-.52-1.82-2.17-1.82-3.49 0-2.84 2.06-5.45 5.96-5.45 3.14 0 5.58 2.24 5.58 5.23 0 3.12-1.96 5.63-4.69 5.63-1.02 0-1.98-.53-2.31-1.16l-.63 2.38c-.23.88-.85 1.98-1.27 2.65 1.01.31 2.09.48 3.2.48 5.52 0 10-4.48 10-10S17.52 2 12 2z"></path></svg>
+                    <!-- YouTube -->
+                    <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.14 1 12 1 12s0 3.86.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.86 23 12 23 12s0-3.86-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+                    <!-- Facebook -->
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Shrivi Creations. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Shipping Policy</a> |
+                <a href="#">Track your order</a> |
+                <a href="#">Customer reviews</a>
+            </div>
+        </div>
+        <!-- Decorative flower bottom left -->
+        <svg class="footer-flower" viewBox="0 0 100 100" fill="none" stroke="var(--maroon)" stroke-width="1.5">
+            <path d="M0 100 Q 20 70 50 50 T 100 20" />
+            <path d="M0 80 Q 30 60 40 30" />
+            <path d="M20 100 Q 50 80 80 60" />
+            <circle cx="50" cy="50" r="2" fill="var(--maroon)" />
+            <circle cx="40" cy="30" r="1.5" fill="var(--maroon)" />
+            <circle cx="80" cy="60" r="1.5" fill="var(--maroon)" />
+        </svg>
+    </footer>
+
+    <!-- Drawer Script -->
+    <script>
+        const drawerBtn = document.getElementById('drawerBtn');
+        const sideDrawer = document.getElementById('sideDrawer');
+        const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+        // Mouse icon pe jaate hi drawer open
+        drawerBtn.addEventListener('mouseenter', () => {
+            sideDrawer.classList.add('open');
+        });
+
+        // Mouse drawer se bahar jaate hi band (close)
+        sideDrawer.addEventListener('mouseleave', () => {
+            sideDrawer.classList.remove('open');
+        });
+
+        // Backup click close button
+        closeDrawerBtn.addEventListener('click', () => {
+            sideDrawer.classList.remove('open');
+        });
+    </script>
+</body>
+</html>
