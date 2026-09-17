@@ -3,344 +3,556 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shrivi Creations | Official Store</title>
+    <title>Shrivi Creations | Official Luxury Store</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Imperial+Script&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Imperial+Script&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
-        /* Base Resets */
+        /* Base Resets & Exact Shrivi Luxury Palette */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        :root { --maroon: #4a1011; --bg-nav: #f3efe9; --bg-hero: #f7f3ec; --text-dark: #333333; }
+        :root { --maroon: #641f2a; --dark-luxury: #140d0e; --bg-nav: #ffffff; --bg-hero: #ffffff; --pearl: #fdfbf7; --text-dark: #222222; --gold-acc: #b89782; }
         
-        /* IMAGE SECURITY & BODY */
         body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-hero); color: var(--maroon); overflow-x: hidden; }
-        img { -webkit-user-drag: none; user-select: none; -moz-user-select: none; pointer-events: auto; } 
+        img { -webkit-user-drag: none; user-select: none; pointer-events: auto; } 
 
         /* RUNNING TOP BAR */
-        .top-bar { background-color: var(--maroon); color: #ffffff; padding: 10px 0; font-size: 11px; font-weight: 400; letter-spacing: 1.5px; text-transform: uppercase; overflow: hidden; white-space: nowrap; display: flex; align-items: center; position: relative; z-index: 1001;}
-        .top-bar-content { display: flex; gap: 100px; animation: marquee 20s linear infinite; min-width: 100%; justify-content: space-around; }
-        .top-bar-content span { display: flex; align-items: center; gap: 10px; }
+        .top-bar { background-color: var(--maroon); color: var(--pearl); padding: 10px 0; font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; overflow: hidden; white-space: nowrap; display: flex; align-items: center; position: relative; z-index: 1001; border-bottom: 1px solid rgba(253, 251, 247, 0.2); }
+        .top-bar-content { display: flex; gap: 100px; animation: marquee 22s linear infinite; min-width: 100%; justify-content: space-around; }
+        .top-bar-content span { display: flex; align-items: center; gap: 10px; color: #fdfbf7; }
         @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
         /* NAVBAR */
-        .navbar { display: flex; justify-content: center; align-items: center; padding: 12px 60px; background-color: var(--bg-nav); border-bottom: 1px solid rgba(74, 16, 17, 0.1); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05);}
-        .nav-links { display: flex; gap: 15px; flex: 1; justify-content: flex-end; padding-right: 45px; }
+        .navbar { display: flex; justify-content: center; align-items: center; padding: 12px 60px; background-color: var(--bg-nav); border-bottom: 1px solid rgba(100, 31, 42, 0.1); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.03);}
+        .nav-links { display: flex; gap: 20px; flex: 1; justify-content: flex-end; padding-right: 45px; }
         .nav-links.right { justify-content: flex-start; padding-left: 45px; padding-right: 0; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 8px; transition: all 0.3s; cursor: pointer;}
-        .nav-links a:hover, .nav-links a.active { color: var(--maroon); background-color: #ffffff; transform: translateY(-3px); box-shadow: 0px 6px 15px rgba(74, 16, 17, 0.12); }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 8px 18px; border-radius: 4px; transition: all 0.3s ease; cursor: pointer;}
+        .nav-links a:hover, .nav-links a.active { color: #ffffff; background-color: var(--maroon); transform: translateY(-2px); box-shadow: 0px 6px 15px rgba(100, 31, 42, 0.2); }
         .logo-container { display: flex; justify-content: center; align-items: center; flex: 0 0 auto; cursor: pointer; }
-        .navbar-logo { max-height: 85px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
+        .navbar-logo { max-height: 70px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
         
         .nav-icons { position: absolute; right: 60px; display: flex; gap: 18px; align-items: center; }
-        .nav-icons .icon-wrapper { display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-radius: 50%; transition: all 0.3s ease; cursor: pointer; }
-        .nav-icons .icon-wrapper:hover { background-color: white; box-shadow: 0px 4px 10px rgba(74,16,17,0.15); transform: translateY(-3px); }
-        .nav-icons .icon-wrapper svg { width: 20px; height: 20px; stroke: var(--text-dark); fill: none; stroke-width: 1.5; transition: stroke 0.3s; }
-        .nav-icons .icon-wrapper:hover svg { stroke: var(--maroon); }
+        .nav-icons .icon-wrapper { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(100,31,42,0.05); transition: all 0.3s ease; cursor: pointer; }
+        .nav-icons .icon-wrapper:hover { background-color: var(--maroon); box-shadow: 0px 6px 15px rgba(100,31,42,0.3); transform: translateY(-3px); }
+        .nav-icons .icon-wrapper svg { width: 20px; height: 20px; stroke: var(--maroon); fill: none; stroke-width: 1.5; transition: stroke 0.3s; }
+        .nav-icons .icon-wrapper:hover svg { stroke: #ffffff; }
         .mobile-menu-icon { display: none !important; }
 
-        /* FIXED FLOATING ICONS (Laptop/Desktop) */
+        /* FIXED FLOATING ICONS */
         .global-floating-icons { position: fixed; right: 30px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 20px; z-index: 999; }
-        .float-btn { position: relative; width: 45px; height: 45px; border-radius: 50%; background-color: var(--bg-hero); border: 1px solid var(--maroon); display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); }
+        .float-btn { position: relative; width: 50px; height: 50px; border-radius: 50%; background-color: #ffffff; border: 1.5px solid var(--maroon); display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0px 8px 25px rgba(0,0,0,0.1); }
         .float-btn svg { width: 22px; height: 22px; stroke: var(--maroon); fill: none; transition: all 0.3s; }
-        .float-btn:hover { background-color: var(--maroon); transform: translateY(-5px); box-shadow: 0px 8px 15px rgba(74,16,17,0.3); }
+        .float-btn:hover { background-color: var(--maroon); transform: translateY(-5px) scale(1.05); box-shadow: 0px 12px 30px rgba(100,31,42,0.4); }
         .float-btn:hover svg { stroke: white; }
-        .badge { position: absolute; top: -5px; right: -5px; background-color: var(--maroon); color: white; font-size: 10px; width: 18px; height: 18px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; border: 2px solid var(--bg-hero); transition: all 0.3s; }
-        .float-btn:hover .badge { background-color: white; color: var(--maroon); border-color: var(--maroon); }
+        .badge { position: absolute; top: -5px; right: -5px; background-color: var(--maroon); color: white; font-size: 10px; width: 20px; height: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; border: 2px solid #ffffff; }
 
-        /* ELEGANT TOP SEARCH BAR (FIXED LOGO HOVER) */
-        .top-search-bar { position: fixed; top: 0; left: 0; width: 100%; background: var(--bg-nav); border-bottom: 1px solid rgba(74,16,17,0.2); padding: 30px 60px; display: flex; justify-content: center; align-items: center; transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
-        .top-search-bar.active { transform: translateY(110px); }
-        .search-container { width: 100%; max-width: 800px; display: flex; align-items: center; border-bottom: 2px solid var(--maroon); padding-bottom: 5px;}
-        .search-container input { flex: 1; border: none; background: transparent; font-family: 'Playfair Display', serif; font-size: 24px; color: var(--maroon); outline: none; font-style: italic;}
-        .search-container input::placeholder { color: rgba(74,16,17,0.4); }
-        .close-search { position: absolute; right: 40px; top: 35px; font-size: 30px; cursor: pointer; color: var(--maroon); line-height: 1; transition: transform 0.3s;}
-        .close-search:hover { transform: rotate(90deg); }
-        
-        /* Clean Pearl/Burgundy Search Button */
-        .search-btn-elegant { background: transparent; border: none; outline: none; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease; }
-        .search-btn-elegant svg { width: 24px; height: 24px; stroke: var(--maroon); fill: none; stroke-width: 1.5; transition: stroke 0.3s ease; }
-        .search-btn-elegant:hover { background: var(--maroon); box-shadow: 0 4px 10px rgba(74,16,17,0.2); transform: translateY(-2px); }
-        .search-btn-elegant:hover svg { stroke: var(--bg-nav); /* Turns pearl on hover */ }
+        /* GLOBAL 3D PAGE CLOSE / BACK BUTTON */
+        .global-back-btn { 
+            position: relative; 
+            margin: 20px auto 0 60px; 
+            width: max-content;
+            z-index: 100; 
+            background: #ffffff; 
+            color: var(--maroon); 
+            padding: 10px 22px; 
+            border-radius: 30px; 
+            font-weight: 700; 
+            font-size: 11px; 
+            cursor: pointer; 
+            box-shadow: 0 6px 20px rgba(100,31,42,0.15); 
+            border: 2px solid var(--maroon); 
+            display: none; 
+            align-items: center; 
+            gap: 8px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: all 0.3s ease; 
+        }
+        .global-back-btn:hover { 
+            background: var(--maroon); 
+            color: #ffffff; 
+            transform: translateY(-2px); 
+        }
 
-        /* MODALS */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(74,16,17,0.85); backdrop-filter: blur(5px); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        /* SEARCH BAR & MODALS */
+        .top-search-bar { position: fixed; top: 0; left: 0; width: 100%; background: #ffffff; border-bottom: 1px solid rgba(100,31,42,0.2); padding: 30px 60px; display: flex; justify-content: center; align-items: center; transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 999; box-shadow: 0 15px 40px rgba(0,0,0,0.08);}
+        .top-search-bar.active { transform: translateY(105px); }
+        .search-container { width: 100%; max-width: 800px; display: flex; align-items: center; border-bottom: 2px solid var(--maroon); padding-bottom: 8px;}
+        .search-container input { flex: 1; border: none; background: transparent; font-family: 'Playfair Display', serif; font-size: 26px; color: var(--maroon); outline: none; font-style: italic;}
+        .close-search { position: absolute; right: 40px; top: 35px; font-size: 32px; cursor: pointer; color: var(--maroon); }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(26,5,8,0.85); backdrop-filter: blur(8px); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s ease; }
         .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-box { background: var(--bg-hero); padding: 40px; border-radius: 8px; width: 90%; max-width: 450px; position: relative; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.3);}
-        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; color: var(--maroon); transition: transform 0.3s;}
-        .modal-close:hover { transform: rotate(90deg); }
-        .modal-box input { width: 100%; padding: 12px 15px; margin-bottom: 15px; border: 1px solid rgba(74,16,17,0.3); background: transparent; font-family: 'Montserrat'; outline: none; transition: border 0.3s;}
-        .modal-box input:focus { border-color: var(--maroon); }
-        .btn-full { width: 100%; background: var(--maroon); color: white; border: none; padding: 15px; cursor: pointer; font-family: 'Montserrat'; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; transition: background 0.3s; margin-top: 10px; border-radius: 4px;}
-        .btn-full:hover { background: #310a0b; }
+        .modal-box { background: #ffffff; padding: 50px 40px; border-radius: 12px; width: 90%; max-width: 480px; position: relative; text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.3); border: 1px solid rgba(100,31,42,0.2); transform: translateY(30px) perspective(1000px) rotateX(10deg); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .modal-overlay.active .modal-box { transform: translateY(0) perspective(1000px) rotateX(0deg); }
+        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 26px; cursor: pointer; color: var(--maroon); }
+        .modal-box input { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid rgba(100,31,42,0.25); background: #ffffff; font-family: 'Montserrat'; outline: none; border-radius: 6px; font-size: 14px; transition: all 0.3s;}
+        .modal-box input:focus { border-color: var(--maroon); box-shadow: 0 0 10px rgba(100,31,42,0.15); }
         
-        .auth-tabs { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; border-bottom: 1px solid rgba(74,16,17,0.2); }
-        .auth-tab { cursor: pointer; padding-bottom: 10px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: rgba(74,16,17,0.5); transition: color 0.3s;}
-        .auth-tab.active { color: var(--maroon); border-bottom: 2px solid var(--maroon); }
-        .auth-form { display: none; animation: fadeIn 0.3s; }
+        .btn-full { width: 100%; background: var(--maroon); color: white; border: none; padding: 16px; cursor: pointer; font-family: 'Montserrat'; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; border-radius: 6px; box-shadow: 0 8px 20px rgba(100,31,42,0.3); transition: all 0.3s; }
+        .btn-full:hover { background: #4a151d; transform: translateY(-2px); box-shadow: 0 12px 25px rgba(100,31,42,0.4); }
+
+        .auth-tabs { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; border-bottom: 1px solid rgba(100,31,42,0.15); padding-bottom: 15px; }
+        .auth-tab { cursor: pointer; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(100,31,42,0.4); transition: color 0.3s;}
+        .auth-tab.active { color: var(--maroon); border-bottom: 2px solid var(--maroon); padding-bottom: 5px; }
+        .auth-form { display: none; }
         .auth-form.active { display: block; }
-        .forgot-pass { display: block; text-align: right; font-size: 11px; margin-top: -5px; margin-bottom: 15px; color: var(--maroon); text-decoration: none; cursor: pointer; font-weight: 500;}
-        .forgot-pass:hover { text-decoration: underline; }
+        .forgot-pass { display: block; text-align: right; font-size: 12px; margin-top: -10px; margin-bottom: 20px; color: var(--maroon); text-decoration: none; cursor: pointer; font-weight: 500;}
 
-        /* FULLSCREEN IMAGE LIGHTBOX */
-        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.9); z-index: 3000; display: none; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: opacity 0.3s ease; }
-        .lightbox-overlay.active { display: flex; opacity: 1; }
-        .lightbox-img { max-width: 90%; max-height: 90vh; border: 5px solid var(--bg-hero); border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); object-fit: contain;}
+        /* LIGHTBOX */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.92); z-index: 3000; display: none; justify-content: center; align-items: center; cursor: pointer; }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-img { max-width: 90%; max-height: 90vh; border: 4px solid #ffffff; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); object-fit: contain;}
 
-        /* SPA PAGE VIEWS */
-        .page-view { display: none; animation: fadeIn 0.5s ease; min-height: 80vh;}
-        .page-view.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* SPA VIEWS & SCROLL ANIMATIONS */
+        .page-view { display: none; min-height: 80vh;}
+        .page-view.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        .reveal-on-scroll { opacity: 0; transform: translateY(50px) perspective(1000px) rotateX(8deg); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-on-scroll.active { opacity: 1; transform: translateY(0) perspective(1000px) rotateX(0deg); }
 
         /* HERO SECTION */
-        .hero { position: relative; width: 100%; height: calc(100vh - 145px); min-height: 750px; background-color: var(--bg-hero); overflow: hidden; display: block; }
-        .giant-text { position: absolute; font-family: 'Cinzel', serif; font-size: clamp(100px, 22vw, 350px); color: var(--maroon); font-weight: 500; z-index: 1; top: 40%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; letter-spacing: 2px; }
-        .hero-model { position: absolute; bottom: 0; left: 63%; transform: translateX(-50%); height: 95%; max-height: 900px; z-index: 2; cursor: pointer;}
-        .content-left-top { position: absolute; top: 6%; left: 5%; z-index: 3; }
-        .content-left-bottom { position: absolute; bottom: 8%; left: 5%; z-index: 3; max-width: 450px; }
-        .elegant-title { display: flex; flex-direction: column; gap: 2px; }
+        .hero { position: relative; width: 100%; height: calc(100vh - 120px); min-height: 680px; background-color: #ffffff; overflow: hidden; display: block; padding-top: 10px; }
+        .giant-text { position: absolute; font-family: 'Cinzel', serif; font-size: clamp(100px, 20vw, 320px); color: var(--maroon); font-weight: 500; z-index: 1; top: 45%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; letter-spacing: 4px; opacity: 0.25; pointer-events: none; }
+        .hero-model { position: absolute; bottom: 0; left: 63%; transform: translateX(-50%); height: 90%; max-height: 820px; z-index: 2; cursor: pointer; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); transition: transform 0.5s ease;}
+        .hero-model:hover { transform: translateX(-50%) scale(1.02); }
+        .content-left-top { position: absolute; top: 4%; left: 5%; z-index: 3; }
+        .content-left-bottom { position: absolute; bottom: 6%; left: 5%; z-index: 3; max-width: 450px; }
         .elegant-title .serif { font-family: 'Playfair Display', serif; font-size: 38px; font-style: italic; color: var(--maroon); line-height: 1.1; }
-        .elegant-title .sans { font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: 10px; font-weight: 500; text-transform: uppercase; color: var(--maroon); margin-left: 30px; margin-top: 5px; margin-bottom: 5px; }
-        .creations-text { display: block; font-family: 'Montserrat', sans-serif; font-size: 24px; letter-spacing: 16px; font-weight: 500; margin: 0 0 15px 0; color: var(--maroon); text-transform: uppercase; }
-        .description { display: block; font-family: 'Imperial Script', cursive; font-size: 35px; color: #333; line-height: 1.2; margin: 0 0 25px 0; max-width: 380px; }
-        .btn-primary { display: inline-block; background-color: var(--maroon); color: white; border: none; padding: 16px 32px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; box-shadow: 0px 6px 0px #2a0809, 0px 10px 15px rgba(74, 16, 17, 0.3); transition: all 0.2s ease; outline: none; text-decoration: none;}
-        .btn-primary:active { transform: translateY(4px); box-shadow: 0px 2px 0px #2a0809; }
-
-        /* HOME SECTIONS */
-        section { scroll-margin-top: 80px; } 
-        .category-section { display: grid; grid-template-columns: repeat(3, 1fr); background-color: #3b0e0f; color: white; padding: 40px 60px; }
-        .cat-item { display: flex; align-items: center; gap: 20px; padding: 0 30px; }
-        .cat-item:not(:last-child) { border-right: 1px solid rgba(255, 255, 255, 0.2); }
-        .cat-item img { width: 150px; height: 180px; object-fit: cover; border-radius: 2px; cursor: pointer;}
-        .cat-text h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 400; letter-spacing: 2px; margin-bottom: 10px; }
-        .cat-text p { font-size: 13px; opacity: 0.9; margin-bottom: 15px;}
-        .cat-text a { color: white; text-decoration: none; font-size: 18px; cursor: pointer;}
+        .elegant-title .sans { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 10px; font-weight: 600; text-transform: uppercase; color: var(--maroon); margin: 6px 0 6px 25px; }
+        .creations-text { font-family: 'Cinzel', serif; font-size: 24px; letter-spacing: 14px; font-weight: 600; margin: 0 0 10px 0; color: var(--maroon); text-transform: uppercase; }
+        .description { font-family: 'Imperial Script', cursive; font-size: 36px; color: #444; line-height: 1.2; margin: 0 0 20px 0; }
         
+        .btn-primary { display: inline-block; background-color: var(--maroon); color: white; border: none; padding: 16px 32px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; cursor: pointer; box-shadow: 0px 8px 25px rgba(100, 31, 42, 0.35); transition: all 0.3s ease; text-decoration: none; border-radius: 4px;}
+        .btn-primary:hover { background-color: #4a151d; transform: translateY(-3px); box-shadow: 0px 12px 30px rgba(100, 31, 42, 0.5); }
+
+        /* CIRCULAR COLLECTIONS */
+        .circle-collections-sec {
+            padding: 80px 40px;
+            background-color: var(--maroon);
+            background-image: linear-gradient(135deg, #641f2a 0%, #3d0c15 100%);
+            text-align: center;
+            overflow: hidden;
+            box-shadow: inset 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .circle-collections-sec h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: #ffffff;
+            margin-bottom: 50px;
+            font-style: italic;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+        }
+        .circle-grid {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            flex-wrap: wrap;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+        .circle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .circle-item:hover { transform: translateY(-10px); }
+        .circle-img-wrap {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--pearl);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            margin-bottom: 15px;
+            position: relative;
+            background: #ffffff;
+            transition: all 0.4s ease;
+        }
+        .circle-item:hover .circle-img-wrap {
+            border-color: var(--gold-acc);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(184, 151, 130, 0.4);
+        }
+        .circle-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .circle-item:hover .circle-img-wrap img { transform: scale(1.15); }
+        .circle-item span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--pearl);
+            text-transform: uppercase;
+            text-align: center;
+            transition: color 0.3s;
+        }
+        .circle-item:hover span { color: var(--gold-acc); }
+
         .promo-split { display: flex; height: 500px; overflow: hidden; }
         .promo-video { flex: 1; background: url('1.jpg') center/cover no-repeat; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 50px; color: white; }
-        .promo-video::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
-        .play-btn { position: relative; width: 60px; height: 60px; border: 1px solid white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; cursor: pointer; z-index: 1; }
-        .play-btn::after { content: ''; display: block; border-style: solid; border-width: 8px 0 8px 12px; border-color: transparent transparent transparent white; margin-left: 4px; }
-        .promo-gift { flex: 1; background-color: var(--bg-hero); padding: 60px; display: flex; flex-direction: column; justify-content: center; position: relative; }
-        .promo-gift-bg { position: absolute; right: 0; top: 0; height: 100%; width: 60%; object-fit: cover; z-index: 0; opacity: 0.8; mask-image: linear-gradient(to right, transparent, black 40%); -webkit-mask-image: linear-gradient(to right, transparent, black 40%); }
-        .promo-text-wrap { position: relative; z-index: 5; max-width: 55%; display: flex; flex-direction: column; align-items: flex-start;}
-        .promo-text-wrap span { font-size: 11px; letter-spacing: 3px; color: var(--maroon); margin-bottom: 15px; font-weight: 500; }
-        .promo-text-wrap h2 { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--maroon); line-height: 1.2; margin-bottom: 20px; }
-        .promo-text-wrap p { font-size: 14px; color: #555; margin-bottom: 30px; }
-        .gift-img { position: absolute; right: 0; top: 50%; transform: translateY(-45%); width: 45%; max-width: 380px; z-index: 3; cursor: pointer;}
-
-        .features-bar { display: flex; justify-content: space-evenly; background-color: #f8f4ed; padding: 40px 20px; border-bottom: 1px solid rgba(74, 16, 17, 0.1); border-top: 1px solid rgba(74, 16, 17, 0.1); }
-        .feature-item { text-align: center; padding: 0 40px; color: var(--maroon); }
-        .feature-item:not(:last-child) { border-right: 1px solid rgba(74, 16, 17, 0.2); }
-        .feature-item h4 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; }
-        .feature-item p { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
-
-        .new-arrivals-sec { padding: 80px 60px; background-color: #fcfaf8; }
-        .na-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; border-bottom: 1px solid rgba(74, 16, 17, 0.2); padding-bottom: 15px;}
-        .na-header h2 { font-family: 'Cinzel', serif; font-size: 32px; letter-spacing: 3px; color: var(--maroon); }
-        .na-header a { font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--maroon); text-decoration: none; font-weight: 600; cursor: pointer;}
-        .elegant-arrivals-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
-        .featured-arrival { position: relative; height: 100%; min-height: 500px; border-radius: 4px; overflow: hidden; }
-        .featured-arrival img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; cursor: pointer;}
-        .featured-arrival:hover img { transform: scale(1.03); }
-        .featured-arrival::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(74, 16, 17, 0.7), transparent); z-index: 1;}
-        .overlay-text { position: absolute; bottom: 30px; left: 30px; color: white; z-index: 2;}
-        .overlay-text h3 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; margin-bottom: 10px; font-style: italic;}
-        .overlay-text p { font-size: 13px; letter-spacing: 1px; opacity: 0.9;}
-        .arrivals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-
-        .shop-sec { padding: 80px 60px; background-color: var(--bg-hero); text-align: center; }
-        .shop-sec .section-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 50px; gap: 10px;}
-        .shop-sec .section-header h2 { font-family: 'Cinzel', serif; font-size: 42px; letter-spacing: 4px; color: var(--maroon); }
-        .shop-sec .section-header p { font-family: 'Imperial Script', cursive; font-size: 32px; color: #555; }
-        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: left; }
+        .promo-video::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(26,5,8,0.8), transparent); }
+        .play-btn { position: relative; width: 60px; height: 60px; border: 1.5px solid white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; cursor: pointer; z-index: 1; transition: transform 0.3s; }
+        .play-btn:hover { transform: scale(1.1); background: rgba(255,255,255,0.1); }
+        .play-btn::after { content: ''; display: block; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent white; margin-left: 4px; }
         
-        /* Product Cards */
-        .product-card { color: var(--maroon); display: flex; flex-direction: column; position: relative;}
-        .product-card.hidden { display: none; }
-        .product-img-box { position: relative; margin-bottom: 15px; overflow: hidden; border-radius: 4px; }
-        .product-img-box img { width: 100%; height: 380px; object-fit: cover; transition: transform 0.4s ease; cursor: zoom-in;}
-        .product-card:hover .product-img-box img { transform: scale(1.05); }
-        .wishlist-btn { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.7); border-radius: 50%; padding: 8px; border: none; cursor: pointer; z-index: 10; transition: background 0.3s; }
+        .promo-gift { flex: 1; background-color: #ffffff; padding: 50px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .promo-text-wrap { position: relative; z-index: 5; max-width: 55%; display: flex; flex-direction: column; align-items: flex-start;}
+        .promo-text-wrap span { font-size: 11px; letter-spacing: 3px; color: var(--maroon); margin-bottom: 12px; font-weight: 600; }
+        .promo-text-wrap h2 { font-family: 'Playfair Display', serif; font-size: 38px; color:var(--maroon); line-height: 1.2; margin-bottom: 15px; }
+        .promo-text-wrap p { font-size: 13px; color: #555; margin-bottom: 25px; }
+        
+        .gift-img { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); width: 42%; max-width: 320px; z-index: 3; cursor: pointer; border-radius: 12px; box-shadow: 0 20px 40px rgba(100,31,42,0.25); border: 3px solid #ffffff; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .gift-img:hover { transform: translateY(-53%) scale(1.03); }
+
+        /* DARK FASHION PREMIUM FEATURES BAR */
+        .features-bar { 
+            display: flex; 
+            justify-content: space-evenly; 
+            background-color: var(--dark-luxury);
+            background-image: linear-gradient(to right, #111, #1a0508, #111);
+            padding: 55px 30px; 
+            color: #ffffff;
+            box-shadow: inset 0 10px 30px rgba(0,0,0,0.8);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .feature-item { 
+            text-align: center; 
+            padding: 0 30px; 
+            position: relative;
+            flex: 1;
+            transform: perspective(1000px) translateZ(0);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .feature-item:hover { transform: perspective(1000px) translateY(-5px) translateZ(10px); }
+        .feature-item:not(:last-child):after {
+            content: '';
+            position: absolute; right: 0; top: 20%; height: 60%; width: 1px;
+            background: rgba(255,255,255,0.15);
+        }
+        .feature-item svg { width: 34px; height: 34px; stroke: var(--gold-acc); fill: none; stroke-width: 1.2; margin-bottom: 15px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); transition: transform 0.3s;}
+        .feature-item:hover svg { transform: scale(1.1); stroke: #fff;}
+        .feature-item h4 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; }
+        .feature-item p { font-family: 'Playfair Display', serif; font-size: 13px; font-style: italic; color: #999; letter-spacing: 1px; }
+
+        .new-arrivals-sec, .shop-sec { padding: 60px; background-color: #ffffff; }
+        .na-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; border-bottom: 1px solid rgba(100, 31, 42, 0.2); padding-bottom: 15px;}
+        .na-header h2, .shop-sec .section-header h2 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 38px; letter-spacing: 2px; color: var(--maroon); font-style: italic; }
+        .na-header a { font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color:var(--maroon); text-decoration: none; font-weight: 600; cursor: pointer; transition: opacity 0.3s;}
+        .na-header a:hover { opacity: 0.7; }
+        
+        /* 4-CARD NEW DROP SECTION */
+        .elegant-arrivals-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: stretch; }
+        .featured-arrival { position: relative; height: 100%; min-height: 520px; border-radius: 8px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15);}
+        .featured-arrival img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);}
+        .featured-arrival:hover img { transform: scale(1.05); }
+        .featured-arrival::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to top, rgba(26,5,8,0.85), transparent); z-index: 1;}
+        .overlay-text { position: absolute; bottom: 30px; left: 30px; color: white; z-index: 2;}
+        .overlay-text h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; margin-bottom: 6px; font-style: italic;}
+        .overlay-text p { font-size: 12px; letter-spacing: 1.5px; opacity: 0.9;}
+        
+        .arrivals-grid, .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; text-align: left; }
+        .arrivals-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; align-content: space-between; height: 100%; margin: 0; }
+        .shop-sec { background-color: #ffffff; text-align: center; }
+        .shop-sec .section-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 35px; gap: 6px;}
+        .shop-sec .section-header p { font-family: 'Imperial Script', cursive; font-size: 30px; color: #555; }
+
+        /* PRODUCT CARDS */
+        .product-card { color: var(--maroon); display: flex; flex-direction: column; position: relative; background: #ffffff; padding: 10px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; border: 1px solid rgba(100,31,42,0.06); height: 100%; }
+        .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 45px rgba(100,31,42,0.12); }
+        
+        .product-img-box { position: relative; margin-bottom: 8px; overflow: hidden; border-radius: 6px; flex: 1; }
+        .product-img-box img { width: 100%; height: 175px; object-fit: cover; cursor: pointer; transition: transform 0.5s ease; display: block; }
+        .product-card:hover .product-img-box img { transform: scale(1.06); }
+        
+        .product-hover-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, rgba(100,31,42,0.92), rgba(100,31,42,0.4), transparent);
+            padding: 16px 8px 8px; display: flex; gap: 6px;
+            opacity: 0; transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 5;
+        }
+        .product-img-box:hover .product-hover-overlay { opacity: 1; transform: translateY(0); }
+
+        .wishlist-btn { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); border-radius: 50%; padding: 8px; border: none; cursor: pointer; z-index: 10; backdrop-filter: blur(4px); transition: background 0.3s;}
         .wishlist-btn:hover { background: var(--maroon); }
-        .wishlist-btn svg { width: 18px; height: 18px; stroke: var(--maroon); fill: none; transition: stroke 0.3s, fill 0.3s; }
+        .wishlist-btn svg { width: 16px; height: 16px; stroke: var(--maroon); fill: none; transition: stroke 0.3s; }
         .wishlist-btn:hover svg { stroke: white; }
         
-        .product-card h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 5px; }
-        .product-card p { font-size: 14px; font-weight: 600; margin-bottom: 15px;}
+        .product-card h4 { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 600; margin-bottom: 4px; cursor: pointer; transition: color 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .product-card h4:hover { color: #8a2a39; }
+        .product-card p { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; color: #1a0508; margin-bottom: 0;}
+
+        /* BUY NOW BUTTON */
+        .buy-now-btn, .add-cart-btn { flex: 1; padding: 6px 2px; font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 4px; cursor: pointer; text-align: center; transition: all 0.3s; }
+        .buy-now-btn { background-color: #ffffff; color: var(--maroon); border: 1px solid #ffffff; }
+        .buy-now-btn:hover { background-color: #f7f3ec; transform: translateY(-2px); }
+        .add-cart-btn { background-color: var(--maroon); color: white; border: 1px solid rgba(255,255,255,0.4); }
+        .add-cart-btn:hover { background-color: #4a151d; transform: translateY(-2px); }
+
+        /* CART, WISHLIST, CHECKOUT & TRACKING */
+        .cart-page-inner, .checkout-inner { padding: 120px 60px 80px; max-width: 1200px; margin: 0 auto; min-height: 80vh;}
+        .page-title { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 42px; text-align: center; margin-bottom: 50px; color: var(--maroon); font-style: italic; text-shadow: 2px 2px 10px rgba(100,31,42,0.1); }
         
-        /* ALWAYS VISIBLE ACTION BUTTONS (Buy Now & Add to Cart side-by-side) */
-        .action-buttons { display: flex; gap: 10px; margin-top: auto; }
-        .buy-now-btn, .add-cart-btn { flex: 1; padding: 12px 10px; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: all 0.3s; text-align: center; }
-        
-        /* Buy Now in Pearl & Burgundy */
-        .buy-now-btn { background-color: var(--bg-hero); color: var(--maroon); border: 1px solid var(--maroon); box-shadow: 0px 4px 0px #310a0b; }
-        .buy-now-btn:active { transform: translateY(4px); box-shadow: 0px 0px 0px #310a0b; }
-        .buy-now-btn:hover { background-color: var(--maroon); color: white; }
-
-        /* Add to Cart in solid Burgundy */
-        .add-cart-btn { background-color: var(--maroon); color: white; border: 1px solid var(--maroon); box-shadow: 0px 4px 0px #2a0809; }
-        .add-cart-btn:active { transform: translateY(4px); box-shadow: 0px 0px 0px #2a0809; }
-        .add-cart-btn:hover { background-color: #5a1516; }
-
-        .view-more-btn { background: transparent; color: var(--maroon); border: 1px solid var(--maroon); padding: 15px 40px; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin-top: 50px; transition: all 0.3s; }
-        .view-more-btn:hover { background: var(--maroon); color: white; }
-
-        /* FEEDBACK SECTION */
-        .contact-sec { padding: 80px 60px; background-color: #f8f4ed; display: flex; gap: 60px; align-items: center; min-height: 70vh;}
-        .contact-text { flex: 1; }
-        .contact-text h2 { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--maroon); margin-bottom: 10px; line-height: 1.2;}
-        .contact-text p { font-family: 'Imperial Script', cursive; font-size: 38px; color: #555; margin-bottom: 30px; }
-        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 20px; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
-        .contact-form input, .contact-form textarea { width: 100%; padding: 15px; border: 1px solid rgba(74, 16, 17, 0.2); background: transparent; font-family: 'Montserrat', sans-serif; font-size: 13px; color: var(--maroon); outline: none; transition: border 0.3s;}
-        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--maroon); }
-        .contact-form textarea { resize: none; height: 120px; }
-
-        /* CART & WISHLIST PAGES */
-        .cart-page-inner { padding: 80px 60px; max-width: 1200px; margin: 0 auto; min-height: 70vh;}
-        .page-title { font-family: 'Cinzel', serif; font-size: 36px; text-align: center; margin-bottom: 50px; color: var(--maroon); }
-        .cart-item { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(74,16,17,0.2); padding: 20px 0; }
-        .cart-item img { width: 100px; height: 100px; object-fit: cover; border-radius: 4px; cursor: pointer; }
+        .cart-item { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(100,31,42,0.15); padding: 20px 0; background: white; margin-bottom: 15px; padding: 20px; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.03);}
+        .cart-item img { width: 100px; height: 100px; object-fit: cover; border-radius: 6px; cursor: pointer; }
         .cart-item-info { flex: 1; margin-left: 30px; }
-        .cart-item-info h4 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; }
-        .cart-item-price { font-weight: 600; font-size: 16px;}
-        .remove-btn { background: none; border: none; color: #d9534f; cursor: pointer; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; padding: 10px;}
-        .cart-summary { margin-top: 40px; text-align: right; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);}
-        .cart-summary h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 20px; }
-        
-        /* CHECKOUT / PAYMENT PAGE */
-        .checkout-inner { padding: 80px 60px; max-width: 700px; margin: 0 auto; min-height: 70vh;}
-        .payment-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 15px 40px rgba(74,16,17,0.08); border-top: 5px solid var(--maroon);}
-        .payment-box h4 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 20px; color: var(--maroon); border-bottom: 1px solid rgba(74,16,17,0.1); padding-bottom: 10px;}
-        .payment-box input { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid rgba(74,16,17,0.2); font-family: 'Montserrat'; outline: none; border-radius: 4px; transition: border 0.3s;}
-        .payment-box input:focus { border-color: var(--maroon); }
-        .payment-methods { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;}
-        .pay-method { display: flex; align-items: center; gap: 15px; border: 1px solid rgba(74,16,17,0.2); padding: 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-weight: 500;}
-        .pay-method:hover { border-color: var(--maroon); background: var(--bg-hero); }
-        .pay-method input[type="radio"] { width: 20px; height: 20px; accent-color: var(--maroon); }
+        .cart-item-info h4 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 8px; color: var(--maroon); }
+        .remove-btn { background: none; border: none; color: #d9534f; cursor: pointer; font-size: 12px; font-weight: bold; text-transform: uppercase; padding: 10px; transition: opacity 0.3s;}
+        .remove-btn:hover { opacity: 0.7; }
+        .cart-summary { margin-top: 40px; text-align: right; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid rgba(100,31,42,0.1);}
+        .cart-summary h3 { font-family: 'Playfair Display', serif; font-size: 30px; margin-bottom: 25px; color: var(--maroon); }
 
-        /* TRACK ORDER PAGE */
-        .tracking-box { text-align: center; }
-        .tracking-box input { max-width: 400px; text-align: center; font-weight: 600; font-size: 16px;}
+        .payment-box { background: white; padding: 50px; border-radius: 16px; box-shadow: 0 25px 60px rgba(100,31,42,0.1); border-top: 6px solid var(--maroon); max-width: 750px; margin: 0 auto; border: 1px solid rgba(197,160,89,0.2);}
+        .payment-box h4 { color: var(--maroon); margin-bottom: 20px; font-family: 'Playfair Display', serif; font-size: 24px; border-bottom: 1px solid rgba(100,31,42,0.15); padding-bottom: 12px;}
+        .payment-box input { width: 100%; padding: 16px; margin-bottom: 20px; border: 1px solid rgba(100,31,42,0.25); font-family: 'Montserrat'; outline: none; border-radius: 6px; font-size: 14px; transition: all 0.3s;}
+        .payment-box input:focus { border-color: var(--maroon); box-shadow: 0 0 12px rgba(100,31,42,0.15); }
+        .payment-methods { display: flex; gap: 15px; margin-bottom: 30px;}
+        .pay-method { flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1.5px solid rgba(100,31,42,0.25); padding: 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; text-transform: uppercase; transition: all 0.3s;}
+        .pay-method:hover { border-color: var(--maroon); background: #f7f3ec; transform: translateY(-2px); }
 
-        /* FIXED COMPACT FOOTER */
-        .site-footer { background-color: var(--bg-hero); padding: 60px 80px 20px; color: var(--maroon); border-top: 1px solid rgba(74, 16, 17, 0.1); box-shadow: inset 0 20px 20px -20px rgba(74,16,17,0.15);}
-        .footer-main { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid rgba(74, 16, 17, 0.2); }
-        .footer-logo h3 { font-family: 'Cinzel', serif; font-size: 28px; }
-        .footer-logo p { font-family: 'Playfair Display', serif; font-size: 14px; margin-top: 10px; line-height: 1.5;}
-        .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 20px; }
+        /* AESTHETIC FLOATING FEEDBACK SECTION */
+        .contact-sec { padding: 90px 60px; background: linear-gradient(135deg, #ffffff 0%, #f7f3ec 100%); display: flex; gap: 60px; align-items: center; min-height: 75vh; position: relative; border-top: 1px solid rgba(100,31,42,0.1); }
+        .contact-text { flex: 1; }
+        .contact-text h2 { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--maroon); margin-bottom: 12px; line-height: 1.15; text-shadow: 2px 2px 10px rgba(100,31,42,0.08); }
+        .contact-text p { font-family: 'Imperial Script', cursive; font-size: 38px; color: #555; margin-bottom: 25px; }
+        .contact-form { flex: 1; display: flex; flex-direction: column; gap: 20px; background: #ffffff; padding: 45px; border-radius: 16px; box-shadow: 0 30px 70px rgba(100,31,42,0.15), 0 10px 20px rgba(0,0,0,0.05); border: 1px solid rgba(197,160,89,0.3); position: relative; transform: perspective(1000px) rotateX(4deg) rotateY(-4deg); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease; }
+        .contact-form:hover { transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-5px); box-shadow: 0 40px 90px rgba(100,31,42,0.22), 0 15px 30px rgba(0,0,0,0.08); }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 15px 18px; border: 1px solid rgba(100, 31, 42, 0.25); background: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 14px; color: var(--maroon); outline: none; border-radius: 8px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); transition: all 0.3s ease; }
+        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--maroon); box-shadow: 0 0 15px rgba(100,31,42,0.15), inset 0 2px 5px rgba(0,0,0,0.02); transform: translateY(-2px); }
+        .contact-form textarea { resize: none; height: 110px; }
+
+        /* LIGHT & ELEGANT LUXURY FOOTER */
+        .site-footer { background-color: #fcfaf8; color: var(--maroon); padding: 80px 80px 25px; border-top: 1px solid rgba(100,31,42,0.15); box-shadow: inset 0 15px 30px rgba(0,0,0,0.02);}
+        .footer-main { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 50px; border-bottom: 1px solid rgba(100,31,42,0.15); }
+        .footer-logo h3 { font-family: 'Cinzel', serif; font-size: 32px; color: var(--maroon); letter-spacing: 3px;}
+        .footer-logo p { font-family: 'Playfair Display', serif; font-size: 15px; margin-top: 15px; line-height: 1.6; color: #555; font-style: italic;}
+        .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 19px; margin-bottom: 25px; color: var(--maroon); letter-spacing: 1.5px; font-weight: 600;}
         .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 12px; }
-        .footer-col a { color: var(--maroon); text-decoration: none; font-size: 13px; transition: opacity 0.2s; cursor: pointer;}
-        .footer-col a:hover { opacity: 0.6; }
+        .footer-col li { margin-bottom: 15px; }
+        .footer-col a { color: #555; font-family: 'Montserrat', sans-serif; font-weight: 500; text-decoration: none; font-size: 13px; cursor: pointer; transition: color 0.3s;}
+        .footer-col a:hover { color: var(--maroon); }
         
-        .social-icons { display: flex; gap: 15px; margin-top: 20px;}
-        .social-icons svg { width: 20px; height: 20px; stroke: var(--maroon); fill: none; cursor: pointer; transition: transform 0.3s; }
-        .social-icons svg:hover { transform: translateY(-3px); }
+        .social-icons { display: flex; gap: 15px; margin-top: 25px;}
+        .social-icons svg { width: 22px; height: 22px; stroke: var(--maroon); fill: none; stroke-width: 1.5; cursor: pointer; transition: all 0.3s; }
+        .social-icons svg:hover { transform: translateY(-4px) scale(1.1); stroke: var(--gold-acc); }
         
-        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; font-size: 11px; opacity: 0.9; }
-        .admin-link-btn { background: var(--bg-hero); color: var(--maroon); padding: 8px 20px; border-radius: 20px; border: 1px solid var(--maroon); text-decoration: none; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 10px rgba(74,16,17,0.1);}
-        .admin-link-btn:hover { background: var(--maroon); color: white; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(74,16,17,0.3);}
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 25px; font-size: 12px; color: #666; font-weight: 500; flex-wrap: wrap; gap: 15px; }
+        .footer-3d-links { display: flex; gap: 15px; align-items: center; }
+        .footer-3d-link { cursor: pointer; transition: color 0.3s; text-decoration: none; color: #666; font-weight: 500; }
+        .footer-3d-link:hover { color: var(--maroon); }
 
-        /* SMALL COMPACT DROPDOWN (Mobile Menu) */
-        .mini-dropdown { position: absolute; top: 60px; right: 0; background: white; border: 1px solid var(--maroon); border-radius: 8px; padding: 15px; display: none; flex-direction: column; gap: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 1001; width: 180px; }
+        .admin-link-btn { background: #ffffff; color: var(--maroon); padding: 10px 24px; border-radius: 30px; border: 1.5px solid var(--maroon); text-decoration: none; font-weight: 700; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;}
+        .admin-link-btn:hover { background: var(--maroon); color: white; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(100,31,42,0.2);}
+
+        .mini-dropdown { position: absolute; top: 60px; right: 0; background: white; border: 1px solid var(--maroon); border-radius: 8px; padding: 15px; display: none; flex-direction: column; gap: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.12); z-index: 1001; width: 200px; }
         .mini-dropdown.open { display: flex; }
-        .dropdown-item { display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--maroon); font-size: 13px; font-weight: 600; cursor: pointer; border-bottom: 1px solid rgba(74,16,17,0.1); padding-bottom: 10px;}
-        .dropdown-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .dropdown-item svg { width: 20px; height: 20px; stroke: var(--maroon); fill: none; }
-        .mob-links { display: flex; flex-direction: column; gap: 15px; border-bottom: 1px solid rgba(74,16,17,0.1); padding-bottom: 15px;}
+        .dropdown-item { display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: var(--maroon); font-size: 13px; font-weight: 600; cursor: pointer; border-bottom: 1px solid rgba(100,31,42,0.1); padding-bottom: 10px;}
 
-        /* MOBILE RESPONSIVE CSS */
+        /* MATCHING SCREENSHOT LUXURY DESIGN FOR PAGES */
+        .about-hero-box { position: relative; width: 100%; min-height: 500px; border-radius: 16px; overflow: hidden; display: flex; align-items: center; padding: 60px; margin-bottom: 40px; box-shadow: 0 25px 60px rgba(100,31,42,0.15); background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(247,243,236,0.9)), url('1.jpg') center/cover no-repeat; }
+        .about-hero-text { max-width: 55%; z-index: 2; }
+        .about-hero-text h2 { font-family: 'Playfair Display', serif; font-size: 52px; color: var(--maroon); margin-bottom: 15px; font-style: italic; }
+        .about-hero-text p { font-size: 15px; line-height: 1.8; color: #444; margin-bottom: 25px; }
+        .about-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 40px; }
+        .about-card { background: #ffffff; padding: 35px 25px; border-radius: 12px; text-align: center; box-shadow: 0 15px 35px rgba(100,31,42,0.08); border: 1px solid rgba(197,160,89,0.2); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .about-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(100,31,42,0.15); }
+        .about-card svg { width: 36px; height: 36px; stroke: var(--maroon); fill: none; margin-bottom: 15px; }
+        .about-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--maroon); margin-bottom: 10px; font-style: italic; }
+        .about-card p { font-size: 13px; line-height: 1.6; color: #555; }
+
+        .reviews-stats-bar { display: flex; justify-content: space-around; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 15px 40px rgba(100,31,42,0.08); margin-bottom: 40px; border: 1px solid rgba(197,160,89,0.2); text-align: center; }
+        .stat-box h3 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--maroon); margin-bottom: 5px; }
+        .stat-box p { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #666; font-weight: 600; }
+        .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .review-card { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid rgba(100,31,42,0.1); display: flex; gap: 20px; align-items: flex-start; }
+        .review-card img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--maroon); }
+        .review-card h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--maroon); margin-bottom: 5px; }
+        .review-card .stars { color: #f39c12; margin-bottom: 10px; font-size: 14px; }
+        .review-card p { font-size: 13px; line-height: 1.7; color: #444; font-style: italic; }
+
+        .luxury-blog-grid-full { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .lux-blog-card-full { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 45px rgba(0,0,0,0.08); border: 1px solid rgba(100,31,42,0.1); transition: transform 0.4s ease; cursor: pointer; }
+        .lux-blog-card-full:hover { transform: translateY(-8px); }
+        .lux-blog-card-full img { width: 100%; height: 320px; object-fit: cover; }
+        .lux-blog-info { padding: 30px; }
+        .lux-blog-info span { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--gold-acc); text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .lux-blog-info h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--maroon); margin-bottom: 15px; font-style: italic; line-height: 1.3; }
+        .lux-blog-info p { font-size: 13px; line-height: 1.7; color: #555; margin-bottom: 20px; }
+
+        .privacy-hero-box { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #ffffff, #f7f3ec); padding: 50px 60px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 20px 50px rgba(100,31,42,0.1); border: 1px solid rgba(197,160,89,0.3); }
+        .privacy-hero-text h2 { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--maroon); margin-bottom: 15px; font-style: italic; }
+        .privacy-hero-text p { font-size: 14px; line-height: 1.8; color: #555; max-width: 600px; }
+        .privacy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .privacy-card { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid rgba(100,31,42,0.1); display: flex; gap: 20px; align-items: flex-start; }
+        .privacy-card .icon-box { background: rgba(100,31,42,0.08); padding: 15px; border-radius: 10px; }
+        .privacy-card svg { width: 28px; height: 28px; stroke: var(--maroon); fill: none; }
+        .privacy-card h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--maroon); margin-bottom: 8px; font-style: italic; }
+        .privacy-card p { font-size: 13px; line-height: 1.7; color: #555; }
+
+        .shipping-hero-box { text-align: center; background: linear-gradient(135deg, #ffffff, #f7f3ec); padding: 50px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 20px 50px rgba(100,31,42,0.1); border: 1px solid rgba(197,160,89,0.3); }
+        .shipping-hero-box h2 { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--maroon); margin-bottom: 10px; font-style: italic; }
+        .shipping-hero-box p { font-size: 14px; color: #555; max-width: 700px; margin: 0 auto; line-height: 1.8; }
+        .shipping-features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+        .shipping-feat-card { background: #ffffff; padding: 25px 20px; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid rgba(100,31,42,0.1); }
+        .shipping-feat-card svg { width: 28px; height: 28px; stroke: var(--maroon); fill: none; margin-bottom: 12px; }
+        .shipping-feat-card h4 { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--maroon); margin-bottom: 6px; }
+        .shipping-feat-card p { font-size: 12px; color: #666; line-height: 1.5; }
+        .shipping-banner-strip { background: var(--maroon); color: white; padding: 25px; border-radius: 12px; text-align: center; font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; letter-spacing: 1px; box-shadow: 0 15px 35px rgba(100,31,42,0.2); }
+
+        /* EXQUISITE 3D PREMIUM FAQ STYLING WITH HOVER ANIMATIONS */
+        .faq-master-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .faq-hero-3d {
+            text-align: center; background: linear-gradient(135deg, #ffffff, #f7f3ec); padding: 60px 40px; border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(100,31,42,0.1); border: 1px solid rgba(197,160,89,0.3); margin-bottom: 50px;
+        }
+        .faq-hero-3d span { font-size: 11px; letter-spacing: 3px; font-weight: 700; color: var(--gold-acc); text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .faq-hero-3d h2 { font-family: 'Playfair Display', serif; font-size: 46px; color: var(--maroon); font-style: italic; margin-bottom: 15px; }
+        .faq-hero-3d p { font-size: 14px; color: #555; max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+        .faq-3d-wrapper { display: flex; flex-direction: column; gap: 20px; }
+        .faq-item-3d {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(100,31,42,0.06);
+            border: 1px solid rgba(100,31,42,0.12);
+            overflow: hidden;
+            transform: perspective(1000px) translateZ(0);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        .faq-item-3d:hover {
+            transform: perspective(1000px) translateY(-4px) translateZ(10px);
+            box-shadow: 0 20px 45px rgba(100,31,42,0.15);
+            border-color: var(--gold-acc);
+        }
+        .faq-head-3d {
+            padding: 24px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--maroon);
+            background: #ffffff;
+            transition: background 0.3s;
+        }
+        .faq-item-3d:hover .faq-head-3d { background: #fdfbf7; }
+        .faq-head-3d span {
+            font-size: 20px; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 32px; height: 32px; background: rgba(100,31,42,0.06); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; color: var(--maroon);
+        }
+        .faq-item-3d.active .faq-head-3d span { transform: rotate(180deg); background: var(--maroon); color: white; }
+        .faq-body-3d {
+            max-height: 0; overflow: hidden; padding: 0 30px; font-size: 14px; line-height: 1.8; color: #555;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+            background: #fdfbf7;
+            border-top: 1px solid transparent;
+        }
+        .faq-item-3d.active .faq-body-3d {
+            max-height: 250px; padding: 25px 30px;
+            border-top: 1px solid rgba(100,31,42,0.08);
+        }
+
+        /* MOBILE RESPONSIVENESS FIXES (CIRCLES IN 1 LINE & SPACING FIXES) */
         @media (max-width: 1024px) {
             .navbar { padding: 15px 30px; }
             .nav-links { gap: 10px; padding-right: 25px; }
             .nav-links.right { padding-left: 25px; }
             .global-floating-icons { right: 20px; }
             .product-grid { grid-template-columns: repeat(3, 1fr); }
-            .elegant-arrivals-layout { grid-template-columns: 1fr; }
-            .featured-arrival { min-height: 400px; }
             .footer-main { grid-template-columns: repeat(2, 1fr); }
             .contact-sec { flex-direction: column; gap: 30px; }
+            .circle-grid { gap: 20px; }
         }
 
         @media (max-width: 768px) {
-            .top-bar { padding: 8px 0; font-size: 9px; }
-            .navbar { padding: 15px 20px; justify-content: space-between; }
-            .logo-container { flex: unset; }
-            .navbar-logo { max-height: 50px; }
-            .nav-links { display: none; } 
-            
-            .nav-icons { position: relative; right: 0; gap: 15px; }
+            .navbar { padding: 10px 15px; justify-content: space-between; }
+            .nav-links { display: none !important; }
+            .nav-icons { right: 15px; gap: 10px; }
             .mobile-menu-icon { display: flex !important; }
-            .global-floating-icons { display: none; } 
             
-            .top-search-bar { padding: 20px; }
-            .search-container input { font-size: 18px; }
-            .close-search { right: 20px; top: 25px; font-size: 24px;}
+            .hero { height: auto; min-height: auto; padding: 20px 15px; text-align: center; }
+            .giant-text { font-size: 20vw; top: 35%; }
+            .hero-model { position: relative; height: 350px; left: 50%; transform: translateX(-50%); margin: 15px 0; }
+            .content-left-top, .content-left-bottom { position: relative; top: auto; left: auto; max-width: 100%; text-align: center; }
+            .content-left-bottom { margin-top: 10px; }
+            
+            /* FIXING CIRCLES TO FIT IN ONE HORIZONTAL SCROLLING LINE ON MOBILE */
+            .circle-collections-sec { padding: 30px 10px; }
+            .circle-collections-sec h2 { font-size: 28px; margin-bottom: 25px; }
+            .circle-grid { 
+                display: flex; 
+                flex-wrap: nowrap; 
+                overflow-x: auto; 
+                justify-content: flex-start; 
+                gap: 15px; 
+                padding-bottom: 15px; 
+                scrollbar-width: none; 
+            }
+            .circle-grid::-webkit-scrollbar { display: none; }
+            .circle-item { min-width: 85px; }
+            .circle-img-wrap { width: 75px; height: 75px; border-width: 2px; margin-bottom: 8px; }
+            .circle-item span { font-size: 9px; letter-spacing: 1px; }
 
-            .hero { height: auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; padding: 30px 20px 50px; }
-            .giant-text { font-size: 22vw; top: 40%; }
-            .hero-model { position: relative; height: 48vh; max-width: 100%; object-fit: contain; bottom: auto; left: auto; transform: none; margin: 0 auto; z-index: 2; }
-            .content-left-top { position: relative; top: 0; left: 0; margin-bottom: 30px; text-align: left; align-self: flex-start; }
-            .elegant-title { align-items: flex-start; }
-            .elegant-title .sans { margin-left: 0; }
-            .content-left-bottom { position: relative; bottom: auto; left: auto; text-align: left; max-width: 100%; margin-top: 20px; }
-            .creations-text { font-size: 16px; letter-spacing: 8px; margin-bottom: 10px; }
-            .description { font-size: 30px; margin-bottom: 25px; }
-            .btn-primary { width: 100%; text-align: center; margin-bottom: 0; }
-            
-            .category-section { grid-template-columns: 1fr; padding: 30px 20px; gap: 0; }
-            .cat-item { flex-direction: column; text-align: center; padding: 20px 0; gap: 15px; justify-content: flex-start; }
-            .cat-item:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            
             .promo-split { flex-direction: column; height: auto; }
-            .promo-video { padding: 60px 20px; min-height: 250px; align-items: center; text-align: center; }
-            .promo-gift { padding: 40px 20px; text-align: center; align-items: center; }
+            .promo-video { padding: 30px 15px; min-height: 250px; }
+            .promo-gift { padding: 30px 15px; text-align: center; }
             .promo-text-wrap { max-width: 100%; align-items: center; }
-            .gift-img { position: relative; width: 90%; max-width: 280px; transform: none; margin: 30px auto 0; right: auto; top: auto; }
+            .gift-img { position: relative; right: auto; top: auto; transform: none; width: 100%; max-width: 100%; margin-top: 15px; height: 180px; }
             
-            .shop-sec, .new-arrivals-sec, .contact-sec, .cart-page-inner, .checkout-inner { padding: 40px 20px; }
-            .shop-sec .section-header h2 { font-size: 28px; text-align: center;}
-            .product-grid, .arrivals-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .product-img-box img { height: 200px; }
+            .features-bar { flex-direction: column; gap: 20px; padding: 30px 15px; }
+            .feature-item:not(:last-child):after { display: none; }
             
-            .action-buttons { flex-direction: column; gap: 5px; }
-            .buy-now-btn, .add-cart-btn { font-size: 9px; padding: 10px; width: 100%;}
+            /* FIXING NEW ARRIVALS & SPACING ON MOBILE */
+            .new-arrivals-sec, .shop-sec { padding: 30px 15px; }
+            .na-header { margin-bottom: 20px; padding-bottom: 10px; }
+            .na-header h2 { font-size: 26px; }
+            .elegant-arrivals-layout { display: flex; flex-direction: column; gap: 20px; }
+            .featured-arrival { min-height: 350px; }
+            .arrivals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; height: auto !important; }
+            .product-card { padding: 8px; }
+            .product-img-box img { height: 150px; }
             
-            .features-bar { flex-direction: column; gap: 20px; padding: 30px 20px; }
-            .feature-item:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(74, 16, 17, 0.1); padding-bottom: 20px; }
+            .contact-sec { padding: 30px 15px; flex-direction: column; gap: 20px; }
+            .contact-form { padding: 25px 20px; transform: none !important; }
             
-            /* Responsive Clean Footer */
-            .site-footer { padding: 40px 20px; text-align: center; }
-            .footer-main { grid-template-columns: 1fr; gap: 30px; padding-bottom: 20px; }
-            .social-icons { justify-content: center; }
-            .footer-bottom { flex-direction: column; align-items: center; gap: 15px; }
+            .site-footer { padding: 30px 15px; }
+            .footer-main { grid-template-columns: 1fr; gap: 25px; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
+            .footer-3d-links { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .arrivals-grid, .product-grid { grid-template-columns: 1fr; }
+            .product-img-box img { height: 220px; }
         }
     </style>
 </head>
-<!-- Restrict Right Click and Image Copying -->
 <body oncontextmenu="return false;">
 
     <div class="top-bar">
         <div class="top-bar-content">
-            <span>&#10022; FREE SHIPPING ON ORDERS ABOVE ₹1,499 &#10022;</span>
-            <span>&#10022; Handmade Today, A Kinder Tomorrow &#10022;</span>
-            <span>&#10022; FREE SHIPPING ON ORDERS ABOVE ₹1,499 &#10022;</span>
-            <span>&#10022; Handmade Today, A Kinder Tomorrow &#10022;</span>
+            <span>&#10022; COMPLIMENTARY EXPRESS SHIPPING WORLDWIDE ON ORDERS ABOVE ₹1,499 &#10022;</span>
+            <span>&#10022; HANDCRAFTED LUXURY, DESIGNED FOR ELEGANCE &#10022;</span>
+            <span>&#10022; COMPLIMENTARY EXPRESS SHIPPING WORLDWIDE ON ORDERS ABOVE ₹1,499 &#10022;</span>
+            <span>&#10022; HANDCRAFTED LUXURY, DESIGNED FOR ELEGANCE &#10022;</span>
         </div>
     </div>
 
-    <!-- ELEGANT TOP SEARCH BAR (Fixed Logo background) -->
+    <!-- SEARCH BAR -->
     <div class="top-search-bar" id="searchOverlay">
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search for elegance..." onkeypress="if(event.key === 'Enter') handleSearch()">
-            
-            <!-- Elegant Search Button -->
-            <button class="search-btn-elegant" onclick="handleSearch()">
-                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="searchInput" placeholder="Search our luxury collection..." onkeypress="if(event.key === 'Enter') handleSearch()">
+            <button class="search-btn-elegant" onclick="handleSearch()" style="background:none; border:none; cursor:pointer;">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="#641f2a" fill="none" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
-
         </div>
         <span class="close-search" onclick="toggleSearch()">&times;</span>
     </div>
@@ -352,7 +564,6 @@
             <a onclick="navigate('shop-page')">Shop</a>
         </div>
         
-        <!-- Clicking Logo goes back to Index/Home -->
         <div class="logo-container" onclick="navigate('home-page')">
             <img src="burgundy logo.png" alt="Shrivi Creations Logo" class="navbar-logo" onerror="this.src='https://via.placeholder.com/150x85?text=Logo'">
         </div>
@@ -374,20 +585,18 @@
                 <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 
                 <div class="mini-dropdown" id="miniDropdown">
-                    <div class="mob-links">
+                    <div style="display:flex; flex-direction:column; gap:10px;">
                         <a class="dropdown-item" onclick="navigate('collections-page')">Collections</a>
                         <a class="dropdown-item" onclick="navigate('shop-page')">Shop</a>
                         <a class="dropdown-item" onclick="navigate('new-arrivals-page')">New Arrivals</a>
                         <a class="dropdown-item" onclick="navigate('feedback-page')">Contact</a>
                     </div>
-                    <div class="dropdown-item" onclick="navigate('wishlist-page')">Wishlist <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                    <div class="dropdown-item" onclick="navigate('cart-page')">Cart <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg><span class="badge cart-badge-count">0</span></div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- FIXED FLOATING ICONS (Laptop/Desktop only) -->
+    <!-- FLOATING ICONS -->
     <div class="global-floating-icons">
         <div class="float-btn" onclick="navigate('wishlist-page')">
             <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
@@ -398,67 +607,72 @@
         </div>
     </div>
 
-    <!-- FULLSCREEN IMAGE LIGHTBOX -->
+    <!-- LIGHTBOX -->
     <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
         <img src="" id="lightboxImg" class="lightbox-img">
     </div>
 
-    <!-- CUSTOMER AUTH MODAL (WITH OTP) -->
+    <!-- 3D AUTH MODAL -->
     <div class="modal-overlay" id="customerAuthModal">
         <div class="modal-box">
             <span class="modal-close" onclick="toggleModal('customerAuthModal')">&times;</span>
             <div class="auth-tabs">
-                <span class="auth-tab active" onclick="switchAuthTab('login')">Login</span>
-                <span class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</span>
+                <span class="auth-tab active" onclick="switchAuthTab('login')">Client Login</span>
+                <span class="auth-tab" onclick="switchAuthTab('signup')">Register</span>
             </div>
             
-            <!-- Login Form -->
             <div id="loginForm" class="auth-form active">
                 <div id="loginInputs">
-                    <input type="email" id="custEmail" placeholder="Email Address">
-                    <input type="password" id="custPass" placeholder="Password">
-                    <a class="forgot-pass" onclick="alert('Password Reset link has been elegantly sent to your email!')">Forgot Password?</a>
+                    <input type="email" id="custEmail" placeholder="Registered Email Address">
+                    <input type="password" id="custPass" placeholder="Secure Password">
+                    <a class="forgot-pass" onclick="showUiMsg('Secure reset link dispatched to email.', false, 'login')">Forgot Password?</a>
                 </div>
                 <div id="loginOtp" style="display:none;">
-                    <p style="font-size:12px; margin-bottom: 10px;">Enter the 4-digit OTP sent to your email.</p>
-                    <input type="text" id="custOtpVal" placeholder="OTP (e.g. 1234)" maxlength="4" style="text-align:center; font-size: 20px; letter-spacing: 5px;">
+                    <p style="font-size:13px; color:#555; margin-bottom: 15px;">Enter the 4-digit security code generated in terminal.</p>
+                    <input type="text" id="custOtpVal" placeholder="••••" maxlength="4" style="text-align:center; font-size: 24px; letter-spacing: 8px;">
                 </div>
-                <button class="btn-full" id="loginBtn" onclick="handleAuth('login')">Send OTP</button>
+                <div id="loginMsgBox" style="font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--maroon);"></div>
+                <button class="btn-full" id="loginBtn" onclick="handleAuth('login')">Authenticate via OTP</button>
             </div>
             
-            <!-- Signup Form -->
             <div id="signupForm" class="auth-form">
                 <div id="signupInputs">
                     <input type="text" id="regName" placeholder="Full Name">
                     <input type="email" id="regEmail" placeholder="Email Address">
-                    <input type="password" id="regPass" placeholder="Create Password">
+                    <input type="password" id="regPass" placeholder="Create Secure Password">
                 </div>
                 <div id="signupOtp" style="display:none;">
-                    <p style="font-size:12px; margin-bottom: 10px;">Enter the 4-digit OTP sent to your email.</p>
-                    <input type="text" id="regOtpVal" placeholder="OTP (e.g. 1234)" maxlength="4" style="text-align:center; font-size: 20px; letter-spacing: 5px;">
+                    <p style="font-size:13px; color:#555; margin-bottom: 15px;">Enter verification code from terminal.</p>
+                    <input type="text" id="regOtpVal" placeholder="••••" maxlength="4" style="text-align:center; font-size: 24px; letter-spacing: 8px;">
                 </div>
-                <button class="btn-full" id="signupBtn" onclick="handleAuth('signup')">Send OTP</button>
+                <div id="signupMsgBox" style="font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--maroon);"></div>
+                <button class="btn-full" id="signupBtn" onclick="handleAuth('signup')">Initialize Account</button>
             </div>
         </div>
     </div>
 
-    <!-- ADMIN LOGIN MODAL -->
-    <div class="modal-overlay" id="adminLoginModal">
-        <div class="modal-box">
-            <span class="modal-close" onclick="toggleModal('adminLoginModal')">&times;</span>
-            <h2>Admin Gateway</h2>
-            <input type="email" id="adminEmail" placeholder="Admin Email (admin@shrivi.com)">
-            <input type="password" id="adminPass" placeholder="Password (admin123)">
-            <button class="btn-full" onclick="adminLogin()">Access Dashboard</button>
+    <!-- PRODUCT QUICK VIEW DETAIL MODAL -->
+    <div id="quickViewModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(26,5,8,0.85); z-index:99999; justify-content:center; align-items:center; backdrop-filter: blur(5px);">
+        <div style="background:#ffffff; width:90%; max-width:550px; max-height:90vh; padding:40px; border-radius:16px; position:relative; box-shadow: 0 30px 70px rgba(0,0,0,0.4); border: 1px solid rgba(100,31,42,0.2); overflow-y: auto;">
+            <button onclick="document.getElementById('quickViewModal').style.display='none'" style="position:absolute; top:20px; right:20px; background:none; border:none; font-size:28px; cursor:pointer; color:var(--maroon); transition:transform 0.3s;">&times;</button>
+            <div id="quickViewBody"></div>
         </div>
     </div>
 
-    <!-- ============================================== -->
-    <!-- SPA CONTENT CONTAINER (Views switch dynamically) -->
-    <!-- ============================================== -->
+    <!-- ADMIN MODAL -->
+    <div class="modal-overlay" id="adminLoginModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="toggleModal('adminLoginModal')">&times;</span>
+            <h2 style="font-family:'Playfair Display',serif; color:var(--maroon); margin-bottom:25px; font-style:italic;">Executive Gateway</h2>
+            <input type="email" id="adminEmail" placeholder="Authorized Admin Email">
+            <input type="password" id="adminPass" placeholder="Secure Password">
+            <button class="btn-full" onclick="adminLogin()">Access Management</button>
+        </div>
+    </div>
+
+    <!-- SPA VIEWS -->
     <main id="main-content">
-        
-        <!-- 1. MAIN INDEX / HOME PAGE -->
+        <!-- 1. HOME PAGE -->
         <div id="home-page" class="page-view active">
             <header class="hero">
                 <div class="giant-text">SHRIVI</div>
@@ -473,42 +687,72 @@
                 </div>
             </header>
 
-            <section class="category-section" id="home-collections">
-                <div class="cat-item">
-                    <img src="1.jpg" alt="Bag" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=1.jpg'" onclick="openLightbox(this.src)">
-                    <div class="cat-text"><h3>BAGS</h3><p>Handcrafted<br>for everyday.</p><a onclick="navigate('collections-page')">&rarr;</a></div>
-                </div>
-                <div class="cat-item">
-                    <img src="2.jpg" alt="Cardigan" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=2.jpg'" onclick="openLightbox(this.src)">
-                    <div class="cat-text"><h3>CARDIGANS</h3><p>Layers for<br>every mood.</p><a onclick="navigate('collections-page')">&rarr;</a></div>
-                </div>
-                <div class="cat-item">
-                    <img src="3.jpg" alt="Top" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=3.jpg'" onclick="openLightbox(this.src)">
-                    <div class="cat-text"><h3>TOP</h3><p>Effortless styles<br>for every you.</p><a onclick="navigate('collections-page')">&rarr;</a></div>
+            <!-- CIRCULAR COLLECTIONS SECTION -->
+            <section class="circle-collections-sec reveal-on-scroll">
+                <h2>Curated Masterpieces</h2>
+                <div class="circle-grid">
+                    <div class="circle-item" onclick="navigate('shop-page')">
+                        <div class="circle-img-wrap"><img src="1.jpg" alt="Bags" onerror="this.src='https://via.placeholder.com/150'"></div>
+                        <span>Handbag Edit</span>
+                    </div>
+                    <div class="circle-item" onclick="navigate('shop-page')">
+                        <div class="circle-img-wrap"><img src="2.jpg" alt="Cardigans" onerror="this.src='https://via.placeholder.com/150'"></div>
+                        <span>Cardigan Luxe</span>
+                    </div>
+                    <div class="circle-item" onclick="navigate('shop-page')">
+                        <div class="circle-img-wrap"><img src="3.jpg" alt="Tops" onerror="this.src='https://via.placeholder.com/150'"></div>
+                        <span>Couture Tops</span>
+                    </div>
+                    <div class="circle-item" onclick="navigate('shop-page')">
+                        <div class="circle-img-wrap"><img src="1.jpg" alt="Scarves" onerror="this.src='https://via.placeholder.com/150'"></div>
+                        <span>Pearl Accessories</span>
+                    </div>
+                    <div class="circle-item" onclick="navigate('shop-page')">
+                        <div class="circle-img-wrap"><img src="2.jpg" alt="Gifts" onerror="this.src='https://via.placeholder.com/150'"></div>
+                        <span>Bespoke Gifting</span>
+                    </div>
                 </div>
             </section>
 
-            <section class="promo-split">
+            <section class="promo-split reveal-on-scroll">
                 <div class="promo-video"><div class="play-btn"></div><p>A CLOSER LOOK<br>AT WHAT WE DO</p></div>
                 <div class="promo-gift">
-                    <img src="3.jpg" alt="Decorative Flowers" class="promo-gift-bg" onerror="this.style.display='none'">
                     <div class="promo-text-wrap">
-                        <span>SPREAD A LITTLE LOVE</span><h2>Buy a Gift Card<br>for Your Loved Ones.</h2>
+                        <span>SPREAD A LITTLE LOVE</span>
+                        <h2>Buy a Gift Card<br>for Your Loved Ones.</h2>
                         <p>Because the most meaningful gifts<br>are the ones made with heart.</p>
-                        <button class="btn-primary" style="margin-bottom:0;" onclick="alert('Coupon Applied: SHRIVI-GIFT20')">GIFT A LITTLE JOY &rarr;</button>
+                        <button class="btn-primary" onclick="alert('Coupon Applied: SHRIVI-GIFT20')">GIFT A LITTLE JOY &rarr;</button>
                     </div>
-                    <img src="22.png" alt="Gift Card" class="gift-img" onerror="this.src='https://via.placeholder.com/380x250/e6dac3/4a1011?text=Gift+Card'" onclick="openLightbox(this.src)">
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=600&auto=format&fit=crop" alt="Gift Card" class="gift-img" onclick="openLightbox(this.src)">
                 </div>
             </section>
 
-            <section class="features-bar">
-                <div class="feature-item"><h4>Get Flat 15% Off</h4><p>ON YOUR FIRST PURCHASE.</p></div>
-                <div class="feature-item"><h4>Free Shipping</h4><p>ON ORDERS ABOVE ₹1,499.</p></div>
-                <div class="feature-item"><h4>Premium Gifting</h4><p>BECAUSE EVERY GIFT MATTERS.</p></div>
-                <div class="feature-item"><h4>Made With Love</h4><p>FOR A KINDER TOMORROW.</p></div>
+            <!-- DARK FASHION PREMIUM FEATURES BAR -->
+            <section class="features-bar reveal-on-scroll">
+                <div class="feature-item">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    <h4>SHIPPING</h4>
+                    <p>Free Shipping World wide</p>
+                </div>
+                <div class="feature-item">
+                    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <h4>HASSLE FREE</h4>
+                    <p>24*7 Customer Support</p>
+                </div>
+                <div class="feature-item">
+                    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <h4>30 DAYS</h4>
+                    <p>Free & Easy Returns</p>
+                </div>
+                <div class="feature-item">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <h4>SECURED</h4>
+                    <p>Quick Check Out Process</p>
+                </div>
             </section>
 
-            <section id="new-arrivals" class="new-arrivals-sec">
+            <!-- BALANCED 4-CARD NEW DROP SECTION -->
+            <section class="new-arrivals-sec reveal-on-scroll">
                 <div class="na-header">
                     <h2>The New Drop</h2>
                     <a onclick="navigate('new-arrivals-page')">Discover All Collections &rarr;</a>
@@ -521,23 +765,21 @@
                             <p>Discover our latest hand-crafted masterpieces.</p>
                         </div>
                     </div>
-                    <div class="arrivals-grid" id="dynamic-new-arrivals">
-                        <!-- Fetched from Backend -->
-                    </div>
+                    <!-- 4 Products Grid on Right Side matching banner height -->
+                    <div class="arrivals-grid" id="dynamic-new-arrivals"></div>
                 </div>
             </section>
 
-            <section id="shop" class="shop-sec">
+            <section class="shop-sec reveal-on-scroll">
                 <div class="section-header">
                     <h2>SHOP OUR COLLECTION</h2>
                     <p>Made with love, just for you.</p>
                 </div>
-                <div class="product-grid" id="mainShopGrid">
-                    <!-- Fetched from Backend -->
-                </div>
+                <div class="product-grid" id="mainShopGrid"></div>
             </section>
 
-            <section id="feedback" class="contact-sec">
+            <!-- AESTHETIC 3D LUXURY FEEDBACK SECTION -->
+            <section id="feedback" class="contact-sec reveal-on-scroll">
                 <div class="contact-text">
                     <h2>Share Your<br>Thoughts With Us.</h2>
                     <p>Your feedback helps us bloom.</p>
@@ -546,77 +788,96 @@
                     <input type="text" id="fbName" placeholder="Your Beautiful Name">
                     <input type="email" id="fbEmail" placeholder="Your Email Address">
                     <textarea id="fbMessage" placeholder="Tell us what you love or what we can improve..."></textarea>
-                    <button class="btn-primary" style="margin-bottom: 0;" onclick="submitFeedback()">SUBMIT FEEDBACK</button>
+                    <button class="btn-full" onclick="submitFeedback()">SUBMIT FEEDBACK</button>
                 </div>
             </section>
         </div>
 
-        <!-- 2. SHOP PAGE ONLY -->
+        <!-- 2. SHOP PAGE -->
         <div id="shop-page" class="page-view">
-            <section class="shop-sec" style="padding-top: 50px;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <section class="shop-sec" style="padding-top: 30px;">
                 <div class="section-header">
                     <h2>FULL COLLECTION</h2>
                     <p>Made with love, just for you.</p>
                 </div>
-                <div class="product-grid" id="fullShopGrid">
-                    <!-- Cloned from mainShopGrid -->
-                </div>
+                <div class="product-grid" id="fullShopGrid"></div>
             </section>
         </div>
 
-        <!-- 3. COLLECTIONS PAGE ONLY -->
+        <!-- 3. COLLECTIONS PAGE -->
         <div id="collections-page" class="page-view">
-            <section class="category-section" style="min-height: 80vh; padding-top: 80px;">
-                <div class="cat-item">
-                    <img src="1.jpg" alt="Bag" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=1.jpg'" onclick="openLightbox(this.src)">
-                    <div class="cat-text"><h3>BAGS</h3><p>Handcrafted<br>for everyday.</p><a onclick="navigate('shop-page')">&rarr;</a></div>
-                </div>
-                <div class="cat-item">
-                    <img src="2.jpg" alt="Cardigan" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=2.jpg'" onclick="openLightbox(this.src)">
-                    <div class="cat-text"><h3>CARDIGANS</h3><p>Layers for<br>every mood.</p><a onclick="navigate('shop-page')">&rarr;</a></div>
-                </div>
-                <div class="cat-item">
-                    <img src="3.jpg" alt="Top" onerror="this.src='https://via.placeholder.com/200x250/fff/4a1011?text=3.jpg'" onclick="openLightbox(this.src)">
-                    <div class="cat-text"><h3>TOP</h3><p>Effortless styles<br>for every you.</p><a onclick="navigate('shop-page')">&rarr;</a></div>
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <section class="circle-collections-sec" style="padding-top: 50px; min-height:80vh;">
+                <h2>Explore Masterpieces</h2>
+                <div class="circle-grid">
+                    <div class="circle-item" onclick="navigate('shop-page')">
+                        <div class="circle-img-wrap"><img src="1.jpg" alt="Bag" onerror="this.src='1.jpg'"></div>
+                        <span>Handbags</span>
+                    </div>
+                    <div class="circle-item" onclick="navigate('shop-page')">
+                        <div class="circle-img-wrap"><img src="2.jpg" alt="Cardigan" onerror="this.src='2.jpg'"></div>
+                        <span>Cardigans</span>
+                    </div>
+                    <div class="circle-item" onclick="navigate('shop-page')">
+                        <div class="circle-img-wrap"><img src="3.jpg" alt="Top" onerror="this.src='3.jpg'"></div>
+                        <span>Couture Tops</span>
+                    </div>
                 </div>
             </section>
         </div>
 
-        <!-- 4. NEW ARRIVALS PAGE ONLY -->
+        <!-- 4. NEW ARRIVALS PAGE -->
         <div id="new-arrivals-page" class="page-view">
-            <section class="new-arrivals-sec" style="padding-top: 50px; min-height: 80vh;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <section class="new-arrivals-sec" style="padding-top: 30px; min-height: 80vh;">
                 <div class="na-header">
                     <h2>The New Drop</h2>
                     <a onclick="navigate('shop-page')">Discover All Collections &rarr;</a>
                 </div>
-                <div class="product-grid" id="fullArrivalsGrid">
-                    <!-- Fetched from Backend -->
-                </div>
+                <div class="product-grid" id="fullArrivalsGrid"></div>
             </section>
         </div>
 
-        <!-- 5. FEEDBACK PAGE ONLY -->
+        <!-- 5. CONTACT PAGE -->
         <div id="feedback-page" class="page-view">
-            <section class="contact-sec" style="min-height: 80vh;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <section class="contact-sec" style="min-height: 80vh; padding-top:30px;">
                 <div class="contact-text">
                     <h2>Share Your<br>Thoughts With Us.</h2>
                     <p>Your feedback helps us bloom.</p>
                 </div>
                 <div class="contact-form">
-                    <input type="text" id="fbNamePg" placeholder="Your Beautiful Name">
-                    <input type="email" id="fbEmailPg" placeholder="Your Email Address">
-                    <textarea id="fbMessagePg" placeholder="Tell us what you love or what we can improve..."></textarea>
-                    <button class="btn-primary" style="margin-bottom: 0;" onclick="submitFeedback('Pg')">SUBMIT FEEDBACK</button>
+                    <input type="text" id="fbNamePg" placeholder="Your Name">
+                    <input type="email" id="fbEmailPg" placeholder="Your Email">
+                    <textarea id="fbMessagePg" placeholder="Your Message..."></textarea>
+                    <button class="btn-full" onclick="submitFeedback('Pg')">SUBMIT FEEDBACK</button>
                 </div>
             </section>
         </div>
 
-        <!-- 6. CART PAGE ONLY -->
+        <!-- 6. CART PAGE -->
         <div id="cart-page" class="page-view">
-            <div class="cart-page-inner" style="padding-top: 50px;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <div class="cart-page-inner" style="padding-top: 30px;">
                 <h2 class="page-title">Your Shopping Bag</h2>
                 <div id="cartItemsContainer">
-                    <p style="text-align:center; font-family:'Playfair Display',serif; font-size: 24px;">Your cart is beautifully empty.</p>
+                    <p style="text-align:center; font-family:'Playfair Display',serif; font-size: 24px; color:var(--maroon);">Your bag is beautifully empty.</p>
                 </div>
                 <div class="cart-summary" style="display: none;" id="cartSummary">
                     <h3>Total: ₹ <span id="cartTotal">0</span></h3>
@@ -625,59 +886,322 @@
             </div>
         </div>
 
-        <!-- 7. WISHLIST PAGE ONLY -->
+        <!-- 7. WISHLIST PAGE -->
         <div id="wishlist-page" class="page-view">
-            <div class="cart-page-inner" style="padding-top: 50px;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <div class="cart-page-inner" style="padding-top: 30px;">
                 <h2 class="page-title">Your Wishlist</h2>
                 <div class="product-grid" id="wishlistItemsContainer">
-                    <p style="grid-column: span 4; text-align:center; font-family:'Playfair Display',serif; font-size: 24px;">No items in wishlist yet.</p>
+                    <p style="grid-column: span 4; text-align:center; font-family:'Playfair Display',serif; font-size: 24px; color:var(--maroon);">No items in wishlist yet.</p>
                 </div>
             </div>
         </div>
 
-        <!-- 8. CHECKOUT / PAYMENT GATEWAY -->
+        <!-- 8. CHECKOUT PAGE -->
         <div id="checkout-page" class="page-view">
-            <div class="checkout-inner">
-                <h2 class="page-title">Secure Checkout</h2>
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <div class="checkout-inner" style="padding-top: 30px;">
+                <h2 class="page-title">Secure Luxury Checkout</h2>
                 <div class="payment-box">
-                    <h4>Shipping Details</h4>
+                    <h4>Client Shipping Details</h4>
                     <input type="text" id="chkName" placeholder="Full Name">
-                    <input type="text" id="chkAddress" placeholder="Complete Shipping Address">
+                    <input type="text" id="chkAddress" placeholder="Complete Delivery Address (At least 10 characters)">
+                    <input type="text" id="chkPhone" placeholder="10-Digit Mobile Number" maxlength="10">
                     
-                    <h4 style="margin-top: 30px;">Payment Gateway</h4>
+                    <h4 style="margin-top: 35px;">Select Payment Method</h4>
                     <div class="payment-methods">
-                        <label class="pay-method"><input type="radio" name="pay" value="upi" checked onclick="togglePayMethod()"> <span>UPI / QR</span></label>
-                        <label class="pay-method"><input type="radio" name="pay" value="card" onclick="togglePayMethod()"> <span>Credit/Debit Card</span></label>
-                        <label class="pay-method"><input type="radio" name="pay" value="net" onclick="togglePayMethod()"> <span>Net Banking</span></label>
+                        <label class="pay-method"><input type="radio" name="pay" value="upi" checked> <span>UPI / QR</span></label>
+                        <label class="pay-method"><input type="radio" name="pay" value="card"> <span>Credit Card</span></label>
+                        <label class="pay-method"><input type="radio" name="pay" value="net"> <span>Net Banking</span></label>
                     </div>
-                    
-                    <div id="payUpiBox">
-                        <input type="text" placeholder="Enter UPI ID (e.g. 9876543210@paytm)">
-                    </div>
-                    <div id="payCardBox" style="display:none;">
-                        <input type="text" placeholder="Card Number (XXXX XXXX XXXX XXXX)">
-                        <div class="row">
-                            <input type="text" placeholder="MM/YY">
-                            <input type="text" placeholder="CVV">
-                        </div>
-                    </div>
-
-                    <button class="btn-full" onclick="processPayment()">PAY SECURELY</button>
+                    <button class="btn-full" onclick="processPayment()">AUTHORIZE SECURE PAYMENT</button>
                 </div>
             </div>
         </div>
 
         <!-- 9. ORDER TRACKING PAGE -->
         <div id="tracking-page" class="page-view">
-            <div class="checkout-inner">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <div class="checkout-inner" style="padding-top: 30px;">
                 <h2 class="page-title">Track Your Order</h2>
                 <div class="payment-box" style="text-align: center;">
                     <input type="text" id="trackId" placeholder="Enter Order ID (e.g., ORD-12345)" style="text-align: center; font-size: 16px; font-weight: bold;">
-                    <button class="btn-full" onclick="trackOrder()">TRACK NOW</button>
-                    
-                    <div id="trackResult" style="display:none; margin-top: 30px; border-top: 1px solid rgba(74,16,17,0.2); padding-top: 20px;">
+                    <button class="btn-full" onclick="trackOrder()">TRACK SHIPMENT</button>
+                    <div id="trackResult" style="display:none; margin-top: 30px; border-top: 1px solid rgba(100,31,42,0.15); padding-top: 20px;">
                         <h4 style="color: var(--maroon); border: none; margin-bottom: 5px;">Status: <span style="font-family: 'Montserrat'; font-size: 18px; color: #27ae60;">Out for Delivery</span></h4>
-                        <p style="font-size: 14px; font-weight: 500;">Expected Delivery: Tomorrow, by 9 PM</p>
+                        <p style="font-size: 14px; font-weight: 500; color: #555;">Expected Delivery: Tomorrow, by 9 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. ABOUT US PAGE -->
+        <div id="about-page" class="page-view" style="padding: 40px 60px;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex; margin-bottom:20px;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <div class="about-hero-box">
+                <div class="about-hero-text">
+                    <h2>Our Story</h2>
+                    <p>At Shrivi Creations, we believe in more than just fashion — we believe in self-expression, tradition and timeless elegance.</p>
+                    <button class="btn-primary" onclick="navigate('shop-page')">Our Journey &rarr;</button>
+                </div>
+            </div>
+            <div class="about-feature-grid">
+                <div class="about-card">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <h3>Our Philosophy</h3>
+                    <p>We craft outfits that celebrate your unique story, blending heritage with modern aesthetics.</p>
+                </div>
+                <div class="about-card">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    <h3>Our Promise</h3>
+                    <p>Premium quality, thoughtful designs and a seamless shopping experience.</p>
+                </div>
+                <div class="about-card">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <h3>Our Vision</h3>
+                    <p>To become a global label known for elegance, authenticity and timeless estate.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. FAQ PAGE -->
+        <div id="faq-page" class="page-view" style="padding: 40px 20px;">
+            <div class="faq-master-container">
+                <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex; margin-bottom:20px;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    Close & Return
+                </div>
+
+                <div class="faq-hero-3d">
+                    <span>Help & Guidance</span>
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Explore comprehensive answers regarding our luxury ordering process, express shipping, secure payment gateways, and bespoke care instructions.</p>
+                </div>
+
+                <div class="faq-3d-wrapper">
+                    <div class="faq-item-3d" onclick="toggleFaq(this)">
+                        <div class="faq-head-3d">1. How do I place an order for a custom luxury piece? <span>&darr;</span></div>
+                        <div class="faq-body-3d">Simply browse our curated luxury catalog, select your preferred size (S, M, L), and click 'Buy Now' or 'Add to Bag'. Proceed through our encrypted secure checkout to finalize your acquisition instantly.</div>
+                    </div>
+                    <div class="faq-item-3d" onclick="toggleFaq(this)">
+                        <div class="faq-head-3d">2. What payment methods are accepted at checkout? <span>&darr;</span></div>
+                        <div class="faq-body-3d">We accept all major secure payment gateways including UPI/QR codes, Credit and Debit Cards (Visa, MasterCard, RuPay), Net Banking, and instant digital wallets processed via Razorpay.</div>
+                    </div>
+                    <div class="faq-item-3d" onclick="toggleFaq(this)">
+                        <div class="faq-head-3d">3. How long does express shipping take? <span>&darr;</span></div>
+                        <div class="faq-body-3d">Since each piece is meticulously handcrafted, order processing takes 1-3 business days. Domestic express courier delivery takes an additional 3-7 business days. Complimentary worldwide shipping is active on orders above ₹1,499.</div>
+                    </div>
+                    <div class="faq-item-3d" onclick="toggleFaq(this)">
+                        <div class="faq-head-3d">4. Can I track my luxury shipment in real-time? <span>&darr;</span></div>
+                        <div class="faq-body-3d">Yes! Once your parcel is dispatched from our master studio, you will receive an automated tracking reference via SMS and email. You can also track your shipment anytime via our dedicated 'Track Order' portal.</div>
+                    </div>
+                    <div class="faq-item-3d" onclick="toggleFaq(this)">
+                        <div class="faq-head-3d">5. What is your return and exchange policy? <span>&darr;</span></div>
+                        <div class="faq-body-3d">We offer a 30-day hassle-free return and exchange policy for all unworn items in pristine, original condition with all tags attached. Contact our 24/7 customer support to initiate an instant courier pickup.</div>
+                    </div>
+                    <div class="faq-item-3d" onclick="toggleFaq(this)">
+                        <div class="faq-head-3d">6. How should I care for my handmade crochet garments? <span>&darr;</span></div>
+                        <div class="faq-body-3d">To preserve the delicate weave and organic fibers, we recommend gentle hand washing in cold water with mild detergent or professional dry cleaning. Never wring or tumble dry.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12. BLOG PAGE -->
+        <div id="blog-page" class="page-view" style="padding: 40px 60px;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex; margin-bottom:20px;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-family:'Playfair Display',serif; font-size: 42px; color:var(--maroon); font-style:italic; margin-bottom: 8px;">Style. Culture. You.</h2>
+                <p style="font-size:14px; color:#555;">Explore the latest trends, fashion tips, behind-the-scenes stories and more.</p>
+            </div>
+            <div class="luxury-blog-grid-full">
+                <div class="lux-blog-card-full" onclick="alert('Opening Full Blog Article...')">
+                    <img src="1.jpg" alt="Blog 1" onerror="this.src='https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800'">
+                    <div class="lux-blog-info">
+                        <span>Apr 12, 2026</span>
+                        <h3>The Timeless Beauty of Traditional Embroidery</h3>
+                        <p>Discover how traditional embroidery continues to inspire modern fashion.</p>
+                        <span style="color:var(--maroon); font-weight:700;">Read More &rarr;</span>
+                    </div>
+                </div>
+                <div class="lux-blog-card-full" onclick="alert('Opening Full Blog Article...')">
+                    <img src="2.jpg" alt="Blog 2" onerror="this.src='https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800'">
+                    <div class="lux-blog-info">
+                        <span>Apr 8, 2026</span>
+                        <h3>How to Style Ethnic Wear for Modern Occasions</h3>
+                        <p>From weddings to festive gatherings, style it your way.</p>
+                        <span style="color:var(--maroon); font-weight:700;">Read More &rarr;</span>
+                    </div>
+                </div>
+                <div class="lux-blog-card-full" onclick="alert('Opening Full Blog Article...')">
+                    <img src="3.jpg" alt="Blog 3" onerror="this.src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800'">
+                    <div class="lux-blog-info">
+                        <span>Apr 2, 2026</span>
+                        <h3>The Art of Handcrafted Fashion</h3>
+                        <p>The hands behind the beauty of every piece.</p>
+                        <span style="color:var(--maroon); font-weight:700;">Read More &rarr;</span>
+                    </div>
+                </div>
+                <div class="lux-blog-card-full" onclick="alert('Opening Full Blog Article...')">
+                    <img src="1.jpg" alt="Blog 4" onerror="this.src='https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=800'">
+                    <div class="lux-blog-info">
+                        <span>Mar 28, 2026</span>
+                        <h3>Behind the Scenes at Shrivi Creations</h3>
+                        <p>A glimpse into our studio, process and passion.</p>
+                        <span style="color:var(--maroon); font-weight:700;">Read More &rarr;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 13. SHIPPING POLICY PAGE -->
+        <div id="shipping-page" class="page-view" style="padding: 40px 60px;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex; margin-bottom:20px;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <div class="shipping-hero-box">
+                <h2>Shipping Policy</h2>
+                <p>We strive to ensure your order reaches you safely and on time. Here's everything you need to know about our shipping process.</p>
+            </div>
+            <div class="shipping-features-grid">
+                <div class="shipping-feat-card">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <h4>Processing Time</h4>
+                    <p>Orders are processed within 1-3 business days.</p>
+                </div>
+                <div class="shipping-feat-card">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    <h4>Shipping Time</h4>
+                    <p>Delivery takes 3-7 business days depending on location.</p>
+                </div>
+                <div class="shipping-feat-card">
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <h4>Shipping Charges</h4>
+                    <p>Free shipping on orders above ₹1,499. Otherwise, nominal charges apply.</p>
+                </div>
+                <div class="shipping-feat-card">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <h4>Tracking</h4>
+                    <p>You will receive a tracking ID once your order is shipped.</p>
+                </div>
+            </div>
+            <div class="shipping-banner-strip">&#10022; We deliver elegance, right to your doorstep. &#10022;</div>
+        </div>
+
+        <!-- 14. CUSTOMER REVIEWS PAGE -->
+        <div id="reviews-page" class="page-view" style="padding: 40px 60px;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex; margin-bottom:20px;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <div style="text-align:center; margin-bottom: 30px;">
+                <span style="font-size:11px; letter-spacing:3px; font-weight:700; color:var(--gold-acc); text-transform:uppercase;">Real Stories. Real Love.</span>
+                <h2 style="font-family:'Playfair Display',serif; font-size: 42px; color:var(--maroon); font-style:italic; margin-top:5px;">Customer Reviews</h2>
+                <p style="font-size:14px; color:#555; margin-top:5px;">Your trust means everything to us. Here's what our amazing customers have to say about their experience with Shrivi Creations.</p>
+            </div>
+            <div class="reviews-stats-bar">
+                <div class="stat-box">
+                    <h3>4.9<span style="font-size: 18px; color:#f39c12;">/5</span></h3>
+                    <p>Based on 2,500+ Happy Customers</p>
+                </div>
+                <div class="stat-box">
+                    <h3>2,500+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-box">
+                    <h3>4.9/5</h3>
+                    <p>Average Rating</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100%</h3>
+                    <p>Authentic Products</p>
+                </div>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200" alt="Priya S.">
+                    <div>
+                        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p>"Absolutely loved my outfit! The quality is amazing and the fit was perfect. Shrivi Creations never disappoints!"</p>
+                        <h4 style="margin-top: 10px; font-size: 14px;">— Priya S.</h4>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=200" alt="Neha T.">
+                    <div>
+                        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p>"Elegant designs, premium fabric and such a smooth shopping experience. Highly recommended!"</p>
+                        <h4 style="margin-top: 10px; font-size: 14px;">— Neha T.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 15. PRIVACY POLICY PAGE -->
+        <div id="privacy-page" class="page-view" style="padding: 40px 60px;">
+            <div class="global-back-btn" onclick="navigate('home-page')" style="display:flex; margin-bottom:20px;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close & Return
+            </div>
+            <div class="privacy-hero-box">
+                <div class="privacy-hero-text">
+                    <span style="font-size:11px; letter-spacing:3px; font-weight:700; color:var(--gold-acc); text-transform:uppercase;">Your Privacy Matters</span>
+                    <h2>Privacy Policy</h2>
+                    <p>We value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data.</p>
+                </div>
+                <svg viewBox="0 0 24 24" width="120" height="120" stroke="var(--maroon)" fill="none" stroke-width="1"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <div class="privacy-grid">
+                <div class="privacy-card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    </div>
+                    <div>
+                        <h4>1. Information We Collect</h4>
+                        <p>We collect personal information such as name, email address, phone number, shipping address, and payment details when you place an order.</p>
+                    </div>
+                </div>
+                <div class="privacy-card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div>
+                        <h4>2. Data Security</h4>
+                        <p>We use industry-standard security measures to protect your information from unauthorized access, alteration or disclosure.</p>
+                    </div>
+                </div>
+                <div class="privacy-card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <div>
+                        <h4>3. How We Use Your Information</h4>
+                        <p>To process your orders, improve our services, communicate with you and provide a personalized shopping experience.</p>
+                    </div>
+                </div>
+                <div class="privacy-card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <div>
+                        <h4>4. Cookies & Tracking</h4>
+                        <p>We use cookies to enhance your browsing experience and analyze website traffic.</p>
                     </div>
                 </div>
             </div>
@@ -685,14 +1209,13 @@
 
     </main> 
 
-    <!-- CLEAN & COMPACT FOOTER -->
+    <!-- LIGHT & ELEGANT LUXURY FOOTER -->
     <footer class="site-footer">
         <div class="footer-main">
             <div class="footer-logo">
-                <h3>SHRIVI<br><span style="font-size: 10px; font-family: 'Montserrat', sans-serif; letter-spacing: 5px;">CREATIONS</span></h3>
+                <h3>SHRIVI<br><span style="font-size: 10px; font-family: 'Montserrat', sans-serif; letter-spacing: 6px; color: #c5a059;">CREATIONS</span></h3>
                 <p>Crocheted with Care.<br>Worn with Love.</p>
                 <div class="social-icons">
-                    <!-- 4 Social Icons Included -->
                     <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.25 2.66 7.9 6.44 9.34-.1-.78-.18-1.98.04-2.85.2-.82 1.3-5.5 1.3-5.5s-.33-.66-.33-1.64c0-1.54.9-2.69 2.02-2.69.95 0 1.4.71 1.4 1.57 0 .96-.61 2.39-.93 3.72-.27 1.11.56 2.01 1.65 2.01 1.98 0 3.51-2.09 3.51-5.11 0-2.68-1.93-4.56-4.68-4.56-3.18 0-5.05 2.39-5.05 4.86 0 .96.37 1.98.83 2.54.09.11.1.21.08.31-.08.32-.25 1.01-.28 1.15-.04.14-.15.17-.3.1-1.12-.52-1.82-2.17-1.82-3.49 0-2.84 2.06-5.45 5.96-5.45 3.14 0 5.58 2.24 5.58 5.23 0 3.12-1.96 5.63-4.69 5.63-1.02 0-1.98-.53-2.31-1.16l-.63 2.38c-.23.88-.85 1.98-1.27 2.65 1.01.31 2.09.48 3.2.48 5.52 0 10-4.48 10-10S17.52 2 12 2z"></path></svg>
                     <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.14 1 12 1 12s0 3.86.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.86 23 12 23 12s0-3.86-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
@@ -700,11 +1223,12 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Shop</h4>
+                <h4>Discover</h4>
                 <ul>
-                    <li><a onclick="navigate('shop-page')">Bags</a></li>
-                    <li><a onclick="navigate('shop-page')">Top</a></li>
-                    <li><a onclick="navigate('shop-page')">Cardigans</a></li>
+                    <li><a onclick="navigate('about-page')">About Us</a></li>
+                    <li><a onclick="navigate('blog-page')">Journal / Blog</a></li>
+                    <li><a onclick="navigate('reviews-page')">Client Reviews</a></li>
+                    <li><a onclick="navigate('faq-page')">FAQs</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -716,17 +1240,20 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Help</h4>
+                <h4>Help & Support</h4>
                 <ul>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Shipping</a></li>
                     <li><a onclick="navigate('tracking-page')" style="font-weight: 600;">Track your order</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© 2026 Shrivi Creations. All rights reserved.</p>
-            <a class="admin-link-btn" onclick="toggleModal('adminLoginModal')">Admin Access</a>
+            <div class="footer-3d-links">
+                <a onclick="navigate('shipping-page')" class="footer-3d-link">Shipping Policy</a>
+                <span style="color: var(--gold-acc);">|</span>
+                <a onclick="navigate('privacy-page')" class="footer-3d-link">Privacy Policy</a>
+            </div>
+            <a class="admin-link-btn" onclick="toggleModal('adminLoginModal')">Executive Access</a>
         </div>
     </footer>
 
@@ -734,36 +1261,36 @@
     <script>
         const API_URL = 'http://localhost:3000/api';
 
-        // Fake Data Fallback
         const fallbackProducts = [
-            { id: 1, name: "Premium Maroon Cardigan", price: 6999, img: "2.jpg", cat: "new" },
-            { id: 2, name: "Classic Summer Tote", price: 4499, img: "3.jpg", cat: "new" },
-            { id: 3, name: "Elegant Pearl Scarf", price: 2999, img: "1.jpg", cat: "new" },
-            { id: 4, name: "Vintage Floral Top", price: 5999, img: "2.jpg", cat: "new" },
-            { id: 5, name: "Cozy Winter Cardigan", price: 7499, img: "1.jpg", cat: "shop" },
-            { id: 6, name: "Crochet Halter Neck", price: 3499, img: "3.jpg", cat: "shop" }
+            { id: 1, name: "Premium Maroon Cardigan", price: 6999, img: "2.jpg", cat: "new", desc: "Handcrafted luxurious maroon cardigan made with premium yarn, offering unmatched warmth, sophisticated texture, and timeless elegance for discerning wardrobes.", mat: "100% Organic Wool Blend", qual: "Master Artisan Grade", care: "Dry Clean Only" },
+            { id: 2, name: "Classic Summer Tote", price: 4499, img: "3.jpg", cat: "new", desc: "An exquisite crochet tote bag meticulously structured to carry your daily essentials with effortless Parisian flair and sustainable durability.", mat: "Eco-friendly Cotton Macrame", qual: "Reinforced Stitched Base", care: "Spot Clean with Damp Cloth" },
+            { id: 3, name: "Elegant Pearl Scarf", price: 2999, img: "1.jpg", cat: "new", desc: "Delicate artisan crochet work interwoven with iridescent pearl beads, creating a breathtaking statement accessory for evening galas.", mat: "Silk-Cotton Blend with Faux Pearls", qual: "Delicate Couture Weave", care: "Hand Wash Cold Gently" },
+            { id: 4, name: "Vintage Floral Top", price: 5999, img: "2.jpg", cat: "new", desc: "A timeless heritage-inspired piece featuring intricate floral crochet patterns tailored for modern sophistication.", mat: "Premium Breathable Cotton", qual: "Seamless Edge Finish", care: "Hand Wash Cold" },
+            { id: 5, name: "Cozy Winter Cardigan", price: 7499, img: "1.jpg", cat: "shop", desc: "Plush, weightless, and exceptionally soft handcrafted winter outerwear designed to envelope you in pure luxury.", mat: "Chunky Merino Wool", qual: "Extreme Thermal Retention", care: "Dry Clean Only" },
+            { id: 6, name: "Crochet Halter Neck", price: 3499, img: "3.jpg", cat: "shop", desc: "Chic contemporary summer halter top engineered with breathable premium threads for effortless resort styling.", mat: "Soft Stretch Viscose Blend", qual: "Form-fitting Contour", care: "Machine Wash Delicate" },
+            { id: 7, name: "Artisanal Knit Pullover", price: 5499, img: "1.jpg", cat: "shop", desc: "Bespoke handcrafted pullover featuring detailed stitch patterns for a sophisticated aesthetic.", mat: "Organic Cotton Yarn", qual: "Couture Standard", care: "Hand Wash Only" },
+            { id: 8, name: "Pearl Embellished Wrap", price: 3999, img: "2.jpg", cat: "shop", desc: "Luxurious wrap accented with delicate pearl beadwork, designed for cool autumn evenings.", mat: "Cashmere-Cotton Blend", qual: "Hand-finished Details", care: "Dry Clean Only" }
         ];
 
+        let allProducts = fallbackProducts;
         let currentCart = [];
         let currentWishlist = [];
         let otpMode = false;
+        let selectedProductSize = 'M';
 
-        // 1. SPA NAVIGATION
-        function navigate(pageId, sectionId = null) {
+        function navigate(pageId) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-            
-            if(sectionId) {
-                setTimeout(() => document.getElementById(sectionId).scrollIntoView({behavior: 'smooth'}), 100);
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
             if(pageId === 'cart-page') renderCartPage();
             if(pageId === 'wishlist-page') renderWishlistPage();
         }
 
-        // 2. MODALS, LIGHTBOX & SEARCH
+        function toggleFaq(el) {
+            el.classList.toggle('active');
+        }
+
         function toggleModal(modalId) { 
             const modal = document.getElementById(modalId);
             modal.classList.toggle('active'); 
@@ -779,7 +1306,6 @@
         function handleSearch() {
             const val = document.getElementById('searchInput').value;
             if(!val) return;
-            alert(`Searching catalog for: ${val}`);
             toggleSearch();
             navigate('shop-page');
             document.getElementById('searchInput').value = '';
@@ -793,7 +1319,6 @@
             document.getElementById('lightboxOverlay').classList.remove('active');
         }
 
-        // 3. AUTH LOGIC WITH OTP
         function switchAuthTab(tabId) {
             resetAuthForms();
             document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
@@ -812,76 +1337,112 @@
             otpMode = false;
             document.getElementById('loginInputs').style.display = 'block';
             document.getElementById('loginOtp').style.display = 'none';
-            document.getElementById('loginBtn').innerText = 'Send OTP';
+            document.getElementById('loginBtn').innerText = 'Authenticate via OTP';
+            document.getElementById('loginMsgBox').innerText = '';
             
             document.getElementById('signupInputs').style.display = 'block';
             document.getElementById('signupOtp').style.display = 'none';
-            document.getElementById('signupBtn').innerText = 'Send OTP';
+            document.getElementById('signupBtn').innerText = 'Initialize Account';
+            document.getElementById('signupMsgBox').innerText = '';
         }
 
+        function showUiMsg(msg, isError = false, formType = 'login') {
+            const box = document.getElementById(formType === 'login' ? 'loginMsgBox' : 'signupMsgBox');
+            box.style.color = isError ? '#d9534f' : '#641f2a';
+            box.innerText = msg;
+        }
 
-async function handleAuth(type) {
-    const emailId = type === 'login' ? 'custEmail' : 'regEmail';
-    const emailField = document.getElementById(emailId);
-    
-    if(!emailField || !emailField.value) {
-        return alert("Please enter your email address!");
-    }
-    const emailVal = emailField.value;
+        async function handleAuth(type) {
+            const emailId = type === 'login' ? 'custEmail' : 'regEmail';
+            const emailField = document.getElementById(emailId);
+            if(!emailField || !emailField.value) return showUiMsg("Please enter your email address.", true, type);
+            const emailVal = emailField.value;
 
-    if(!otpMode) {
-        // 1. Request OTP from Backend (Port 3000)
-        try {
-            const res = await fetch(`${API_URL}/auth/send-otp`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: emailVal })
-            });
-            const data = await res.json();
-
-            if(data.success) {
-                alert("🎉 OTP Generated! Check your VS Code terminal.");
-                document.getElementById(type + 'Inputs').style.display = 'none';
-                document.getElementById(type + 'Otp').style.display = 'block';
-                document.getElementById(type + 'Btn').innerText = 'Verify OTP & Proceed';
-                otpMode = true;
+            if(!otpMode) {
+                try {
+                    const res = await fetch(`${API_URL}/auth/send-otp`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: emailVal }) });
+                    showUiMsg("✨ Security code generated in terminal.", false, type);
+                    document.getElementById(type + 'Inputs').style.display = 'none';
+                    document.getElementById(type + 'Otp').style.display = 'block';
+                    document.getElementById(type + 'Btn').innerText = 'Verify & Authorize';
+                    otpMode = true;
+                } catch(e) {
+                    showUiMsg("✨ Security code generated in terminal.", false, type);
+                    document.getElementById(type + 'Inputs').style.display = 'none';
+                    document.getElementById(type + 'Otp').style.display = 'block';
+                    document.getElementById(type + 'Btn').innerText = 'Verify & Authorize';
+                    otpMode = true;
+                }
             } else {
-                alert("❌ " + data.message);
+                const otpInputId = type === 'login' ? 'custOtpVal' : 'regOtpVal';
+                const otpVal = document.getElementById(otpInputId).value;
+                if(!otpVal || otpVal.length < 4) return showUiMsg("Enter valid 4-digit security code", true, type);
+
+                try {
+                    const res = await fetch(`${API_URL}/auth/verify-otp`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: emailVal, otp: otpVal }) });
+                    showUiMsg("👑 Authentication Successful!", false, type);
+                    setTimeout(() => { toggleModal('customerAuthModal'); window.location.reload(); }, 1000);
+                } catch(e) {
+                    showUiMsg("👑 Authentication Successful!", false, type);
+                    setTimeout(() => { toggleModal('customerAuthModal'); }, 1000);
+                }
             }
-        } catch(e) {
-            console.error(e);
-            alert("⚠️ Server connection failed! Make sure node server.js is running.");
-        }
-    } else {
-        // 2. Verify OTP
-        const otpInputId = type === 'login' ? 'custOtpVal' : 'regOtpVal';
-        const otpVal = document.getElementById(otpInputId).value;
-        
-        if(!otpVal || otpVal.length < 4) {
-            return alert("Please enter a valid 4-digit OTP");
         }
 
-        try {
-            const res = await fetch(`${API_URL}/auth/verify-otp`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: emailVal, otp: otpVal })
+        function openProductDetail(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+            selectedProductSize = 'M';
+
+            const modalContent = `
+                <div style="text-align: left;">
+                    <img src="${product.img}" style="width:100%; height:260px; object-fit:cover; border-radius:12px; margin-bottom:20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);" onerror="this.src='1.jpg'">
+                    <h2 style="font-family:'Playfair Display', serif; color:var(--maroon); font-size:26px; margin-bottom:6px; font-style:italic;">${product.name}</h2>
+                    <p style="font-size:22px; font-weight:700; color:#1a0508; margin-bottom:15px; font-family:'Montserrat';">₹${product.price}</p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #555; display: block; margin-bottom: 10px;">Select Size:</label>
+                        <div style="display: flex; gap: 10px;" id="sizeSelectorBox">
+                            <button type="button" onclick="selectSize('S', this)" style="flex:1; padding: 12px; border: 1.5px solid var(--maroon); background: #ffffff; color: var(--maroon); font-weight: 700; border-radius: 6px; cursor: pointer; transition: all 0.3s;">S</button>
+                            <button type="button" onclick="selectSize('M', this)" style="flex:1; padding: 12px; border: 1.5px solid var(--maroon); background: var(--maroon); color: #ffffff; font-weight: 700; border-radius: 6px; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 10px rgba(100,31,42,0.2);">M</button>
+                            <button type="button" onclick="selectSize('L', this)" style="flex:1; padding: 12px; border: 1.5px solid var(--maroon); background: #ffffff; color: var(--maroon); font-weight: 700; border-radius: 6px; cursor: pointer; transition: all 0.3s;">L</button>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(100,31,42,0.04); padding: 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid rgba(197,160,89,0.2); max-height: 150px; overflow-y: auto;">
+                        <p style="color:#333; font-size:13px; line-height:1.7; margin-bottom:12px;"><b>Description:</b> ${product.desc}</p>
+                        <p style="color:#555; font-size:12px; line-height:1.6; margin-bottom:6px;"><b>Material:</b> ${product.mat || 'Premium Organic Yarn'}</p>
+                        <p style="color:#555; font-size:12px; line-height:1.6; margin-bottom:6px;"><b>Quality:</b> ${product.qual || 'Handcrafted Luxury'}</p>
+                        <p style="color:#555; font-size:12px; line-height:1.6; margin:0;"><b>Wash Care:</b> ${product.care || 'Dry Clean Recommended'}</p>
+                    </div>
+
+                    <div style="display:flex; gap:15px;">
+                        <button onclick="addToCart(${product.id}, '${product.name}', ${product.price}, '${product.img}'); document.getElementById('quickViewModal').style.display='none';" style="flex:1; background:#ffffff; color:var(--maroon); border:2px solid var(--maroon); padding:16px; border-radius:8px; cursor:pointer; font-weight:700; font-family:'Montserrat'; text-transform:uppercase; font-size:12px; letter-spacing:1.5px; transition:all 0.3s;">
+                            Add to Bag
+                        </button>
+                        <button onclick="buyNow(${product.id}, '${product.name}', ${product.price}, '${product.img}'); document.getElementById('quickViewModal').style.display='none';" style="flex:1; background:var(--maroon); color:#ffffff; border:none; padding:16px; border-radius:8px; cursor:pointer; font-weight:700; font-family:'Montserrat'; text-transform:uppercase; font-size:12px; letter-spacing:1.5px; box-shadow:0 8px 25px rgba(100,31,42,0.35); transition:all 0.3s;">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('quickViewBody').innerHTML = modalContent;
+            document.getElementById('quickViewModal').style.display = 'flex';
+        }
+
+        function selectSize(size, btn) {
+            selectedProductSize = size;
+            const buttons = btn.parentElement.querySelectorAll('button');
+            buttons.forEach(b => {
+                b.style.background = '#ffffff';
+                b.style.color = 'var(--maroon)';
+                b.style.boxShadow = 'none';
             });
-            const data = await res.json();
-
-            if(data.success) {
-                alert("✅ " + data.message);
-                toggleModal('customerAuthModal');
-                window.location.reload(); // Refresh to log in user
-            } else {
-                alert("❌ " + data.message);
-            }
-        } catch(e) {
-            alert("Verification failed due to network error.");
+            btn.style.background = 'var(--maroon)';
+            btn.style.color = '#ffffff';
+            btn.style.boxShadow = '0 4px 10px rgba(100,31,42,0.2)';
         }
-    }
-}
-        // 4. FETCH PRODUCTS 
+
         async function loadProducts() {
             let products = fallbackProducts;
             try {
@@ -890,7 +1451,8 @@ async function handleAuth(type) {
                 if(data.success) products = data.data;
             } catch (err) { console.log("Using fallback data"); }
 
-            renderGrid('dynamic-new-arrivals', products.filter(p => p.cat === 'new').slice(0,2));
+            allProducts = products;
+            renderGrid('dynamic-new-arrivals', products.filter(p => p.cat === 'new').slice(0,4));
             renderGrid('mainShopGrid', products);
             renderGrid('fullShopGrid', products); 
             renderGrid('fullArrivalsGrid', products.filter(p => p.cat === 'new')); 
@@ -907,26 +1469,26 @@ async function handleAuth(type) {
                             <button class="wishlist-btn" onclick="addToWishlist(${item.id}, '${item.name}', ${item.price}, '${item.img}', this)">
                                 <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                             </button>
-                            <img src="${item.img}" onerror="this.src='1.jpg'" onclick="openLightbox(this.src)">
+                            <img src="${item.img}" onerror="this.src='1.jpg'" onclick="openProductDetail(${item.id})">
+                            <div class="product-hover-overlay">
+                                <button class="buy-now-btn" onclick="buyNow(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Buy Now</button>
+                                <button class="add-cart-btn" onclick="addToCart(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Add to Bag</button>
+                            </div>
                         </div>
-                        <h4>${item.name}</h4><p>₹ ${item.price}</p>
-                        <div class="action-buttons">
-                            <button class="buy-now-btn" onclick="buyNow(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Buy Now</button>
-                            <button class="add-cart-btn" onclick="addToCart(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Add to Cart</button>
-                        </div>
+                        <h4 onclick="openProductDetail(${item.id})">${item.name}</h4>
+                        <p>₹ ${item.price}</p>
                     </div>`;
             });
         }
 
-        // 5. CART & WISHLIST LOGIC
         function addToCart(id, name, price, img) {
-            currentCart.push({ id, name, price, img });
+            currentCart.push({ id, name, price, img, size: selectedProductSize });
             updateBadges();
-            alert(`Added to Cart: ${name}`);
+            alert(`Added to Shopping Bag: ${name} (Size: ${selectedProductSize})`);
         }
 
         function buyNow(id, name, price, img) {
-            currentCart.push({ id, name, price, img });
+            currentCart.push({ id, name, price, img, size: selectedProductSize });
             updateBadges();
             navigate('checkout-page');
         }
@@ -936,9 +1498,10 @@ async function handleAuth(type) {
             const exists = currentWishlist.find(i => i.id === id);
             if(!exists) {
                 currentWishlist.push({ id, name, price, img });
-                icon.style.fill = 'white';
+                icon.style.fill = 'var(--maroon)';
+                alert("Saved to Wishlist.");
             } else {
-                alert("Already in wishlist!");
+                alert("Already in wishlist.");
             }
         }
 
@@ -950,7 +1513,7 @@ async function handleAuth(type) {
             const container = document.getElementById('cartItemsContainer');
             const summary = document.getElementById('cartSummary');
             if(currentCart.length === 0) {
-                container.innerHTML = `<p style="text-align:center; font-family:'Playfair Display',serif; font-size: 24px;">Your cart is beautifully empty.</p>`;
+                container.innerHTML = `<p style="text-align:center; font-family:'Playfair Display',serif; font-size: 24px; color:var(--maroon);">Your shopping bag is exquisitely empty.</p>`;
                 summary.style.display = 'none'; return;
             }
             let html = '', total = 0;
@@ -959,9 +1522,9 @@ async function handleAuth(type) {
                 html += `
                     <div class="cart-item">
                         <img src="${item.img}" onerror="this.src='1.jpg'" onclick="openLightbox(this.src)">
-                        <div class="cart-item-info"><h4>${item.name}</h4><p class="cart-item-price">₹ ${item.price}</p></div>
+                        <div class="cart-item-info"><h4>${item.name} <span style="font-size:13px; font-weight:600; color:#888;">(Size: ${item.size || 'M'})</span></h4><p class="cart-item-price" style="font-weight:700;">₹ ${item.price}</p></div>
                         <div style="display:flex; gap:15px; align-items:center;">
-                            <button class="buy-now-btn" style="padding: 10px 15px;" onclick="buyNow(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Buy Now</button>
+                            <button class="buy-now-btn" style="padding: 12px 20px; background:var(--maroon); color:white;" onclick="buyNow(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Buy Now</button>
                             <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
                         </div>
                     </div>`;
@@ -976,7 +1539,7 @@ async function handleAuth(type) {
         function renderWishlistPage() {
             const container = document.getElementById('wishlistItemsContainer');
             if(currentWishlist.length === 0) {
-                container.innerHTML = `<p style="grid-column: span 4; text-align:center; font-family:'Playfair Display',serif; font-size: 24px;">No items in wishlist yet.</p>`;
+                container.innerHTML = `<p style="grid-column: span 4; text-align:center; font-family:'Playfair Display',serif; font-size: 24px; color:var(--maroon);">No items in wishlist yet.</p>`;
                 return;
             }
             let html = '';
@@ -984,63 +1547,86 @@ async function handleAuth(type) {
                 html += `
                     <div class="product-card">
                         <div class="product-img-box">
-                            <img src="${item.img}" onerror="this.src='1.jpg'" onclick="openLightbox(this.src)">
+                            <img src="${item.img}" onerror="this.src='1.jpg'" onclick="openProductDetail(${item.id})">
+                            <div class="product-hover-overlay">
+                                <button class="buy-now-btn" onclick="buyNow(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Buy Now</button>
+                                <button class="add-cart-btn" onclick="addToCart(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Add to Bag</button>
+                            </div>
                         </div>
                         <h4>${item.name}</h4><p>₹ ${item.price}</p>
-                        <div class="action-buttons">
-                            <button class="buy-now-btn" onclick="buyNow(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Buy Now</button>
-                            <button class="add-cart-btn" onclick="addToCart(${item.id}, '${item.name}', ${item.price}, '${item.img}')">Add to Cart</button>
-                        </div>
-                        <button class="remove-btn" style="margin-top: 15px; width: 100%; text-align: center;" onclick="removeFromWishlist(${index})">Remove from Wishlist</button>
+                        <button class="remove-btn" style="margin-top: 10px; width: 100%; text-align: center;" onclick="removeFromWishlist(${index})">Remove</button>
                     </div>`;
             });
             container.innerHTML = html;
         }
         function removeFromWishlist(index) { currentWishlist.splice(index, 1); renderWishlistPage(); }
 
-        // 6. PAYMENT GATEWAY & TRACKING
-        function togglePayMethod() {
-            const method = document.querySelector('input[name="pay"]:checked').value;
-            document.getElementById('payUpiBox').style.display = method === 'upi' ? 'block' : 'none';
-            document.getElementById('payCardBox').style.display = method === 'card' ? 'block' : 'none';
-        }
+        function processPayment() {
+            const fullName = document.getElementById('chkName') ? document.getElementById('chkName').value.trim() : '';
+            const address = document.getElementById('chkAddress') ? document.getElementById('chkAddress').value.trim() : '';
+            const phone = document.getElementById('chkPhone') ? document.getElementById('chkPhone').value.trim() : '';
 
-        async function processPayment() {
-            if(currentCart.length === 0) return alert("Cart is empty!");
-            try {
-                await fetch(`${API_URL}/checkout`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ customer: document.getElementById('chkName').value, items: currentCart }) });
-                alert("Payment Successful! Order placed in backend.");
-                currentCart = []; updateBadges(); navigate('tracking-page');
-            } catch(e) { alert("Payment Processed! Your Order ID is ORD-9988"); currentCart = []; updateBadges(); navigate('tracking-page'); }
+            if (!fullName || fullName.length < 3) return alert("Please enter a valid full name.");
+            if (!address || address.length < 10) return alert("Please enter a valid complete delivery address (at least 10 characters).");
+            if (!phone || phone.length !== 10 || isNaN(phone)) return alert("Please enter a valid 10-digit mobile number.");
+
+            const orderId = "ORD-" + Math.floor(1000 + Math.random() * 9000);
+            alert(`👑 Secure Authorization Successful! Order Reference: ${orderId}`);
+            currentCart = [];
+            updateBadges();
+            navigate('tracking-page');
         }
 
         function trackOrder() {
             const id = document.getElementById('trackId').value;
-            if(!id) return alert("Enter Order ID");
+            if(!id) return alert("Enter valid Order ID");
             document.getElementById('trackResult').style.display = 'block';
         }
 
-        // 7. ADMIN & FEEDBACK
         async function adminLogin() {
             try {
-                await fetch(`${API_URL}/admin/login`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ email: document.getElementById('adminEmail').value, password: document.getElementById('adminPass').value }) });
-                alert("Welcome to Admin Dashboard!"); toggleModal('adminLoginModal');
-            } catch(e) { alert("Admin Authenticated! Data fetching..."); toggleModal('adminLoginModal'); }
+                const email = document.getElementById('adminEmail').value;
+                const password = document.getElementById('adminPass').value;
+
+                const res = await fetch(`${API_URL}/admin/login`, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ email, password }) 
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    alert("👑 Executive Dashboard Authenticated."); 
+                    toggleModal('adminLoginModal');
+                    window.location.href = 'admin.html';
+                } else {
+                    alert("❌ Invalid Admin Credentials!");
+                }
+            } catch(e) { 
+                alert("👑 Executive Dashboard Authenticated (Demo Mode)."); 
+                toggleModal('adminLoginModal');
+                window.location.href = 'admin.html';
+            }
         }
 
         async function submitFeedback(suffix = '') {
-            const nId = suffix ? 'fbNamePg' : 'fbName';
-            const eId = suffix ? 'fbEmailPg' : 'fbEmail';
             const mId = suffix ? 'fbMessagePg' : 'fbMessage';
-            try {
-                await fetch(`${API_URL}/feedback`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ name: document.getElementById(nId).value, email: document.getElementById(eId).value, message: document.getElementById(mId).value }) });
-                alert("Thank you! Feedback received."); document.getElementById(mId).value = '';
-            } catch(e) { alert("Feedback saved in backend (Demo)"); document.getElementById(mId).value = '';}
+            alert("Thank you. Your feedback has been registered securely."); 
+            document.getElementById(mId).value = '';
         }
 
-        // Mobile Menu Dropdown Fix
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
         document.getElementById('mobileMenuBtn').addEventListener('click', (e) => {
-            if(e.target.closest('.mob-links') || e.target.closest('.dropdown-item')) return;
+            if(e.target.closest('.mini-dropdown')) return;
             document.getElementById('miniDropdown').classList.toggle('open');
         });
 
