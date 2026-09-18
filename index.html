@@ -464,54 +464,89 @@
             border-top: 1px solid rgba(100,31,42,0.08);
         }
 
-        /* MOBILE RESPONSIVE MEDIA QUERIES (CIRCLES IN SINGLE HORIZONTAL LINE & PREMIUM STRIP ALIGNED) */
-        @media (max-width: 1020px) {
-            .navbar { padding: 15px 30px; }
-            .nav-links { gap: 10px; padding-right: 25px; }
-            .nav-links.right { padding-left: 25px; }
-            .global-floating-icons { right: 20px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr);}
-            .footer-main { grid-template-columns: repeat(2, 1fr); }
-            .contact-sec { flex-direction: column; gap: 30px; }
-            .circle-grid { gap: 20px; }
-        }
+       /* ==========================================================================
+   MOBILE & PHONE RESPONSIVE LUXURY CSS FIXES
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Navbar & Header Adjustments */
+    .navbar { padding: 12px 15px; justify-content: space-between; }
+    .nav-links { display: none !important; } 
+    .nav-icons { right: 15px; gap: 10px; }
+    .mobile-menu-icon { display: flex !important; }
 
-        @media (max-width: 768px) {
-            .navbar { padding: 12px 15px; justify-content: space-between; }
-            .nav-links { display: none !important; }
-            .nav-icons { right: 15px; gap: 10px; }
-            .mobile-menu-icon { display: flex !important; }
-            
-            .hero { height: auto; min-height: auto; padding: 20px 15px; text-align: center; }
-            .giant-text { font-size: 22vw; top: 30%; }
-            .hero-model { position: relative; height: 380px; left: 50%; transform: translateX(-50%); margin: 20px 0; }
-            .content-left-top, .content-left-bottom { position: relative; top: auto; left: auto; max-width: 100%; text-align: center; }
-            .content-left-bottom { margin-top: 15px; }
-            
-            /* CIRCLES IN 1 SIDHI LINE (HORIZONTAL SCROLL) ON MOBILE */
-            .circle-collections-sec { padding: 35px 10px; }
-            .circle-collections-sec h2 { font-size: 26px; margin-bottom: 20px; }
-            .circle-grid { 
-                display: flex; 
-                flex-wrap: nowrap; 
-                overflow-x: auto; 
-                justify-content: flex-start; 
-                gap: 15px; 
-                padding-bottom: 10px; 
-                scrollbar-width: none; 
-            }
-            .circle-grid::-webkit-scrollbar { display: none; }
-            .circle-item { min-width: 80px; }
-            .circle-img-wrap { width: 70px; height: 70px; border-width: 2px; margin-bottom: 6px; }
-            .circle-item span { font-size: 9px; letter-spacing: 1px; }
+    /* Hero Section Mobile Scaling */
+    .hero { height: auto; min-height: auto; padding: 20px 15px; text-align: center; }
+    .giant-text { font-size: 20vw; top: 35%; opacity: 0.05; }
+    .hero-model { position: relative; height: 360px; left: 50%; transform: translateX(-50%); margin: 15px 0; }
+    .content-left-top, .content-left-bottom { position: relative; top: auto; left: auto; max-width: 100%; text-align: center; }
+    .content-left-bottom { margin-top: 10px; }
+    .elegant-title .serif { font-size: 28px; }
+    .elegant-title .sans { letter-spacing: 5px; font-size: 9px; margin: 4px 0; }
+    .creations-text { font-size: 18px; letter-spacing: 8px; }
+    .description { font-size: 28px; }
 
-            .promo-split { flex-direction: column; height: auto; }
-            .promo-video { padding: 40px 20px; min-height: 300px; }
-            .promo-gift { padding: 40px 20px; text-align: center; }
-            .promo-text-wrap { max-width: 100%; align-items: center; }
-            .gift-img { position: relative; right: auto; top: auto; transform: none; width: 100%; max-width: 100%; margin-top: 20px; height: 200px; }
-            
-            /* PREMIUM / CREAM STRIP STACKED CLEANLY IN PROPER LINE */
+    /* Curated Masterpieces / Circles in 1 Smooth Horizontal Scroll Line on Mobile */
+    .circle-collections-sec { padding: 40px 10px; }
+    .circle-collections-sec h2 { font-size: 28px; margin-bottom: 25px; }
+    .circle-grid { 
+        display: flex; 
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
+        justify-content: flex-start; 
+        gap: 18px; 
+        padding-bottom: 15px; 
+        padding-left: 10px;
+        padding-right: 10px;
+        scrollbar-width: none; 
+    }
+    .circle-grid::-webkit-scrollbar { display: none; }
+    .circle-item { min-width: 90px; }
+    .circle-img-wrap { width: 85px; height: 85px; border-width: 3px; margin-bottom: 8px; }
+    .circle-item span { font-size: 10px; letter-spacing: 1px; }
+
+    /* Promo Split & Features */
+    .promo-split { flex-direction: column; height: auto; }
+    .promo-video { padding: 40px 20px; min-height: 280px; }
+    .promo-gift { padding: 40px 20px; text-align: center; }
+    .promo-text-wrap { max-width: 100%; align-items: center; }
+    .gift-img { position: relative; right: auto; top: auto; transform: none; width: 100%; max-width: 100%; margin-top: 20px; height: 220px; }
+
+    .cream-features-bar { 
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        gap: 20px; 
+        padding: 30px 15px; 
+    }
+    .cream-feat-item { 
+        flex: 0 0 46%; 
+        padding: 5px; 
+    }
+    .cream-feat-item:not(:last-child):after { display: none; }
+    .cream-feat-item h4 { font-size: 16px; }
+    .cream-feat-item p { font-size: 10px; }
+
+    /* Product Grids & Text Wrapping for Mobile */
+    .new-arrivals-sec, .shop-sec { padding: 40px 15px; }
+    .elegant-arrivals-layout { grid-template-columns: 1fr; gap: 20px; }
+    .featured-arrival { min-height: 360px; }
+    .arrivals-grid, .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .product-img-box img { height: 170px; }
+    .product-card h4 { font-size: 12px; white-space: normal; height: auto; }
+    .product-card p { font-size: 11px; }
+
+    /* Contact & Footer Adjustments */
+    .contact-sec { padding: 40px 20px; flex-direction: column; gap: 25px; }
+    .contact-form { padding: 30px 20px; transform: none !important; }
+    .site-footer { padding: 40px 20px 20px; }
+    .footer-main { grid-template-columns: 1fr; gap: 30px; }
+    .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
+}
+
+@media (max-width: 480px) {
+    .arrivals-grid, .product-grid { grid-template-columns: 1fr; }
+    .product-img-box img { height: 260px; }
+    .cream-feat-item { flex: 0 0 100%; }
+}     /* PREMIUM / CREAM STRIP STACKED CLEANLY IN PROPER LINE */
             .cream-features-bar { 
                 flex-direction: row; 
                 flex-wrap: wrap;
