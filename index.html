@@ -10,6 +10,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Imperial+Script&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
+        @media (max-width: 768px) {
+    .circle-collections-sec {
+        padding: 40px 10px !important;
+        overflow: hidden !important;
+        width: 100% !important;
+    }
+    .circle-grid {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        padding: 10px 10px 15px 10px !important;
+        scrollbar-width: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        animation: pulseSlide 15s ease-in-out infinite alternate;
+    }
+    .circle-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+    .circle-item {
+        min-width: 80px !important;
+        flex: 0 0 auto !important;
+        animation: fadeInCircle 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .circle-img-wrap {
+        width: 75px !important;
+        height: 75px !important;
+        border-width: 2px !important;
+        margin-bottom: 6px !important;
+    }
+    .circle-item span {
+        font-size: 9px !important;
+        letter-spacing: 0.5px !important;
+        white-space: nowrap !important;
+    }
+}
+
+@keyframes pulseSlide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-25px); }
+}
+
+@keyframes fadeInCircle {
+    from { opacity: 0; transform: translateY(15px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
         /* Base Resets & Exact Shrivi Luxury Palette */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         :root { --maroon: #641f2a; --dark-luxury: #140d0e; --bg-nav: #ffffff; --bg-hero: #ffffff; --pearl: #fdfbf7; --text-dark: #222222; --gold-acc: #b89782; --cream-bg: #fbf9f5; }
@@ -465,7 +513,7 @@
         }
 
         /* MOBILE RESPONSIVE MEDIA QUERIES (CIRCLES IN SINGLE HORIZONTAL LINE & PREMIUM STRIP ALIGNED) */
-        @media (max-width: 1020px) {
+        @media (max-width: 1024px) {
             .navbar { padding: 15px 30px; }
             .nav-links { gap: 10px; padding-right: 25px; }
             .nav-links.right { padding-left: 25px; }
@@ -762,7 +810,7 @@
             <!-- BALANCED 4-CARD NEW DROP SECTION -->
             <section class="new-arrivals-sec reveal-on-scroll">
                 <div class="na-header">
-                    <h2>The New Drop</h2>
+                    <h2 style=" font-family: Georgia, 'Times New Roman', Times, serif;">The New Drop</h2>
                     <a onclick="navigate('new-arrivals-page')">Discover All Collections &rarr;</a>
                 </div>
                 <div class="elegant-arrivals-layout">
@@ -780,7 +828,7 @@
 
             <section class="shop-sec reveal-on-scroll">
                 <div class="section-header">
-                    <h2>SHOP OUR COLLECTION</h2>
+                    <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">SHOP OUR COLLECTION</h2>
                     <p>Made with love, just for you.</p>
                 </div>
                 <div class="product-grid" id="mainShopGrid"></div>
@@ -788,7 +836,7 @@
 
             <!-- AESTHETIC 3D LUXURY FEEDBACK SECTION -->
             <section id="feedback" class="contact-sec reveal-on-scroll">
-                <div class="contact-text">
+                <div class="contact-text" style="font-family: Georgia, 'Times New Roman', Times, serif;">
                     <h2>Share Your<br>Thoughts With Us.</h2>
                     <p>Your feedback helps us bloom.</p>
                 </div>
@@ -823,7 +871,7 @@
                 Close & Return
             </div>
             <section class="circle-collections-sec" style="padding-top: 50px; min-height:80vh;">
-                <h2>Explore Masterpieces</h2>
+                <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">Explore Masterpieces</h2>
                 <div class="circle-grid">
                     <div class="circle-item" onclick="navigate('shop-page')">
                         <div class="circle-img-wrap"><img src="1.jpg" alt="Bag" onerror="this.src='1.jpg'"></div>
