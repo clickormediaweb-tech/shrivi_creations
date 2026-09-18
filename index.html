@@ -10,55 +10,130 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Imperial+Script&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
-        @media (max-width: 768px) {
+/* 1. Main Container aur Body Fix (Overflow rokne ke liye) */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden; /* Page horizontal scroll na ho */
+}
+
+/* 2. Circles aur Icons ka Container (Inhe ek line mein lagane ke liye) */
+.floating-icons-wrapper {
+  position: fixed;
+  right: 0; /* Right side se chipke rahenge */
+  top: 50%; /* Screen ke beech mein vertical */
+  transform: translateY(-50%); /* Perfectly center karne ke liye */
+  display: flex;
+  flex-direction: column; /* Icons vertical stack honge */
+  gap: 15px; /* Icons ke beech ki jagah */
+  z-index: 999; /* Sabke upar dikhein */
+}
+
+/* 3. Individual Circle Icons ke Styles */
+.circle-icon {
+  width: 60px; /* Circle ka size */
+  height: 60px;
+  border-radius: 50%; /* Gol shape */
+  background-color: white;
+  border: 2px solid #a42147; /* Border color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Halki shadow */
+  cursor: pointer;
+  
+  /* Yahan se transition aur animation shuru hoti hai */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Icon ke andar ka SVG ya image ka style */
+.circle-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: #a42147;
+  transition: fill 0.3s ease;
+}
+
+/* 4. Circles ko Move (Animate) krayo */
+
+/* Animation 1: Pehla icon thoda bahar nikla hua dikhega */
+.floating-icons-wrapper .circle-icon:nth-child(1) {
+  animation: moveOutAndIn 3s infinite ease-in-out;
+  animation-delay: 0.5s;
+}
+
+/* Animation 2: Dusra icon dusre time pe move karega */
+.floating-icons-wrapper .circle-icon:nth-child(2) {
+  animation: moveOutAndIn 3s infinite ease-in-out;
+  animation-delay: 1.5s;
+}
+
+/* Animation Keyframes: Ye definition hai move kaise hoga */
+@keyframes moveOutAndIn {
+  0%, 100% {
+    transform: translateX(0); /* Apni jagah pe wapas */
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-15px); /* Screen ke andar thoda move ho gya (side mein show hoga) */
+    opacity: 0.8;
+    background-color: #f8f9fa; /* Halki background change */
+  }
+}
+
+/* Hover effect (User jab mouse ya finger leke jaye) */
+.circle-icon:hover {
+  transform: translateX(-5px) scale(1.1); /* Hover pe thoda aur move aur bada ho jayega */
+  background-color: #a42147;
+}
+.circle-icon:hover svg {
+  fill: white;
+}
+@media (max-width: 768px) {
     .circle-collections-sec {
-        padding: 40px 10px !important;
-        overflow: hidden !important;
+        padding: 30px 0 !important;
         width: 100% !important;
+        overflow: hidden !important;
+    }
+    .circle-collections-sec h2 {
+        font-size: 24px !important;
+        margin-bottom: 15px !important;
+        text-align: center;
     }
     .circle-grid {
         display: flex !important;
         flex-wrap: nowrap !important;
-        overflow-x: auto !important;
         justify-content: flex-start !important;
-        gap: 12px !important;
-        padding: 10px 10px 15px 10px !important;
-        scrollbar-width: none !important;
-        -webkit-overflow-scrolling: touch !important;
-        width: 100% !important;
-        animation: pulseSlide 15s ease-in-out infinite alternate;
-    }
-    .circle-grid::-webkit-scrollbar {
-        display: none !important;
+        gap: 15px !important;
+        padding: 5px 0 15px 0 !important;
+        width: max-content !important;
+        animation: autoRunCircles 12s linear infinite !important;
     }
     .circle-item {
-        min-width: 80px !important;
+        min-width: 75px !important;
         flex: 0 0 auto !important;
-        animation: fadeInCircle 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        text-align: center !important;
     }
     .circle-img-wrap {
-        width: 75px !important;
-        height: 75px !important;
+        width: 65px !important;
+        height: 65px !important;
         border-width: 2px !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 5px !important;
     }
     .circle-item span {
-        font-size: 9px !important;
+        font-size: 8px !important;
         letter-spacing: 0.5px !important;
         white-space: nowrap !important;
+        display: block !important;
     }
 }
 
-@keyframes pulseSlide {
+@keyframes autoRunCircles {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-25px); }
-}
-
-@keyframes fadeInCircle {
-    from { opacity: 0; transform: translateY(15px) scale(0.9); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-        /* Base Resets & Exact Shrivi Luxury Palette */
+    100% { transform: translateX(-50%); }
+}        /* Base Resets & Exact Shrivi Luxury Palette */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         :root { --maroon: #641f2a; --dark-luxury: #140d0e; --bg-nav: #ffffff; --bg-hero: #ffffff; --pearl: #fdfbf7; --text-dark: #222222; --gold-acc: #b89782; --cream-bg: #fbf9f5; }
         
